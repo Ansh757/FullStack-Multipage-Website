@@ -4,7 +4,7 @@ import './style.css';
 
 const Register = () => {
     return (
-        <>
+        <div className='register'>
             <header>
             </header>
             <div className="signup-container">
@@ -72,7 +72,7 @@ const Register = () => {
             <footer>
                 <h3>© Name1, Name2, Name3 </h3>
             </footer>
-        </>
+        </div>
     )
 }
 

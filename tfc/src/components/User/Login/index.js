@@ -4,9 +4,10 @@ import './style.css';
 
 const Login = () => {
     return (
-        <>
+        <div className='login'>
             <header>
             </header>
+            
             <div className="signup-container">
                 {/*<div className="left-container">*/}
                 {/*    */}
@@ -68,10 +69,11 @@ const Login = () => {
                 {/*</div>*/}
 
             </div>
+        
             <footer>
                 <h3>© Name1, Name2, Name3 </h3>
             </footer>
-        </>
+        </div>
     )
 }
 

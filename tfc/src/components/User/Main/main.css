@@ -2,14 +2,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-html {
+.main {
     overflow: hidden; width: 100vw; height: 100vh;
 
     /* max-height: 600px; */
     background-image:
             url('https://media.giphy.com/media/26ueZpUDQNmZKX6iA/giphy.gif ');
 
-    background-repeat: repeat-x;
+    background-repeat: inherit;
     background-position:
             0 20%,
             0 100%,
@@ -22,7 +22,7 @@ html {
             500px 200px,
             1000px,
             400px 260px;
-    /*animation: 50s para infinite linear;*/
+    /* animation: 50s para infinite linear;  */
 }
 
 @keyframes para {
@@ -36,18 +36,13 @@ html {
     }
 }
 
-body {
-    overflow: hidden; width: 100vw; height: 100vh;
-}
-
-
-header {
+.main > header {
     padding: 3%;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-footer {
+.main > footer {
     padding: 3%;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.3);

@@ -1,19 +1,21 @@
 import React from 'react';
 import './main.css';
+import { useNavigate } from "react-router-dom"
 
 // Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
 
 const Base = () => {
+    const navigate = useNavigate();
     return (
-        <>
+        <div className='main'>
 
             <header>
                 <div className="buttons-div">
 
-                    <button className="btn">
+                    <button className="btn" onClick={() => navigate('/signup')}>
                         <span className="text"> SIGN UP </span>
                     </button>
-                    <button className="btn">
+                    <button className="btn" onClick={() => navigate('/signin')}>
                         <span className="text"> SIGN IN </span>
                     </button>
                 </div>
@@ -30,7 +32,7 @@ const Base = () => {
             </div>
             <footer>
             </footer>
-        </>
+        </div>
     )
 }
 
