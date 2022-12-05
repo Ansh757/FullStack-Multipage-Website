@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-
+// Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
 const Register = () => {
     return (
         <div className='register'>

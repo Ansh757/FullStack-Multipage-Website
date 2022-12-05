@@ -9,69 +9,56 @@ const Login = () => {
             </header>
             
             <div className="signup-container">
-                {/*<div className="left-container">*/}
-                {/*    */}
-                {/*</div>*/}
-                {/*<div className="right-container">*/}
-                {/*    <h1> Please Register </h1>*/}
-                {/*    <h1 className="title-2"> To Get Started </h1>*/}
-                {/*    <div className="register-form">*/}
-                {/*        <div className="user-username">*/}
-                {/*            <label className="Username"> Username </label>*/}
-                {/*            <input id="Username" type="text" placeholder="Username" required/>*/}
-                {/*        </div>*/}
-                {/*        <div className="user-avatar">*/}
-                {/*            <button id="Avatar">*/}
-                {/*                <i className="fas fa-camera-retro"> </i>*/}
-                {/*            </button>*/}
-                {/*            <label className="Avatar"> Avatar </label>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-
-                {/*    <div className="register-form">*/}
-                {/*        <div className="user-first-name">*/}
-                {/*            <label className="FirstName"> First Name </label>*/}
-                {/*            <input id="FirstName" type="text" placeholder="First Name" required/>*/}
-                {/*        </div>*/}
-                {/*        <div className="user-last-name">*/}
-                {/*            <label className="LastName"> Last Name </label>*/}
-                {/*            <input id="LastName" type="text" placeholder="Last Name" required/>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-
-                {/*    <div className="register-form">*/}
-                {/*        <div className="user-email">*/}
-                {/*            <label className="Email"> Email </label>*/}
-                {/*            <input id="Email" type="email" placeholder="123@gmail.com" required/>*/}
-                {/*        </div>*/}
-                {/*        <div className="user-number">*/}
-                {/*            <label className="PhoneNumber"> Phone Number </label>*/}
-                {/*            <input id="PhoneNumber" type="text" placeholder="123-123-1234" required/>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-
-                {/*    <div className="register-form">*/}
-                {/*        <div className="user-password">*/}
-                {/*            <label className="Password"> Password </label>*/}
-                {/*            <input id="Password" type="password" required/>*/}
-                {/*        </div>*/}
-                {/*        <div className="user-password2">*/}
-                {/*            <label className="RepeatPassword"> Repeat Password </label>*/}
-                {/*            <input id="RepeatPassword" type="password" required/>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className="register-btn">*/}
-                {/*        <button>*/}
-                {/*            REGISTER*/}
-                {/*        </button>*/}
-                {/*    </div>*/}
-
-                {/*</div>*/}
-
+                <div className="container" id="container">
+                    <div className="form-container sign-up-container">
+                        <form action="#">
+                            <h1>Create Account</h1>
+                            <div className="social-container">
+                                <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <span>or use your email for registration</span>
+                            <input type="text" placeholder="Name"/>
+                            <input type="email" placeholder="Email"/>
+                            <input type="password" placeholder="Password"/>
+                            <button>Sign Up</button>
+                        </form>
+                    </div>
+                    <div className="form-container sign-in-container">
+                        <form action="#">
+                            <h1>Sign in</h1>
+                            <div className="social-container">
+                                <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <span>or use your account</span>
+                            <input type="email" placeholder="Email"/>
+                            <input type="password" placeholder="Password"/>
+                            <a href="#">Forgot your password?</a>
+                            <button>Sign In</button>
+                        </form>
+                    </div>
+                    <div className="overlay-container">
+                        <div className="overlay">
+                            <div className="overlay-panel overlay-left">
+                                <h1>Welcome Back!</h1>
+                                <p>To keep connected with us please login with your personal info</p>
+                                <button className="ghost" id="signIn">Sign In</button>
+                            </div>
+                            <div className="overlay-panel overlay-right">
+                                <h1>Hello, Friend!</h1>
+                                <p>Enter your personal details and start journey with us</p>
+                                <button className="ghost" id="signUp">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         
             <footer>
-                <h3>© Name1, Name2, Name3 </h3>
+                <h3>© Ansh, Armaan, Giancarlo </h3>
             </footer>
         </div>
     )
