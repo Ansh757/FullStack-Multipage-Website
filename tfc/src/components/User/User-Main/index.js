@@ -32,11 +32,15 @@ const User_Main = () => {
             </header>
             <div className="main-container">
                 <div className="section section-1">
-
+                    <h1>
+                        Welcome <span> Bot1212</span> !
+                    </h1>
                 </div>
+                <hr />
                 <div className="section section-2">
 
                 </div>
+                <hr />
                 <div className="section section-3">
 
                 </div>
