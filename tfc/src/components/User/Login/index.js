@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.css';
+import { useNavigate } from "react-router-dom"
 
 
 const Login = () => {
+    const navigate = useNavigate();
     return (
         <div className='login'>
             <header>
@@ -49,7 +51,7 @@ const Login = () => {
                             <div className="overlay-panel overlay-right">
                                 <h1>Hello, Friend!</h1>
                                 <p>Enter your personal details and start journey with us</p>
-                                <button className="ghost" id="signUp">Sign Up</button>
+                                <button className="ghost" id="signUp" onClick={() => navigate('/register')}>Sign Up</button>
                             </div>
                         </div>
                     </div>

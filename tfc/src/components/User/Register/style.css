@@ -107,6 +107,11 @@
 	 appearance: none;
 	 outline: none;
 }
+
+.register .form-item button {
+	/* background-color: #524f81; */
+}
+
 .register .form-item small {
 	/*letter-spacing: 1px;
 	*/
@@ -192,6 +197,7 @@
 	 border-radius: 20px;
 	 cursor: pointer;
 	 transition: all ease 0.2s;
+	 background-color: 524f81;
 }
 .register .submit:hover {
 	 background-color: #eda261;
