@@ -7,45 +7,45 @@ import FileUploadButton from '../Register/FileUploadButton'
 
 
 const Register = () => {
-//     const [Username, setUsername] = useState(null);
-//     const [FirstName, setFirstName] = useState(null);
-//     const [LastName, setLastName] = useState(null);
-//     const [Email, setEmail] = useState(null);
-//     const [Password, setPassword] = useState(null);
-//     const [PhoneNumber, setPhoneNumber] = useState(null);
-//     const [RepeatPassword, setRepeatPassword] = useState(null);
-//     const [Avatar, setAvatar] = useState(null);
+    const [Username, setUsername] = useState(null);
+    const [FirstName, setFirstName] = useState(null);
+    const [LastName, setLastName] = useState(null);
+    const [Email, setEmail] = useState(null);
+    const [Password, setPassword] = useState(null);
+    const [PhoneNumber, setPhoneNumber] = useState(null);
+    const [RepeatPassword, setRepeatPassword] = useState(null);
+    const [Avatar, setAvatar] = useState(null);
 
-//     function RegistrationForm() {
-//         const handleValues = (e) => {
-//             const {id, value} = e.target;
-//             if (id === "FirstName") {
-//                 setFirstName(value)
-//             }
-//             if (id === "Username") {
-//                 setUsername(value)
-//             }
-//             if (id === "LastName") {
-//                 setLastName(value)
-//             }
-//             if (id === "Email") {
-//                 setEmail(value)
-//             }
-//             if (id === "Password") {
-//                 setPassword(value)
-//             }
-//             if (id === "PhoneNumber") {
-//                 setPhoneNumber(value)
-//             }
-//             if (id === "Avatar") {
-//                 setAvatar(value)
-//             }
-//             if (id === "RepeatPassword") {
-//                 setRepeatPassword(value)
-//             }
+    function RegistrationForm() {
+        const handleValues = (e) => {
+            const {id, value} = e.target;
+            if (id === "FirstName") {
+                setFirstName(value)
+            }
+            if (id === "Username") {
+                setUsername(value)
+            }
+            if (id === "LastName") {
+                setLastName(value)
+            }
+            if (id === "Email") {
+                setEmail(value)
+            }
+            if (id === "Password") {
+                setPassword(value)
+            }
+            if (id === "PhoneNumber") {
+                setPhoneNumber(value)
+            }
+            if (id === "Avatar") {
+                setAvatar(value)
+            }
+            if (id === "RepeatPassword") {
+                setRepeatPassword(value)
+            }
 
-//         }
-//     }
+        }
+    }
 
     return (
     <div className='register'>
@@ -57,47 +57,50 @@ const Register = () => {
     </header>
     <main>
       <form>
-        <div class="form-item box-item">
-          <input type="text" name="name" placeholder="Username" data-required/>
+        <div  class="form-item box-item">
+          <input id="Username" type="text" name="name" placeholder="Username" onChange = {(e) => RegistrationForm(e)} data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
         <div class="form-item box-item">
-          <input type="text" name="email" placeholder="First Name" data-email data-required/>
+          <input id="FirstName" type="text" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="First Name" data-email data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
         <div class="form-item box-item">
-          <input type="text" name="email" placeholder="Last Name" data-email data-required/>
+          <input id="LastName" type="text" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="Last Name" data-email data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
         <div class="form-item box-item">
-          <input type="email" name="email" placeholder="Email" data-email data-required/>
+          <input id="Email" type="email" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="Email" data-email data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
           <small class="errorEmail"><i class="fa fa-asterisk" aria-hidden="true"></i> email is not valid</small>
         </div>
         <div class="form-item box-item">
-          <input type="text" name="email" placeholder="Password" data-email data-required/>
+          <input id="Password" type="text" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="Password" data-email data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
-        <div class="form-item box-item">
-          <input type="text" name="email" placeholder="Repeat Password" data-email data-required/>
+        <div id="RepeatPassword" class="form-item box-item">
+          <input type="text" name="email" placeholder="Repeat Password" onChange = {(e) => RegistrationForm(e)} data-email data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
 
         
         <div class="form-item box-item">
-          <input type="number" name="address" placeholder="Phone Number" data-required/>
+          <input id="PhoneNumber" type="number" name="address" placeholder="Phone Number" onChange = {(e) => RegistrationForm(e)} data-required/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
         
         <div class="form-item box-item">
             <label>Choose Your Avatar</label><br></br><br></br>
-          <input type="file" name="phone" placeholder="Avatar" data-required data-number data-count="10"/>
+          <input id="Avatar" type="file" name="phone" placeholder="Avatar" onChange = {(e) => RegistrationForm(e)} data-required data-number data-count="10"/>
           <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
           <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small>
           <small class="errorChar"><i class="fa fa-asterisk" aria-hidden="true"></i> must be 10 digits</small>
         </div>
         <div class="form-item">
-          <span id="submit" class="submit">Submit</span>
+          <button>
+            <span id="submit" className="submit">Submit</span>
+          </button>
+
         </div>
       </form>
     </main>
