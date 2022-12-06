@@ -197,6 +197,12 @@
 	 background-color: #eda261;
 	 border: 2px solid #eda261;
 }
+
+.register .submit button {
+    background: none;
+    color: inherit;
+    border: none;
+}
 .register .wave {
 	 position: absolute;
 	 top: 0;
