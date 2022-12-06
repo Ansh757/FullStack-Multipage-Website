@@ -11,7 +11,7 @@
     height: 100vh;
     justify-items: center;
     overflow: hidden; width: 100vw;
-    /* background-color: rgba(255, 0, 0, 0.63); */
+     background-color: #FFF5E3;
 }
 
 .login > header {
@@ -70,6 +70,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    cursor: pointer;
 }
 
 button:active {
