@@ -1,4 +1,5 @@
 import React, { Component, useState, setState } from 'react';
+import { Link } from "react-router-dom";
 import './style.css';
 import FileUploadButton from '../Register/FileUploadButton'
 
@@ -97,15 +98,12 @@ const Register = () => {
           <small class="errorChar"><i class="fa fa-asterisk" aria-hidden="true"></i> must be 10 digits</small>
         </div>
         <div class="form-item">
-          <button>
-            <span id="submit" className="submit">Submit</span>
-          </button>
-
+          <button className='submit'>Submit</button>
         </div>
       </form>
     </main>
     <footer>
-      <p>Already have an account? <a href="#">Login here</a></p>
+      <p>Already have an account? <Link to="/login">Sign In</Link></p>
     </footer>
     <i class="wave"></i>
   </section>
@@ -113,48 +111,39 @@ const Register = () => {
         {/* <header>aasd</header>
     <div class="container-1">
         <header>Registration</header>
-
         <form action="#">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Personal Details</span>
-
                     <div class="fields">
                         <div class="input-field">
                             <label>Username</label>
                             <input type="text" placeholder="Enter your username" required></input>
                         </div>
-
                         <div class="input-field">
                             <label>First Name</label>
                             <input type="text" placeholder="Enter your First Name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Last Name</label>
                             <input type="text" placeholder="Enter your Last Name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Email</label>
                             <input type="email" placeholder="Enter your email" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Password</label>
                             <input type="password" placeholder="Enter your Password" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Phone Number</label>
                             <input type="number" placeholder="Enter your phone number" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Repeat Password</label>
                             <input type="password" placeholder="Enter your Repeat Password" required/>
                         </div>
-
                         <div class="input-field-2">
                             <label>Avatar</label>
                             <input type="file" required/>
@@ -162,79 +151,64 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-
             <div class="form second">
                 <div class="details address">
                     <span class="title">Address Details</span>
-
                     <div class="fields">
                         <div class="input-field">
                             <label>Address Type</label>
                             <input type="text" placeholder="Permanent or Temporary" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Nationality</label>
                             <input type="text" placeholder="Enter nationality" required/>
                         </div>
-
                         <div class="input-field">
                             <label>State</label>
                             <input type="text" placeholder="Enter your state" required/>
                         </div>
-
                         <div class="input-field">
                             <label>District</label>
                             <input type="text" placeholder="Enter your district" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Block Number</label>
                             <input type="number" placeholder="Enter block number" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Ward Number</label>
                             <input type="number" placeholder="Enter ward number" required/>
                         </div>
                     </div>
                 </div>
-
                 <div class="details family">
                     <span class="title">Family Details</span>
-
                     <div class="fields">
                         <div class="input-field">
                             <label>Father Name</label>
                             <input type="text" placeholder="Enter father name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Mother Name</label>
                             <input type="text" placeholder="Enter mother name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Grandfather</label>
                             <input type="text" placeholder="Enter grandfther name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Spouse Name</label>
                             <input type="text" placeholder="Enter spouse name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Father in Law</label>
                             <input type="text" placeholder="Father in law name" required/>
                         </div>
-
                         <div class="input-field">
                             <label>Mother in Law</label>
                             <input type="text" placeholder="Mother in law name" required/>
                         </div>
                     </div>
-
                     <div class="buttons">
                         <div class="backBtn">
                             <i class="uil uil-navigator"></i>

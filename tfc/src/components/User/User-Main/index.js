@@ -15,7 +15,7 @@ const User_Main = () => {
                             <li><a href='#' data-item='Home'>Home</a></li>
                             <li><a href='#' data-item='Classes'>Classes</a></li>
                             <li><a href='#' data-item='Studios'>Studios</a></li>
-                            <li><a href='#' data-item='Subscriptions'>Subscriptions</a></li>
+                            <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                         </ul>
                     </nav>
                 </div>
