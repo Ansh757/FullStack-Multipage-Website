@@ -10,23 +10,25 @@
     font-weight: 400;
     height: 100vh;
     justify-items: center;
-    overflow: hidden; width: 100vw;
-     background-color: #FFF5E3;
+    overflow: hidden;
+    width: 100vw;
+    background-color: #FFF5E3;
+    text-align: center;
 }
 
-.login > header {
+.login header {
     padding: 3%;
     text-align: center;
     background-color: rgb(0, 0, 0);
 }
 
-.login > footer {
+.login footer {
     padding: 4%;
     text-align: center;
     background-color: rgb(0, 0, 0);
 }
 
-.login > footer h3 {
+.login footer h3 {
     color: white;
     margin: 0;
 }
@@ -107,6 +109,7 @@ button.ghost {
 .login .container {
     margin: 1% 0;
 }
+
 .login .container {
     background-color: #fff;
     border-radius: 10px;
@@ -114,9 +117,11 @@ button.ghost {
     0 10px 10px rgba(0,0,0,0.22);
     position: relative;
     overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
+    width: 48em;
+    right: 4%;
+    /*max-width: 100%;*/
+
+    /*min-height: 480px;*/
 }
 
 .form-container {
@@ -136,12 +141,12 @@ button.ghost {
     transform: translateX(100%);
 }
 
-.sign-up-container {
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
+/*.sign-up-container {*/
+/*    left: 0;*/
+/*    width: 50%;*/
+/*    opacity: 0;*/
+/*    z-index: 1;*/
+/*}*/
 
 .container.right-panel-active .sign-up-container {
     transform: translateX(100%);
@@ -173,7 +178,7 @@ button.ghost {
     z-index: 100;
 }
 
-.container.right-panel-active .overlay-container{
+.container .right-panel-active .overlay-container{
     transform: translateX(-100%);
 }
 
@@ -193,7 +198,7 @@ button.ghost {
     transition: transform 0.6s ease-in-out;
 }
 
-.container.right-panel-active .overlay {
+.container .right-panel-active .overlay {
     transform: translateX(50%);
 }
 
@@ -203,7 +208,7 @@ button.ghost {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
+    /*padding: 0 40px;*/
     text-align: center;
     top: 0;
     height: 100%;
@@ -244,6 +249,9 @@ button.ghost {
     width: 40px;
 }
 
+.signup-container {
+    width: 10em;
+}
 /*.left-container {*/
 /*    margin-left: 20%;*/
 /*    background: rgba(0, 0, 0, 0.37);*/
