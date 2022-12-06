@@ -11,7 +11,7 @@
     height: 100vh;
     justify-items: center;
     overflow: hidden; width: 100vw;
-    background-color: rgba(255, 0, 0, 0.63);
+    background-color: #FFF5E3;
 }
 .signup-container {
     /*display: grid;*/
@@ -71,6 +71,10 @@
     /*padding-bottom: -10px;*/
     margin-right: 10px;
     transform: rotate(-45deg);
+}
+
+#file-input {
+    display: none;
 }
 /*.top-left-box {*/
 /*    justify-content: center;*/
@@ -132,7 +136,7 @@
     /*!*margin: 0 2% 0 0;*!*/
     /*width: 40%;*/
 
-    background: rgba(105, 224, 224, 0.75);
+    background: rgba(7, 45, 255, 0.96);
     /*margin-right: 2%;*/
     /*background: rgba(98, 91, 91, 0.5);*/
     overflow: hidden;
