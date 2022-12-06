@@ -8,7 +8,7 @@
     /*align-items: center;*/
     font-size: 14px;
     font-weight: 400;
-    height: 100vh;
+    height: 120vh;
     justify-items: center;
     width: 100%;
     display: block;
@@ -22,7 +22,7 @@
     text-align: right;
     background-color: rgb(0, 0, 0);
     display: flex;
-    gap: 24em;
+    gap: 10%;
 }
 
 .user-main footer {
@@ -91,7 +91,7 @@
 }
 
 .user-main .section {
-    background: rgba(0, 0, 0, 0.15);
+    /*background: rgba(0, 0, 0, 0.15);*/
     display: block;
     width: 80%;
     height: 30%;
@@ -149,4 +149,57 @@ nav .menuItems li a::before {
 nav .menuItems li a:hover::before {
     width: 100%;
     transition: all 0.5s ease-in-out;
+}
+.main-container .section-1 h1, .main-container .section-2 h1 {
+    padding: 1%;
+}
+
+.main-container hr {
+    margin: 0 10%;
+}
+
+.main-container .opening-hours {
+    border-radius:4px;
+    margin: 0 70px;
+    box-shadow: 0 0 10px black;
+    padding:0 10px 0 10px;
+    overflow: hidden;
+    display: inline-block;
+    background-color: rgba(66, 66, 66, 0.25);
+    width: 20em;
+    height: 17em;
+}
+
+.main-container .opening-hours .opening-hours-content {
+    float:left;
+}
+
+.today {
+    color: #8AC007;
+}
+.opening-hours-table tr td:first-child {
+    font-weight:bold;
+}
+#open-status {
+    display:block;
+    /*margin-top:-1em;*/
+    text-align:center;
+    border:dotted lightgrey 3px;
+}
+.openorclosed:after {
+    content:" open during these hours:";
+}
+.open {
+    color:green;
+}
+.open:after {
+    content:" Open";
+    color: #6C0;
+}
+.closed:after {
+    content:" Closed";
+    color: red;
+}
+.opening-hours-table tr td {
+    padding:5px;
 }
