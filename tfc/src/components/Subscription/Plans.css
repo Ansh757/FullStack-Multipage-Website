@@ -1,14 +1,32 @@
 .plans-overlay{
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 4rem;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(35, 15, 15);
+    overflow: hidden;
+    justify-items: center;
+    text-align: center;
 
 }
+
+.plans-overlay header {
+    top: 0%;
+    padding: 3%;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+}
+
+.plans-overlay footer {
+    padding: 4%;
+    position: relative;
+    text-align: center;
+    bottom: 0%;
+    background-color: rgb(0, 0, 0);
+}
+
 
 .plan-header{
     display: flex ;
@@ -17,12 +35,10 @@
     align-items: center;
     justify-content: center ;
     text-transform: uppercase;
-    font-size: 400%;
+    font-size: 4rem;
     font-weight: bold;
     position: relative;
-    top: 10rem;
     color: WHITE;
-    text-overflow: inherit;
 }
 
 .plan-tiles{
@@ -30,19 +46,18 @@
     align-items: center;
     justify-content: center ;
     position: relative;
-    top: 13rem;
+    width: 100%;
     gap: 3rem;
+    margin-top: 1%;
 }
 
 .plans{
     display: flex;
     flex-direction: column;
-    /* background-color: #8BC6EC;
-    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);    */
-    gap: 2rem; 
+    gap: 4rem; 
     background: lightgray;
     padding: 2rem;
-    width: 15rem;
+    width: 15%;
     border-radius: 0.1em;
 }
 .plans:nth-child(2){
@@ -51,9 +66,10 @@
     /* background-image: linear-gradient(to right top, #dc4717, #ec394f, #ec3f7f, #dc55ab, #be6ecd, #a085e8, #799af8, #4bacff, #00c3ff, #00d7ff, #0feafd, #5ffbf1);} */
 }
 .plans>svg{
+    display: flex;
     fill: orange;
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
 }
 
 .plans>:nth-child(2){
@@ -83,7 +99,7 @@
 }
 
 .point > img{
-    width: 1rem;
+    width: 2rem;
 }
 
 .btn-div{
@@ -94,8 +110,8 @@
 
 .join-button{
     position: relative;
-    top: 15rem;
-    width: 15rem;
+    width: 10%;
+    margin-top: 2%;
     background-color: white;
     padding: 0.8rem;
     font-weight: bold;
