@@ -1,115 +1,115 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
- html {
-	 font-size: 10px;
-	 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	 box-sizing: border-box;
-     background-color: #6147f4;
+html {
+	font-size: 10px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	box-sizing: border-box;
+	background-color: #6147f4;
 }
- *, *:before, *:after {
-	 margin: 0;
-	 padding: 0;
-	 box-sizing: inherit;
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
- .register {
-    margin-top: 10%;
-	 font-family: 'PT Sans', sans-serif;
-	 font-size: 16px;
-	 line-height: 1.428571429;
-	 font-weight: 400;
-	 color: #fff;
+.register {
+	margin-top: 10%;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 16px;
+	line-height: 1.428571429;
+	font-weight: 400;
+	color: #fff;
 }
- .row {
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
- .section {
-	 background-color: #3d4067;
-	 position: relative;
-	 overflow: hidden;
-	 display: flex;
-	 justify-content: center;
-	 flex-direction: column;
+.section {
+	background-color: #3d4067;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 .register  header, main, footer {
-	 display: block;
-	 position: relative;
-	 z-index: 1;
+	display: block;
+	position: relative;
+	z-index: 1;
 }
 .register header {
-	 padding: 48px;
+	padding: 48px;
 }
- @media (max-width: 440px) {
-	 header {
-		 padding: 48px 24px;
+@media (max-width: 440px) {
+	header {
+		padding: 48px 24px;
 	}
 }
 .register header > h3 {
-	 font-size: 44px;
-	 font-weight: 700;
-	 margin-bottom: 8px;
+	font-size: 44px;
+	font-weight: 700;
+	margin-bottom: 8px;
 }
 .register header > h4 {
-	 font-size: 22px;
-	 font-weight: 400;
-	 letter-spacing: 1px;
+	font-size: 22px;
+	font-weight: 400;
+	letter-spacing: 1px;
 }
 .register main {
-	 flex: 1;
-	 padding: 0 48px;
+	flex: 1;
+	padding: 0 48px;
 }
- @media (max-width: 440px) {
+@media (max-width: 440px) {
 	.register main {
-		 padding: 0 24px;
+		padding: 0 24px;
 	}
 }
 .register footer {
-	 width: 100%;
-	 background-color: #524f81;
-	 padding: 16px;
-	 align-self: center;
-	 text-align: center;
-	 margin-top: 32px;
+	width: 100%;
+	background-color: #524f81;
+	padding: 16px;
+	align-self: center;
+	text-align: center;
+	margin-top: 32px;
 }
 .register footer a {
-	 color: #fff;
-	 font-weight: 700;
-	 text-decoration: none;
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
 }
 .register footer a:hover {
-	 text-decoration: underline;
+	text-decoration: underline;
 }
 .register form {
-	 height: 100%;
-	 display: flex;
-	 justify-content: center;
-	 flex-direction: column;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 .register .label {
-	 color: rgba(226, 227, 232, .75);
-	 font-size: 16px;
+	color: rgba(226, 227, 232, .75);
+	font-size: 16px;
 }
 .register small {
-	 display: none;
+	display: none;
 }
 .register small.errorOnce {
-	 margin-top: 2px;
+	margin-top: 2px;
 }
 .register .form-item input[type="text"], .form-item input[type="number"], .form-item input[type="email"], .form-item input[type="password"]{
-	 display: block;
-	 color: #e2e3e8;
-	 font-size: 16px;
-	 width: 100%;
-	 background-color: transparent;
-	 border: none;
-	 border-bottom: 1px solid #75759e;
-	 padding: 8px 0;
-	 appearance: none;
-	 outline: none;
+	display: block;
+	color: #e2e3e8;
+	font-size: 16px;
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #75759e;
+	padding: 8px 0;
+	appearance: none;
+	outline: none;
 }
 
 .register .form-item button {
-	 /*background-color: #524f81; */
+	/*background-color: #524f81; */
 }
 
 .register .form-item small {
@@ -117,123 +117,123 @@
 	*/
 }
 .register .form-item i {
-	 font-size: 12px;
-	 color: red;
+	font-size: 12px;
+	color: red;
 }
 .register .box-item {
-	 height: 60px;
-	 margin-bottom: 16px;
+	height: 60px;
+	margin-bottom: 16px;
 }
 .register .form-item-double {
-	 display: flex;
+	display: flex;
 }
 .register .form-item-double .form-item {
-	 flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 .register .form-item-double .form-item:nth-child(1) {
-	 padding-right: 16px;
+	padding-right: 16px;
 }
 .register .form-item-double .form-item:nth-child(2) {
-	 padding-left: 16px;
+	padding-left: 16px;
 }
 .register .form-item-triple {
-	 display: flex;
-	 align-items: center;
-	 padding-top: 6px;
+	display: flex;
+	align-items: center;
+	padding-top: 6px;
 }
 .register .form-item-triple .radio-label {
-	 flex: 1 1 auto;
-	 text-align: left;
+	flex: 1 1 auto;
+	text-align: left;
 }
 .register .form-item-triple .radio-label label {
-	 display: inline-block;
-	 vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
 }
 .register .form-item-triple .form-item {
-	 flex: 3 1 auto;
-	 text-align: center;
-	 margin: 0;
+	flex: 3 1 auto;
+	text-align: center;
+	margin: 0;
 }
 .register .form-item-triple .form-item label, .form-item-triple .form-item input[type="radio"] {
-	 display: inline-block;
-	 vertical-align: middle;
-	 margin: 0 4px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 4px;
 }
 .register ::-webkit-input-placeholder {
 	/* WebKit, Blink, Edge */
-	 color: rgba(226, 227, 232, .75);
-	 font-size: 16px;
+	color: rgba(226, 227, 232, .75);
+	font-size: 16px;
 }
 .register :-moz-placeholder {
 	/* Mozilla Firefox 4 to 18 */
-	 color: rgba(226, 227, 232, .75);
-	 font-size: 16px;
-	 opacity: 1;
+	color: rgba(226, 227, 232, .75);
+	font-size: 16px;
+	opacity: 1;
 }
 .register ::-moz-placeholder {
 	/* Mozilla Firefox 19+ */
-	 color: rgba(226, 227, 232, .75);
-	 font-size: 16px;
-	 opacity: 1;
+	color: rgba(226, 227, 232, .75);
+	font-size: 16px;
+	opacity: 1;
 }
 .register :-ms-input-placeholder {
 	/* Internet Explorer 10-11 */
-	 color: rgba(226, 227, 232, .75);
-	 font-size: 16px;
+	color: rgba(226, 227, 232, .75);
+	font-size: 16px;
 }
 .register ::-ms-input-placeholder {
 	/* Microsoft Edge */
-	 color: rgba(226, 227, 232, .75);
-	 font-size: 16px;
+	color: rgba(226, 227, 232, .75);
+	font-size: 16px;
 }
 .register .submit {
-	 display: inline-block;
-	 font-size: 18px;
-	 font-weight: 700;
-	 letter-spacing: 1px;
-	 padding: 8px 48px;
-	 margin-top: 32px;
-	 border: 2px solid #75759e;
-	 border-radius: 20px;
-	 cursor: pointer;
-	 transition: all ease 0.2s;
-	 background-color: #524f81;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	padding: 8px 48px;
+	margin-top: 32px;
+	border: 2px solid #75759e;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all ease 0.2s;
+	background-color: #524f81;
 }
 .register .submit:hover {
-	 background-color: #eda261;
-	 border: 2px solid #eda261;
+	background-color: #eda261;
+	border: 2px solid #eda261;
 }
 
 .register .submit button {
-    background: none;
-    color: inherit;
-    border: none;
+	background: none;
+	color: inherit;
+	border: none;
 }
 .register .wave {
-	 position: absolute;
-	 top: 0;
-	 left: 50%;
-	 width: 800px;
-	 height: 800px;
-	 margin-top: -600px;
-	 margin-left: -400px;
-	 background: #252e45;
-	 border-radius: 40%;
-	 animation: shift 20s infinite linear;
-	 z-index: 0;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 800px;
+	height: 800px;
+	margin-top: -600px;
+	margin-left: -400px;
+	background: #252e45;
+	border-radius: 40%;
+	animation: shift 20s infinite linear;
+	z-index: 0;
 }
- @keyframes shift {
-	 from {
-		 transform: rotate(360deg);
+@keyframes shift {
+	from {
+		transform: rotate(360deg);
 	}
 }
- 
- .register .form-item span {
-	 color: red;
-	 font-size: 12px;
-	 width: 2px;
-	 height: 2px;
- }
+
+.register .form-item span {
+	color: red;
+	font-size: 12px;
+	width: 2px;
+	height: 2px;
+}
 
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 *{
