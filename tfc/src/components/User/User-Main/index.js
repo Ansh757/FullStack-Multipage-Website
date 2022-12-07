@@ -1,8 +1,18 @@
 import React from 'react';
 import './style.css';
-import func from './hours'
+import func from './hours';
+// import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+
+// function Map(){
+//     return <GoogleMap zoom={10} center={{lat:44, lng:-80}}></GoogleMap>
+// }
+
 // Reference: https://codepen.io/grohit/pen/jObGzdG
 const User_Main = () => {
+    // const { isLoaded } = useLoadScript({googleMapsApiKey : " AIzaSyAyqBmUePso0iFdhVOlLR5uwmmu7sKVvIc"})
+    // if (!isLoaded) return <div>Loading...</div>;
+
+
     return (
         <div className='user-main'>
             <header>
@@ -31,8 +41,8 @@ const User_Main = () => {
             </header>
             <div className="main-container">
                 <div className="section section-1">
-                    <h1>
-                        Welcome <span> Bot1212</span>!
+                    <h1 className=''>
+                        Welcome <br/><span> Bot1212!</span>
                     </h1>
                 </div>
                 <hr />
@@ -41,7 +51,13 @@ const User_Main = () => {
                         Timings
                     </h1>
 
-                    <div className="opening-hours">
+                    <div className='col1'>
+                        <h2>maps</h2>
+                        {/* <Map/> */}
+                    </div>
+
+                    <div className="col1">
+                        <h2>About Us: asdjadkjandkjandkjandkjnaksdnakjsndakjsdn</h2>
                         <div className="opening-hours-content section">
                             <div className="header">
                                 <span id="open-status"><small className="openorclosed">We are</small></span>
@@ -92,6 +108,8 @@ const User_Main = () => {
                             </table>
                         </div>
                     </div>
+
+
                 </div>
 
                 <hr />
