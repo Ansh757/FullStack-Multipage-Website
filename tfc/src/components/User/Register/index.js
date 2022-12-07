@@ -1,103 +1,171 @@
-import React, { Component, useState, setState } from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import './style.css';
 import FileUploadButton from '../Register/FileUploadButton'
-
+import Axios from 'axios';
 // Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
-
-
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
-    const [Username, setUsername] = useState(null);
-    const [FirstName, setFirstName] = useState(null);
-    const [LastName, setLastName] = useState(null);
-    const [Email, setEmail] = useState(null);
-    const [Password, setPassword] = useState(null);
-    const [PhoneNumber, setPhoneNumber] = useState(null);
-    const [RepeatPassword, setRepeatPassword] = useState(null);
-    const [Avatar, setAvatar] = useState(null);
 
-    function RegistrationForm() {
-        const handleValues = (e) => {
-            const {id, value} = e.target;
-            if (id === "FirstName") {
-                setFirstName(value)
-            }
-            if (id === "Username") {
-                setUsername(value)
-            }
-            if (id === "LastName") {
-                setLastName(value)
-            }
-            if (id === "Email") {
-                setEmail(value)
-            }
-            if (id === "Password") {
-                setPassword(value)
-            }
-            if (id === "PhoneNumber") {
-                setPhoneNumber(value)
-            }
-            if (id === "Avatar") {
-                setAvatar(value)
-            }
-            if (id === "RepeatPassword") {
-                setRepeatPassword(value)
-            }
+    const [data, setData] = useState({
+        Username: "",
+        FirstName: "",
+        LastName: "",
+        Email: "",
+        Password: "",
+        RepeatPassword: "",
+        Avatar: "",
+        PhoneNumber: ""
+    })
 
+    const [file, setFile] = useState(null);
+    const [formErrors, setFormErrors] = useState({});
+    const noErrors = useRef(false);
+
+    function RegistrationForm(e) {
+        const fields={...data}
+        fields[e.target.id] = e.target.value
+        if (fields['Avatar']  === "") {
+            fields['Avatar'] = null
+        }
+        setData(fields)
+        // console.log(fields)
+    }
+
+    const submitForm = async(e) => {
+        e.preventDefault();
+        const url = "http://127.0.0.1:8000/accounts/register/";
+        Axios.post(url, {
+            username: data.Username,
+            first_name: data.FirstName,
+            last_name: data.LastName,
+            email: data.Email,
+            password: data.Password,
+            repeat_password: data.RepeatPassword,
+            avatar: data.Avatar,
+            phone_number: data.PhoneNumber
+        }, {headers: { "Content-Type": "multipart/form-data" }})
+            .then(response => handleErrors(response))
+            .catch(err => my_function(err.response.data))
+    }
+    function my_function(e) {
+        let keys = Object.keys(e)
+        get_errors2(keys, e)
+    }
+
+
+    // setState({...this.state.data, Avatar: file});
+    
+    function handleErrors(response){
+        setFormErrors({})
+
+        let k = Object.keys(response.data)
+        // // let k2 = Object.keys(response)
+        // console.log(response)
+        // console.log(k2)
+        console.log(k)
+        if (k.includes('response')) {
+            console.log(response.data)
+            noErrors.current = true
+        } else {
+            get_errors(k, response.data)
+        }
+
+        if (noErrors) {
+            navigate('/login')
         }
     }
 
+
+    function get_errors2(keys, data){
+        let errors = {}
+        for (let i = 0; i < keys.length; i++){
+            let k = keys[i]
+            errors[k] = data[k]
+        }
+        setFormErrors(errors);
+        return errors
+    }
+
+    function get_errors(keys, data){
+        let errors = {}
+        for (let i = 0; i < keys.length; i++){
+            let k = keys[i]
+            errors[k] = data[k][0]
+        }
+        setFormErrors(errors);
+        return errors
+    }
+
+    const FileChange = (e) => {
+            setFile(e.target.files[0])
+            console.log(e.target.files[0]);
+        };
+
+    const navigate = useNavigate();
+
     return (
     <div className='register'>
-        <div class="row">
-  <section class="section">
+        <div className="row">
+  <section className="section">
     <header>
       <h3>Register</h3>
       <h4>Please fill your information below</h4>
     </header>
     <main>
-      <form>
-        <div  class="form-item box-item">
-          <input id="Username" type="text" name="name" placeholder="Username" onChange = {(e) => RegistrationForm(e)} data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+      <form onSubmit={(e) => submitForm(e)}>
+        <div  className="form-item box-item">
+          <input id="Username" type="text" placeholder="Username" onChange={(e) => RegistrationForm(e)} value={data.Username} data-required/>
+          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+            <span>{formErrors['username']}</span>
         </div>
-        <div class="form-item box-item">
-          <input id="FirstName" type="text" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="First Name" data-email data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+        <div className="form-item box-item">
+          <input id="FirstName" type="text" onChange={(e) => RegistrationForm(e)} placeholder="First Name" value={data.FirstName} data-required/>
+          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+            <span>{formErrors['first_name']}</span>
         </div>
-        <div class="form-item box-item">
-          <input id="LastName" type="text" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="Last Name" data-email data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+
+        <div className="form-item box-item">
+          <input id="LastName" type="text" name="text" onChange={(e) => RegistrationForm(e)} placeholder="Last Name" value={data.LastName} data-required/>
+          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+            <span>{formErrors['last_name']}</span>
         </div>
-        <div class="form-item box-item">
-          <input id="Email" type="email" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="Email" data-email data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
-          <small class="errorEmail"><i class="fa fa-asterisk" aria-hidden="true"></i> email is not valid</small>
+        <div className="form-item box-item">
+          <input id="Email" type="email" onChange={(e) => RegistrationForm(e)} placeholder="Email" value={data.Email} data-email data-required/>
+          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+          {/*<small className="errorEmail"><i className="fa fa-asterisk" aria-hidden="true"></i> email is not valid</small>*/}
+            <span>{formErrors['email']}</span>
         </div>
-        <div class="form-item box-item">
-          <input id="Password" type="text" name="email" onChange = {(e) => RegistrationForm(e)} placeholder="Password" data-email data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
-        </div>
-        <div id="RepeatPassword" class="form-item box-item">
-          <input type="text" name="email" placeholder="Repeat Password" onChange = {(e) => RegistrationForm(e)} data-email data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+          <div className="form-item box-item">
+              <input id="Password" type="password" onChange={(e) => RegistrationForm(e)} value={data.Password} placeholder="Password"
+                     data-required/>
+              {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+              <span>{formErrors['password']}</span>
+          </div>
+
+        <div className="form-item box-item">
+          <input id="RepeatPassword" type="password"  placeholder="Repeat Password" onChange={(e) => RegistrationForm(e)} value={data.RepeatPassword} data-required/>
+          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+            <span>{formErrors['repeat_password']}</span>
         </div>
 
         
-        <div class="form-item box-item">
-          <input id="PhoneNumber" type="number" name="address" placeholder="Phone Number" onChange = {(e) => RegistrationForm(e)} data-required/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+        <div className="form-item box-item">
+          <input id="PhoneNumber" type="number" placeholder="Phone Number" onChange={(e) => RegistrationForm(e)} value={data.PhoneNumber} data-required/>
+          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+            <span>{formErrors['phone_number']}</span>
         </div>
         
-        <div class="form-item box-item">
+        <div className="form-item box-item">
             <label>Choose Your Avatar</label><br></br><br></br>
-          <input id="Avatar" type="file" name="phone" placeholder="Avatar" onChange = {(e) => RegistrationForm(e)} data-required data-number data-count="10"/>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
-          <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small>
-          <small class="errorChar"><i class="fa fa-asterisk" aria-hidden="true"></i> must be 10 digits</small>
+          <input id="Avatar" type="file" placeholder="Avatar" onChange={(e) => FileChange(e)} value={data.Avatar} data-required data-number data-count="10"/>
+            <span>{formErrors['avatar']}</span>
+            {/*<small className="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
+          {/*<small className="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small>*/}
+          {/*<small className="errorChar"><i class="fa fa-asterisk" aria-hidden="true"></i> must be 10 digits</small>*/}
         </div>
-        <div class="form-item">
+        <div className="form-item">
           <button className='submit'>Submit</button>
         </div>
       </form>
@@ -108,122 +176,6 @@ const Register = () => {
     <i class="wave"></i>
   </section>
 </div>
-        {/* <header>aasd</header>
-    <div class="container-1">
-        <header>Registration</header>
-        <form action="#">
-            <div class="form first">
-                <div class="details personal">
-                    <span class="title">Personal Details</span>
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Username</label>
-                            <input type="text" placeholder="Enter your username" required></input>
-                        </div>
-                        <div class="input-field">
-                            <label>First Name</label>
-                            <input type="text" placeholder="Enter your First Name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Last Name</label>
-                            <input type="text" placeholder="Enter your Last Name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Email</label>
-                            <input type="email" placeholder="Enter your email" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Password</label>
-                            <input type="password" placeholder="Enter your Password" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Phone Number</label>
-                            <input type="number" placeholder="Enter your phone number" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Repeat Password</label>
-                            <input type="password" placeholder="Enter your Repeat Password" required/>
-                        </div>
-                        <div class="input-field-2">
-                            <label>Avatar</label>
-                            <input type="file" required/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form second">
-                <div class="details address">
-                    <span class="title">Address Details</span>
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Address Type</label>
-                            <input type="text" placeholder="Permanent or Temporary" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Nationality</label>
-                            <input type="text" placeholder="Enter nationality" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>State</label>
-                            <input type="text" placeholder="Enter your state" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>District</label>
-                            <input type="text" placeholder="Enter your district" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Block Number</label>
-                            <input type="number" placeholder="Enter block number" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Ward Number</label>
-                            <input type="number" placeholder="Enter ward number" required/>
-                        </div>
-                    </div>
-                </div>
-                <div class="details family">
-                    <span class="title">Family Details</span>
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Father Name</label>
-                            <input type="text" placeholder="Enter father name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Mother Name</label>
-                            <input type="text" placeholder="Enter mother name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Grandfather</label>
-                            <input type="text" placeholder="Enter grandfther name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Spouse Name</label>
-                            <input type="text" placeholder="Enter spouse name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Father in Law</label>
-                            <input type="text" placeholder="Father in law name" required/>
-                        </div>
-                        <div class="input-field">
-                            <label>Mother in Law</label>
-                            <input type="text" placeholder="Mother in law name" required/>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <div class="backBtn">
-                            <i class="uil uil-navigator"></i>
-                            <span class="btnText">Back</span>
-                        </div>
-                        
-                        <button class="sumbit">
-                            <span class="btnText">Submit</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-                    </div>
-                </div> 
-            </div>
-        </form>
-        </div> */}
     </div>
     )
 }

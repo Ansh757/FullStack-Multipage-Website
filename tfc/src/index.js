@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// var express = require("express");
+// var cors = require('cors');
+// var app = express();
+//
+// app.use(cors({
+//     origin: 'http://localhost:8000/',
+//     methods: ["GET", "POST", "PUT", "DELETE"]
+// }))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <React.StrictMode>
     <App />
   </React.StrictMode>
