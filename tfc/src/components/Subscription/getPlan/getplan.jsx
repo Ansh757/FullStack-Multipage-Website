@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './getplan.css'
 import { useNavigate } from "react-router-dom"
 
 
+
 const GetPlan = () => {
+const [plan, setPlan] = useState('')
+const[card_info, setCardInfo] = useState('')
 const navigate = useNavigate();
+
+    const submitted = (e) => {
+        e.preventDefault();
+        const plan_obj = { plan, card_info }
+        
+
+        fetch('http://locoalhost:8000/subscriptions/:user_id/plans/:id/')
+
+
+    }
+
   return (
     <div className='getPlan'>
         <header>
@@ -12,19 +26,20 @@ const navigate = useNavigate();
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
-                        <form action="#">
+                        <form onSubmit={submitted}>
                             <h1 style={{color:"white"}}>Add A Plan</h1>
                             <div className="social-container">
                                 <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
                                 <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
                                 <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
-                            <select id="Plans" name="Plans">
+                            <select id="Plans" name="Plans" value={plan} onChange={(e) => setPlan(e.target.value)} required>
+                                <option value="">-------</option>
                                 <option value="15">Monthly Plan: $15/mo</option>
                                 <option value="150">Annual Plan: $150/yr</option>
                                 <option value="200">Premium Annual Plan: $200/yr</option>
                             </select>
-                            <input type="text" placeholder="Enter Your Card Info"/>
+                            <input type="text" required value={ card_info } onChange={(e) => setCardInfo(e.target.value)} placeholder="Enter Your Card Info" />
                             <button className="add-btn" style={{margin:"2%"}} >Add Plan</button>
                             {/* onClick={() => navigate('/main')} */}
                         </form>
