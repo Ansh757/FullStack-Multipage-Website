@@ -27,7 +27,7 @@ const Login = () => {
         Axios.post(url, {
             password: data.Password,
             username: data.Username
-        })
+        }, {headers: {Authorization:localStorage.getItem('jwtToken')}})
             .then(response => handleErrors(response))
             .catch(err => my_function(err.response.data))
     }
@@ -74,11 +74,6 @@ const Login = () => {
         setFormErrors(errors);
         return errors
     }
-
-    const FileChange = e => {
-        console.log(e.target.files[0].name);
-        console.log(e.target.files[0]);
-    };
 
     // function useRedirectCheck() {
     //     console.log("noo", noErrors)
