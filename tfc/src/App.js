@@ -13,6 +13,7 @@ import Profile from "./components/User/Profile";
 import GetPlan from "./components/Subscription/getPlan/getplan"
 import UpdatePlan from "./components/Subscription/update-plan/update-plan"
 import UpdateCard from "./components/Subscription/update-card/update-card"
+import EditProfile from "./components/User/Profile/editProfile/index"
 
 
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
@@ -42,7 +43,7 @@ function App() {
           <Route path='/studios' element={studios}/>
           <Route path='/main' element={<div><User_Main/></div>}> </Route>
           <Route path='/main/profile' element={<div><Profile/></div>}> </Route>
-          
+          <Route path='/main/profile/edit' element={<div><EditProfile/></div>}> </Route>
           </Routes>
       </BrowserRouter>
     </div>
