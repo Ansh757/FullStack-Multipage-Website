@@ -10,7 +10,19 @@ import Plans from "./components/Subscription/Plans"
 import ListStudios from "./components/StudiosByLocation"
 import User_Main from "./components/User/User-Main";
 
+import APIContext, {useAPIContext} from "./Contexts/APIContext";
+import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
+
 function App() {
+
+  const studios = (
+    <APIContext.Provider value={useAPIContext()}>
+      <APIContextTwo.Provider value={useAPIContextTwo()}>
+        <ListStudios />
+      </APIContextTwo.Provider>
+    </APIContext.Provider>
+  )
+
   return (
     <div>
       <BrowserRouter>
