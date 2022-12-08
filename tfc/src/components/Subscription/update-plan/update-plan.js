@@ -3,7 +3,7 @@ import './update-plan.css'
 import { useNavigate } from "react-router-dom"
 
 
-const GetPlan = () => {
+const UpdatePlan = () => {
 const navigate = useNavigate();
   return (
     <div className='update-plan'>
@@ -12,7 +12,7 @@ const navigate = useNavigate();
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
-                        <form action="tfc/src/components/Subscription/update-plan/update-plan#">
+                        <form>
                             <h1 style={{color:"white"}}>Change Plan</h1>
                             <div className="social-container">
                                 <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-facebook-f"></i></a>
@@ -50,4 +50,4 @@ const navigate = useNavigate();
   )
 }
 
-export default GetPlan
+export default UpdatePlan

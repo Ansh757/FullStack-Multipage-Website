@@ -2,7 +2,7 @@ import React, {Component, useState, createContext} from 'react';
 import './style.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 // Reference: https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631
 
 const url = 'http://127.0.0.1:8000/accounts/profile/'
@@ -20,18 +20,18 @@ function Profile() {
         email: "",
         phone_number: ""
     })
-    // const [username, setUsername] = useState("");
-    // const [first_name, setFirstName] = useState("");
-    // const [last_name, setLastName] = useState("");
-    // const [avatar, setAvatar] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [phone_number, setPhoneNumber] = useState("");
 
-    axios.get(url + id + "/", { headers: { Authorization:localStorage.getItem('SavedToken'), 'Content-Type': 'application/json'}})
-        .then(res => handle(res.data))
-
+    const get_profile = async() => {
+        axios.get(url + id + "/", {
+            headers: {
+                Authorization: localStorage.getItem('SavedToken'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => handle(res.data))
+    }
+    
     function handle(res){
-        console.log(res)
         setData(res)
     }
 
@@ -48,16 +48,15 @@ function Profile() {
 
                 <div className="ds-info">
                     <div className="ds pens">
-                        <h6 title="Number of pens created by the user">Pens <i className="fas fa-edit"></i></h6>
-                        <p>29</p>
-                    </div>
-                    <div className="ds projects">
-                        <h6 title="Number of projects created by the user">Projects <i className="fas fa-project-diagram"></i></h6>
-                        <p>0</p>
-                    </div>
-                    <div className="ds posts">
-                        <h6 title="Number of posts">Posts <i className="fas fa-comments"></i></h6>
-                        <p>0</p>
+
+                        <h6 title="Number of pens created by the user">Edit Profile
+                            <Link to={"/" + id + "/profile/edit"}>
+                                <button className="BUTTON">
+                                    <i className="fa-solid fa-user-pen"></i>
+                                </button>
+
+                            </Link>
+                        </h6>
                     </div>
                 </div>
                 <div className="ds-skill">

@@ -3,7 +3,6 @@
     /*font-family: 'Roboto', sans-serif;*/
     font-family: 'Montserrat',sans-serif;
 }
-
 .getPlan {
     /*align-items: center;*/
     font-size: 14px;
@@ -15,38 +14,135 @@
     /* background-color: rgb(210, 30, 30); */
     background-image: url(https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1009&q=80);
     text-align: center;
+    /*z-index: 1;*/
+    /*background-color: #ffa400;*/
 }
 
-.getPlan header {
-    top: 0%;
-    padding: 3%;
-    text-align: center;
+.getPlan > header {
+    padding: 1%;
+    text-align: right;
     background-color: rgb(0, 0, 0);
+    display: flex;
+    gap: 10%;
 }
 
 .getPlan footer {
-    padding: 4%;
-    position: relative;
+    padding: 3%;
     text-align: center;
-    bottom: 0%;
     background-color: rgb(0, 0, 0);
+    position: relative;
+}
+
+.navbar a {
+    color: white;
+    font-size: 23px;
+}
+
+.website-logo {
+    width: 100px;
+    height: 100px;
+    margin: 15px 0 0 45px;
+    display: flex;
+    justify-content: left;
+    position: relative;
+
+}
+.getPlan .user-logo .user-btn {
+    border: none;
+    border-radius: 50%;
+    height: 40%;
+    /*margin-right: 10px;*/
+    outline: none;
+    width: 45px;
+}
+
+.user-btn {
+    background: red;
+    cursor: pointer;
+    margin-top: 50px;
+    left: -10%;
+}
+
+.fa-user, .fa-right-from-bracket {
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+}
+
+.user-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: -2%;
+    gap: 2em;
+
+}
+
+.getPlan.main-btn {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    gap: 3em;
+    width: 100%;
+}
+
+.getPlan .main-btn .btn {
+    font-size: 2rem;
+}
+
+.user-btn:hover {
+    /*user-focus-pointer: ;*/
 }
 
 .getPlan footer h3 {
     color: white;
     margin: 0;
+
 }
 
-.getPlan h1 {
+/*.getPlan {*/
+/*    !*align-items: center;*!*/
+/*    font-size: 14px;*/
+/*    font-weight: 400;*/
+/*    height: 100vh;*/
+/*    overflow: hidden;*/
+/*    justify-items: center;*/
+/*    width: 100vw;*/
+/*    !* background-color: rgb(210, 30, 30); *!*/
+/*    background-image: url(https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1009&q=80);*/
+/*    text-align: center;*/
+/*}*/
+
+/*.getPlan > header {*/
+/*    top: 0%;*/
+/*    padding: 3%;*/
+/*    text-align: center;*/
+/*    background-color: rgb(0, 0, 0);*/
+/*}*/
+
+/*.getPlan > footer {*/
+/*    padding: 4%;*/
+/*    position: relative;*/
+/*    text-align: center;*/
+/*    bottom: 0%;*/
+/*    background-color: rgb(0, 0, 0);*/
+/*}*/
+
+/*.getPlan > footer h3 {*/
+/*    color: white;*/
+/*    margin: 0;*/
+/*}*/
+
+.getPlan  h1 {
     font-weight: bold;
     margin: 0;
 }
 
-.getPlan h2 {
+.getPlan  h2 {
     text-align: center;
 }
 
-.getPlan p {
+.getPlan  p {
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
