@@ -34,9 +34,10 @@ function App() {
           <Route path='register' element={<div><Register/></div>}/>
           <Route path='login' element={<div><Login/></div>}/>
           <Route path='plans' element={<div><Plans/></div>}/>
-          <Route path='get-plan' element={<div><GetPlan/></div>}/>
-            <Route path='update-card' element={<div><UpdateCard/></div>}/>
-            <Route path='update-plan' element={<div><UpdatePlan/></div>}/>
+          <Route path='get-plan' element={<GetPlan/>}>
+            <Route path='update-card' element={<div><UpdateCard/></div>}></Route>
+            <Route path='update-plan' element={<div><UpdatePlan/></div>}></Route>
+          </Route>
           <Route path='studios' element={studios}/>
           <Route path='main' element={<div><WithRoute/></div>}> </Route>
           <Route path=':id/profile/' element={<Profile/>}>
