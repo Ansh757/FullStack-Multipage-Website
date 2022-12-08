@@ -8,7 +8,7 @@ import Login from "./components/User/Login";
 import Register from "./components/User/Register";
 import Plans from "./components/Subscription/Plans"
 import User_Main from "./components/User/User-Main";
-
+import Profile from "./components/User/Profile";
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
           <Route path='/login' element={<div><Login/></div>}/>
           <Route path='/plans' element={<div><Plans/></div>}/>
           <Route path='/main' element={<div><User_Main/></div>}> </Route>
+              <Route path='/main/profile' element={<div><Profile/></div>}> </Route>
           </Routes>
       </BrowserRouter>
     </div>
