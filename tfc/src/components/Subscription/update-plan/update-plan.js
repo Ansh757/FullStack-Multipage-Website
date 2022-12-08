@@ -12,12 +12,12 @@ const navigate = useNavigate();
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
-                        <form action="#">
+                        <form action="tfc/src/components/Subscription/update-plan/update-plan#">
                             <h1 style={{color:"white"}}>Change Plan</h1>
                             <div className="social-container">
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <select id="Plans" name="Plans">
                                 <option value="15">Monthly Plan: $15/mo</option>

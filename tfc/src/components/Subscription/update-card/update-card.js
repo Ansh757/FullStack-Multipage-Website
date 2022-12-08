@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react'
 import './update-card.css'
-import { useNavigate } from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
 
 const GetPlan = () => {
-
+    const { id } = useParams();
     const navigate = useNavigate();
     const [card_info, setCardInfo] = useState("")
     const [isActiveMembership, setIsActiveMembership] = useState(true)
@@ -16,7 +16,7 @@ const GetPlan = () => {
         formData.append('card_info', card_info)
         formData.append('isActiveMembership', isActiveMembership)
 
-        const url = "http://127.0.0.1:8000/subscriptions/:id/plans/update-card/";
+        const url = `http://127.0.0.1:8000/subscriptions/${id}/plans/update-card/`;
         axios({
             method: "put",
             url: url,
@@ -103,9 +103,9 @@ const GetPlan = () => {
                         <form onSubmit={submitForm}>
                             <h1 style={{color:"white"}}>Update Card</h1>
                             <div className="social-container">
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <div className='active'>
                                 <label style={{color:"white", display:"block"}} id="isActiveMembership" > Membership Status </label>

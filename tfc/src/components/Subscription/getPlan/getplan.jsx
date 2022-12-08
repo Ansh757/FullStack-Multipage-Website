@@ -102,9 +102,9 @@ const GetPlan = () => {
                         <form onSubmit={submitForm}>
                             <h1 style={{color:"white"}}>Add A Plan</h1>
                             <div className="social-container">
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/Subscription/getPlan/getplan" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/Subscription/getPlan/getplan" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/Subscription/getPlan/getplan" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <select id="membership" name="Plans" value={data.membership} onChange={(e) => UpdateForm(e)} required>
                                 <option value="">-------</option>

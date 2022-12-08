@@ -99,12 +99,12 @@ const Login = () => {
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-up-container">
-                        <form action="#">
+                        <form action="tfc/src/components/User/Login/index#">
                             <h1>Create Account</h1>
                             <div className="social-container">
-                                <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/User/Login/index#" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/User/Login/index#" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/User/Login/index#" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <span>or use your email for registration</span>
                             <input type="text" placeholder="Username"/>
@@ -116,16 +116,16 @@ const Login = () => {
                         <form onSubmit={(e) => submitForm(e)}>
                             <h1>Sign in</h1>
                             <div className="social-container">
-                                <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/User/Login/index#" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/User/Login/index#" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/User/Login/index#" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <span>or use your account</span>
                             <input id="Username" value={data.Username} onChange={(e) => RegistrationForm(e)} type="text" placeholder="Username"/>
                             <span className="err"> {formErrors.username}</span>
                             <input id="Password" value={data.Password} onChange={(e) => RegistrationForm(e)} type="password" placeholder="Password"/>
                             <span className="err"> {formErrors.password}</span>
-                            <a href="#">Forgot your password?</a>
+                            <a href="tfc/src/components/User/Login/index#">Forgot your password?</a>
                             <span className="err err-3"> {formErrors['detail']}</span>
 
                             <button>Sign In</button>
