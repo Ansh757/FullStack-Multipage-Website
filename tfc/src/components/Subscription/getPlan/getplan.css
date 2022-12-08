@@ -275,6 +275,12 @@ button.ghost {
     height: 40px;
     width: 40px;
 }
+.getPlan .err-3 {
+    color: red;
+    font-size: 12px;
+    margin: 2% 0;
+}
+
 
 .signup-container {
     width: 100%;

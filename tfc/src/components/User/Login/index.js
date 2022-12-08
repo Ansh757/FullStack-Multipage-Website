@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import './style.css';
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
-import Axios from 'axios';
+import axios from 'axios';
 
 const Login = () => {
 
@@ -24,10 +24,10 @@ const Login = () => {
     function submitForm(e) {
         const url = "http://127.0.0.1:8000/accounts/token/";
         e.preventDefault();
-        Axios.post(url, {
+        axios.post(url, {
             password: data.Password,
             username: data.Username
-        }, {headers: {Authorization:localStorage.getItem('jwtToken')}})
+        }, {headers: {Authorization: localStorage.getItem('jwtToken')}})
             .then(response => handleErrors(response))
             .catch(err => my_function(err.response.data))
     }
@@ -41,6 +41,9 @@ const Login = () => {
 
     function handleErrors(response){
         setFormErrors({})
+        let token = response.data.access;
+        localStorage.setItem("SavedToken", 'Bearer ' + token)
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         let k = Object.keys(response.data)
         console.log(k)
         if (k.includes('response')) {
@@ -62,6 +65,7 @@ const Login = () => {
             errors[k] = data[k]
         }
         setFormErrors(errors);
+        console.log(errors)
         return errors
     }
 
@@ -72,6 +76,7 @@ const Login = () => {
             errors[k] = data[k][0]
         }
         setFormErrors(errors);
+        console.log(errors)
         return errors
     }
 
