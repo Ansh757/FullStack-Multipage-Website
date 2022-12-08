@@ -15,6 +15,7 @@ const url = "http://127.0.0.1:8000/accounts/profile/";
 
 
 export default class User_Main extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -42,7 +43,7 @@ export default class User_Main extends Component {
                 <div className="navbar">
                     <nav>
                         <ul className="menuItems">
-                            <li><a href='#' data-item='Home'>Home</a></li>
+                            <li><a href='/main' data-item='Home'>Home</a></li>
                             <li><a href='#' data-item='Classes'>Classes</a></li>
                             <li><a href='/studios' data-item='Studios'>Studios</a></li>
                             <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
@@ -67,19 +68,19 @@ export default class User_Main extends Component {
                         Welcome <br/><span> {this.state.username}</span>
                     </h1>
                     <div className='main-btn'>
-                        <Link to='/main'>
+                        <Link to="/main">
                             <button className='btn'>My Schedule</button>
                         </Link>
-                        <Link to='/main'>
+                        <Link to="/main">
                             <button className='btn'>Plan History</button>
                         </Link>
-                        <Link to='/main'>
+                        <Link to="/main">
                             <button className='btn'>Classes History</button>
                         </Link>
-                        <Link to='/get-plan/update-plan'>
+                        <Link to={"/" + this.state.id + "/update-plan"}>
                             <button className='btn'>Change Plan</button>
                         </Link>
-                        <Link to='get-plan/update-card'>
+                        <Link to={"/" + this.state.id + "/update-card"}>
                             <button className='btn'>Change Card</button>
                         </Link>
 
