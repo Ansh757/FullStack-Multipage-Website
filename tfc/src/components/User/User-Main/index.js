@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import func from './hours';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+// import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 // function Map(){
 //     return <GoogleMap zoom={10} center={{lat:44, lng:-80}}></GoogleMap>
