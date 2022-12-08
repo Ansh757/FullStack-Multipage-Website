@@ -61,13 +61,13 @@ const Studios = () => {
                     {/*<StudioMap /> */}
                 </div>
             </div>
-            <button className="btn" onClick={() => setParams({
+            <button className="page-btn" onClick={() => setParams({
                     ...params,
                     page: Math.max(1, params.page - 1)
                 })}>
                     prev
                 </button>
-                <button className="btn" onClick={() => setParams({
+                <button className="page-btn" onClick={() => setParams({
                     ...params,
                     page: params.page + 1
                 })}>
