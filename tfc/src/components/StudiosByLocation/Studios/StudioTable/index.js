@@ -8,7 +8,7 @@ const StudioTable = ({ perPage, params }) => {
 
     return <div>
             {studios.map((studios, index) => (
-                <h3 key={(params.page - 1) * perPage + index + 1} className="container"> 
+                <h3 key={(params.page - 1) * perPage + index + 1} className="new-container">
                     <p className="text">
                         { (params.page - 1) * perPage + index + 1 }. { studios.name } <br/>
                         { studios.address } - { studios.distance }m
