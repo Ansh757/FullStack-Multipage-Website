@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css';
 import func from './hours';
+import { useNavigate } from "react-router-dom"
+
 // import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 // function Map(){
@@ -9,6 +11,8 @@ import func from './hours';
 
 // Reference: https://codepen.io/grohit/pen/jObGzdG
 const User_Main = () => {
+    const navigate = useNavigate();
+
     // const { isLoaded } = useLoadScript({
     //     googleMapsApiKey : "AIzaSyB4p49U42ttGqrbDT3tIkBBdtL0nXPdrhY",
     // });
@@ -47,6 +51,13 @@ const User_Main = () => {
                     <h1 className=''>
                         Welcome <br/><span> Bot1212!</span>
                     </h1>
+                    <div className='main-btn'>
+                        <button className='btn' onClick={() => navigate('/main')}>My Schedule</button>
+                        <button className='btn' onClick={() => navigate('/main')}>Plan History</button>
+                        <button className='btn' onClick={() => navigate('/main')}>Classes History</button>
+                        <button className='btn' onClick={() => navigate('/update-plan')}>Change Plan</button>
+                        <button className='btn'onClick={() => navigate('/update-card')}>Change Card</button>
+                    </div>
                 </div>
                 <hr />
                 <div className="section section-2">
