@@ -9,6 +9,7 @@ import Register from "./components/User/Register";
 import Plans from "./components/Subscription/Plans"
 import ListStudios from "./components/StudiosByLocation"
 import User_Main from "./components/User/User-Main";
+import Profile from "./components/User/Profile";
 
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
