@@ -12,21 +12,58 @@ const Studios = () => {
     
     const { latitude } = useContext(APIContextTwo);
     const { longitude } = useContext(APIContextTwo);
-    const [params, setParams] = useState({page: 1, search: "", lat: "0.00", long: "0.00"});
+    const [params, setParams] = useState({page: 1, lat: "500.00", long: "0.00"});
     const { setStudios } = useContext(APIContext);
     //const { studios } = useContext(APIContext);
+    const [message, setMessage] = useState('');
 
-    
+    const [nameFilter, setNameFilter] = useState([]);
+
+    const handleChange = event => {
+        setMessage(event.target.value);
+    };
+
+    const handleClick = event => {
+        //event.preventDefault();
+        setParams({
+            page: 1,
+            lat: latitude,
+            long: longitude
+        })
+        setNameFilter(nameFilter.concat([message]))
+        clearInput()
+    };
+    function clearInput(){
+        var getValue= document.getElementById("clear");
+          if (getValue.value !="") {
+              getValue.value = "";
+          }
+    }
     useEffect(() => {
-        const { page, search, lat, long } = params;
-        //const { search } = params;
-        //fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=${perPage}&search=${search}`)
-        const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/list?page=${page}`;
+        if (nameFilter.length > 0) {
+            const names = nameFilter.join('-');
+            const apiUrl1 = `http://localhost:8000/studios/filter/${names}/-/-/-/`;
             axios.get(apiUrl1).then((res) => {
                 const {data} = res;
-                setStudios(data.results);
+                //setStudios(data.results);
+                console.log(data);
             });
+        }
+    }, [nameFilter])
+
+    useEffect(() => {
         
+        const { page, lat, long } = params;
+            if (lat != '500.00') {
+            //const { search } = params;
+            //fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=${perPage}&search=${search}`)
+            const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/list?page=${page}`;
+                axios.get(apiUrl1).then((res) => {
+                    const {data} = res;
+                    setStudios(data.results);
+                });
+                console.log(nameFilter);
+        }
     }, [params])
 
     return (
@@ -39,20 +76,17 @@ const Studios = () => {
             })}>
                 Get Studios Near You !
             </button>
-            {/*Search
-            <input
-                style={{width: 300, height: 20, fontSize: 18, margin: 4}}
-                value={params.search}
-                onChange={(event) => {
-                    setParams({
-                        search: event.target.value,
-                        page: 1,
-                    })
-                }}
-            /> */}
-            {/*<p> Studio: { studios[0].name }, Address: { studios[0].address }, 
-            Distance: { studios[0].distance } 
-            </p> */}
+            <div >
+                <input 
+                    id="clear"
+                    className="search-studios"
+                    value={params.search}
+                    type="text"
+                    placeholder="Filter by the studio name ..."
+                    onChange={handleChange}
+                />
+                <button onClick={handleClick}>Click</button>
+            </div>
             <div id="parent">
                 <div id="table">
                     <StudioTable perPage={perPage} params={params} />
