@@ -18,8 +18,8 @@
     height: 100%;
     vertical-align: top;
 }
-.page-btn {
-    display: relative;
+.btn {
+    position: relative;
     font-size: 2em;
     width: 10%;
     height: 10%;
