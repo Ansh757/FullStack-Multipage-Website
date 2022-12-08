@@ -1,0 +1,29 @@
+#parent {
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    background-color: rgb(22, 192, 211);
+  }
+
+#table {
+    display: inline-block;
+    width: 40%;
+    height: 40%;
+}
+
+#map {
+    flex: 1;
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    vertical-align: top;
+}
+.btn {
+    display: relative;
+    font-size: 2em;
+    width: 10%;
+    height: 10%;
+    background-color: #b43e17;
+    margin: 10px;
+    padding: 5px;
+}
