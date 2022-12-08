@@ -292,6 +292,12 @@
 
 }
 
+.update-card .err-3 {
+    color: red;
+    font-size: 12px;
+    margin: 2% 0;
+}
+
 
 /*.left-container {*/
 /*    margin-left: 20%;*/
