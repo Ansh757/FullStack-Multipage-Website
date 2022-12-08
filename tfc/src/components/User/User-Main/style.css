@@ -78,6 +78,18 @@
 
 }
 
+.user-main .main-btn {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    gap: 3em;
+    width: 100%;  
+}
+
+.user-main .main-btn .btn {
+    font-size: 2rem;   
+}
+
 .user-btn:hover {
     /*user-focus-pointer: ;*/
 }

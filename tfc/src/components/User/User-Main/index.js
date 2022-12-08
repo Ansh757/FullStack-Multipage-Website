@@ -6,7 +6,10 @@ import {useNavigate} from "react-router-dom";
 import {Link, Switch} from "react-router-dom";
 
 
+
+
 // Reference: https://codepen.io/grohit/pen/jObGzdG
+
 
 
 const url = "http://127.0.0.1:8000/accounts/profile/";
@@ -20,7 +23,6 @@ export default class User_Main extends Component {
             username: "",
         }
     };
-
 
     componentDidMount() {
         // const user_id = +this.props.match.params.id;
@@ -69,7 +71,23 @@ export default class User_Main extends Component {
                     </div>
                     <hr />
                     <div className="section section-2">
-
+                    </header>
+                    
+            <div className="main-container">
+                <div className="section section-1">
+                    <h1 className=''>
+                        Welcome <br/><span> Bot1212!</span>
+                    </h1>
+                    <div className='main-btn'>
+                        <button className='btn' onClick={() => navigate('/main')}>My Schedule</button>
+                        <button className='btn' onClick={() => navigate('/main')}>Plan History</button>
+                        <button className='btn' onClick={() => navigate('/main')}>Classes History</button>
+                        <button className='btn' onClick={() => navigate('/update-plan')}>Change Plan</button>
+                        <button className='btn'onClick={() => navigate('/update-card')}>Change Card</button>
+                    </div>
+                </div>
+                <hr />
+                <div className="section section-2">
                         <div className='col1' style={{backgroundColor:"white"}}>
                             <img src= "https://upload.wikimedia.org/wikipedia/commons/1/1c/Rosemount%2C_MN_-_Anytime_Fitness_gym_exterior_%2843460728481%29.jpg"></img>
 
