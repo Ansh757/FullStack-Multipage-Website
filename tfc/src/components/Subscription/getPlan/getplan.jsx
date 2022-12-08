@@ -1,23 +1,96 @@
-import React, { useState } from 'react'
+import React, {useRef, useState} from 'react'
 import './getplan.css'
 import { useNavigate } from "react-router-dom"
+import axios from "axios";
 
 
 
 const GetPlan = () => {
-const [plan, setPlan] = useState('')
-const[card_info, setCardInfo] = useState('')
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const submitted = (e) => {
-        e.preventDefault();
-        const plan_obj = { plan, card_info }
-        
+    const [data, setData] = useState({
+        card_info: "",
+        membership: ""
+    })
 
-        fetch('http://locoalhost:8000/subscriptions/:user_id/plans/:id/')
+    const [formErrors, setFormErrors] = useState({});
 
+    const noErrors = useRef(false);
 
+    function UpdateForm(e) {
+        const fields={...data}
+        fields[e.target.id] = e.target.value
+        setData(fields)
+        console.log(fields)
     }
+
+
+    function submitForm(e) {
+        let obj1 = {
+            membership_type: data.membership,
+        }
+
+        e.preventDefault();
+        const url = "http://127.0.0.1:8000/subscriptions/plans/";
+        axios.post(url, {
+            card_info: data.card_info,
+            membership: obj1
+        }, { headers: { Authorization:localStorage.getItem('SavedToken'), 'Content-Type': 'application/json'}})
+            .then(response => handleErrors(response))
+            // .catch(err => console.log(err))
+            .catch(err => my_function(err.response.data))
+    }
+
+    function my_function(e) {
+        console.log(e)
+        let keys = Object.keys(e)
+        get_errors2(keys, e)
+    }
+
+    function handleErrors(response){
+        setFormErrors({})
+        console.log(response)
+        let k = Object.keys(response.data)
+        if (k.includes('response')) {
+            console.log(response.data)
+            noErrors.current = true
+            // setNoErrors(true)
+            console.log("1")
+            if (noErrors) {
+                console.log("2")
+                navigate('/main')
+                noErrors.current = false
+            }
+
+        } else {
+            get_errors(k, response.data)
+        }
+        // console.log("err", noErrors)
+    }
+
+
+    function get_errors2(keys, data){
+        let errors = {}
+        for (let i = 0; i < keys.length; i++){
+            let k = keys[i]
+            console.log("key is", k)
+            errors[k] = data[k]
+        }
+        setFormErrors(errors);
+        return errors
+    }
+
+    function get_errors(keys, data){
+        let errors = {}
+        for (let i = 0; i < keys.length; i++){
+            let k = keys[i]
+            console.log("key is", k)
+            errors[k] = data[k][0]
+        }
+        setFormErrors(errors);
+        return errors
+    }
+
 
   return (
     <div className='getPlan'>
@@ -26,20 +99,21 @@ const navigate = useNavigate();
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
-                        <form onSubmit={submitted}>
+                        <form onSubmit={submitForm}>
                             <h1 style={{color:"white"}}>Add A Plan</h1>
                             <div className="social-container">
                                 <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
                                 <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
                                 <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
-                            <select id="Plans" name="Plans" value={plan} onChange={(e) => setPlan(e.target.value)} required>
+                            <select id="membership" name="Plans" value={data.membership} onChange={(e) => UpdateForm(e)} required>
                                 <option value="">-------</option>
                                 <option value="15">Monthly Plan: $15/mo</option>
                                 <option value="150">Annual Plan: $150/yr</option>
                                 <option value="200">Premium Annual Plan: $200/yr</option>
                             </select>
-                            <input type="text" required value={ card_info } onChange={(e) => setCardInfo(e.target.value)} placeholder="Enter Your Card Info" />
+                            <input id="card_info" type="text" required value={ data.card_info } onChange={(e) => UpdateForm(e)} placeholder="Enter Your Card Info" />
+                            <span className="err err-3"> {formErrors[0]}</span>
                             <button className="add-btn" style={{margin:"2%"}} >Add Plan</button>
                             {/* onClick={() => navigate('/main')} */}
                         </form>
