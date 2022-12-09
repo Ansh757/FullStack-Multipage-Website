@@ -110,10 +110,11 @@ const GetPlan = () => {
             </div>
             <div className="user-logo">
                 {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                {/*    <button className="user-btn">*/}
-                {/*        <i className="fa-solid fa-user"></i>*/}
-                {/*    </button>*/}
+                {/*    
                 {/*</Link>*/}
+                <button className="user-btn">
+                        <i className="fa-solid fa-user"></i>
+                </button>
                 <button className="user-btn">
                     <i className="fa-solid fa-right-from-bracket"></i>
                 </button>
