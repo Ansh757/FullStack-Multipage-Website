@@ -135,8 +135,8 @@ const Studios = () => {
 
                 return idArray.includes(el.id) 
                 });
-            console.log(studiosFixed)
-            console.log(newArray)
+            //console.log(studiosFixed)
+            //console.log(newArray)
             setStudios(newArray);
 
             });
