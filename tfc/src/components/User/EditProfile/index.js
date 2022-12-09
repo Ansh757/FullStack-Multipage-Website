@@ -1,12 +1,13 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import './style.css';
 import axios from 'axios';
 // Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
 import { useNavigate } from "react-router-dom"
 
 
-const Register = () => {
+const EditProfile = () => {
+    const {id} = useParams();
     const [avatar, setAvatar] = useState(null);
     const [username, setUsername] = useState("");
     const [first_name, setFirstName] = useState("");
@@ -15,6 +16,32 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [repeat_password, setRepeatPassword] = useState("")
     const [phone_number, setPhoneNumber] = useState("")
+
+    const get_url = `http://127.0.0.1:8000/accounts/profile/${id}/`
+
+    useEffect(() => {
+        axios({
+            method: "get",
+            url: get_url,
+            headers: {
+                Authorization: localStorage.getItem('SavedToken')
+            }
+        })
+            // .then(res => console.log(res))
+            .then(res => handle(res.data))
+
+    }, [])
+
+    function handle(res) {
+        // setAvatar(res['avatar'])
+        setUsername(res['username'])
+        setFirstName(res['first_name'])
+        setLastName(res['last_name'])
+        setEmail(res['email'])
+        setPhoneNumber(res['phone_number'])
+    }
+
+
 
     const submitForm = async(e) => {
         e.preventDefault();
@@ -29,14 +56,16 @@ const Register = () => {
         formData.append('repeat_password', repeat_password)
         formData.append('phone_number', phone_number)
 
-        const url = "http://127.0.0.1:8000/accounts/register/";
-        axios({
-            method: "post",
-            url: url,
+        const url = `http://127.0.0.1:8000/accounts/${id}/profile/edit/`;
+
+        axios.put(url, {
             data: formData,
-            headers: {"Content-Type": "multipart/form-data"},
+        headers: {Authorization: localStorage.getItem('SavedToken'),
+                "Content-Type": "multipart/form-data"},
 
         })
+            // .then(res => console.log(res))
+            // .catch(err => console.log(err))
             .then(response => handleErrors(response))
             .catch(err => my_function(err.response.data));
     }
@@ -50,25 +79,26 @@ const Register = () => {
 
     function my_function(e) {
         let keys = Object.keys(e)
+        console.log("my_func", e)
         get_errors2(keys, e)
     }
 
     function handleErrors(response){
         setFormErrors({})
-
+        console.log(response)
         let k = Object.keys(response.data)
+        console.log("keys", k)
         if (k.includes('response')) {
             noErrors.current = true
             if (noErrors) {
                 console.log("2")
-                navigate('/login')
+                navigate('/home')
                 noErrors.current = false
             }
 
         } else {
             get_errors(k, response.data)
         }
-        // console.log("err", noErrors)
     }
 
 
@@ -78,6 +108,7 @@ const Register = () => {
             let k = keys[i]
             errors[k] = data[k]
         }
+        console.log(errors)
         setFormErrors(errors);
         return errors
     }
@@ -86,7 +117,7 @@ const Register = () => {
         let errors = {}
         for (let i = 0; i < keys.length; i++){
             let k = keys[i]
-            errors[k] = data[k][0]
+            errors[k] = data[k]
         }
         setFormErrors(errors);
         return errors
@@ -99,8 +130,8 @@ const Register = () => {
             <div className="row">
                 <section className="section">
                     <header>
-                        <h3>Register</h3>
-                        <h4>Please fill your information below</h4>
+                        <h3>Edit Profile</h3>
+                        <h4>Please edit your information below</h4>
                     </header>
                     <main>
                         <form onSubmit={(e) => submitForm(e)}>
@@ -147,7 +178,7 @@ const Register = () => {
 
                             <div className="form-item box-item">
                                 <label>Choose Your Avatar</label><br></br><br></br>
-                                <input id="avatar" type="file" placeholder="Avatar" onChange={handleImage || null}/>
+                                <input id="avatar" type="file" placeholder="Avatar" onChange={handleImage}/>
                                 <span>{formErrors['avatar']}</span>
 
                             </div>
@@ -157,7 +188,7 @@ const Register = () => {
                         </form>
                     </main>
                     <footer>
-                        <p>Already have an account? <Link to="/login">Sign In</Link></p>
+                        <p>Changed your mind? <Link to="/main">Back To Home</Link></p>
                     </footer>
                     <i class="wave"></i>
                 </section>
@@ -167,7 +198,7 @@ const Register = () => {
 }
 
 
-export default Register;
+export default EditProfile;
 
 
 // import React, { Component, useState, useEffect, useRef } from 'react';
