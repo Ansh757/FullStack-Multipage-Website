@@ -8,8 +8,8 @@
     font-size: 14px;
     font-weight: 400;
     height: 100vh;
-    overflow: hidden;
     justify-items: center;
+    overflow-x: hidden;
     width: 100vw;
     /* background-color: rgb(210, 30, 30); */
     background-image: url(https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1009&q=80);
@@ -19,56 +19,62 @@
 }
 
 .getPlan > header {
-    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
     text-align: right;
     background-color: rgb(0, 0, 0);
-    display: flex;
+    padding: 1.5%;
     gap: 10%;
 }
 
 .getPlan footer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
     padding: 3%;
+    bottom: 0%;
     text-align: center;
     background-color: rgb(0, 0, 0);
-    position: relative;
 }
 
-.navbar a {
+.getPlan .navbar a {
     color: white;
     font-size: 23px;
 }
 
-.website-logo {
-    width: 100px;
-    height: 100px;
-    margin: 15px 0 0 45px;
+.getPlan .website-logo {
     display: flex;
+    flex-direction: row;
     justify-content: left;
     position: relative;
-
+    width: 15%;
+    height: 0.3%;
 }
-.getPlan .user-logo .user-btn {
+.getPlan header .user-btn {
     border: none;
+    width: 4rem;
     border-radius: 50%;
-    height: 40%;
+    height: 30%;
     /*margin-right: 10px;*/
     outline: none;
-    width: 45px;
 }
 
-.user-btn {
+/* .getPlan .user-btn {
+    width: 80%;
     background: red;
     cursor: pointer;
-    margin-top: 50px;
-    left: -10%;
-}
+    margin-top: 40%;
+} */
 
-.fa-user, .fa-right-from-bracket {
+.getPlan .fa-user, .fa-right-from-bracket {
     color: rgb(255, 255, 255);
     font-size: 25px;
 }
 
-.user-logo {
+.getPlan .user-logo {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -78,7 +84,7 @@
 
 }
 
-.getPlan.main-btn {
+.getPlan .main-btn {
     display: flex;
     flex-direction: row;
     margin-left: 2%;
@@ -90,7 +96,7 @@
     font-size: 2rem;
 }
 
-.user-btn:hover {
+.getPlan .user-btn:hover {
     /*user-focus-pointer: ;*/
 }
 
@@ -161,29 +167,29 @@
     margin: 2% 0;
 }
 
-.getPlan button {
+.getPlan .add-btn {
     border-radius: 20px;
     border: 1px solid #FF4B2B;
     background-color: #FF4B2B;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
-    padding: 12px 45px;
+    padding: 12px 45px; 
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     cursor: pointer;
 }
 
-button:active {
+.add-btn:active {
     transform: scale(0.95);
 }
 
-button:focus {
+.add-btn:focus {
     outline: none;
 }
 
-button.ghost {
+.add-btn.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
 }

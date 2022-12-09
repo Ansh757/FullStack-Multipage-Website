@@ -11,8 +11,34 @@ const Plans = () => {
   const navigate = useNavigate();
   return (
     <div className='plans-overlay'>
+        
         <header>
+        <div className="website-logo">
+                    <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
+                </div>
+                <div className="navbar">
+                    <nav>
+                        <ul className="menuItems">
+                            <li><a href='/main' data-item='Home'>Home</a></li>
+                            <li><a href='#' data-item='Classes'>Classes</a></li>
+                            <li><a href='/studios' data-item='Studios'>Studios</a></li>
+                            <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div className="user-logo">
+                    {/* <Link to={"/" + this.state.id + "/profile/"}> */}
+                        <button className="user-btn">
+                            <i className="fa-solid fa-user"></i>
+                        </button>
+                    {/* </Link> */}
+                    <button className="user-btn">
+                        <i className="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+
             </header>
+    <div className='bag'>
         <div className='plan-header'>
             <span className='stroke-text'> START YOUR</span>
             <span > FITNESS JOURNEY WITH TFC </span>
@@ -38,13 +64,15 @@ const Plans = () => {
             
             ))}
         </div>
-        <div className='btn-div'>
+     </div> 
+
+     <div className='btn-div'>
             <button className='join-button' onClick={() => navigate('/get-plan')}>JOIN NOW</button>
         </div>
 
-        <footer>
+            <footer>
                 <h3 style={{color:"white"}}>© Ansh, Armaan, Giancarlo </h3>
-            </footer>
+            </footer>      
     </div>
 
   )

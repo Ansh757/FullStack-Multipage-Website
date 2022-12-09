@@ -81,13 +81,15 @@
 .user-main .main-btn {
     display: flex;
     flex-direction: row;
+    position: relative;
     margin-left: 2%;
-    gap: 3em;
-    width: 100%;  
+    font-size: 30em;
+    gap: 5%;
+    width: 30%;  
 }
 
 .user-main .main-btn .btn {
-    font-size: 2rem;   
+    font-size: 4.3%;   
 }
 
 .user-btn:hover {
