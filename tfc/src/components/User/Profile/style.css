@@ -94,16 +94,17 @@
 	 left: 0;
 	 width: inherit;
 	 height: 40px;
-	 display: flex;
-	 gap: 3rem;
+	 /*display: flex;*/
+	 /*gap: 4rem;*/
 
 }
 
 
  .profile .card .ds-info .pens, .card .ds-info .projects, .card .ds-info .posts {
 	 position: relative;
-	 left: -300px;
-	 width: calc(250px / 3);
+	 /*right: 10%;*/
+	 left: -500px;
+	 width: calc(250px / 1);
 	 text-align: center;
 	 color: white;
 	 animation: fadeInMove 2s;
@@ -116,7 +117,7 @@
 	 color: crimson;
 }
  .profile .card .ds-info .pens p, .card .ds-info .projects p, .card .ds-info .posts p {
-	 font-size: 12px;
+	 font-size: 20px;
 }
  .profile .card .ds-info .ds:nth-of-type(2) {
 	 animation-delay: 0.5s;
@@ -147,6 +148,10 @@
 	 margin: 1% 0;
 	 color: white;
 }
+ .BUTTON .fa-user-pen {
+	 cursor: pointer;
+ }
+
  .profile .card .ds-skill .skill .fab {
 	 color: crimson;
 	 font-size: 3rem;

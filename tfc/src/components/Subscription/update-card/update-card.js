@@ -1,22 +1,22 @@
 import React, {useRef, useState} from 'react'
 import './update-card.css'
-import { useNavigate } from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
 
-const GetPlan = () => {
-
+const UpdateCard = () => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [card_info, setCardInfo] = useState("")
     const [isActiveMembership, setIsActiveMembership] = useState(true)
     // const isActiveMembership = useRef(true)
 
-    const submitForm = async(e) => {
+    function submitForm(e) {
         e.preventDefault();
         const formData = new FormData();
         formData.append('card_info', card_info)
         formData.append('isActiveMembership', isActiveMembership)
 
-        const url = "http://127.0.0.1:8000/subscriptions/:id/plans/update-card/";
+        const url = 'http://127.0.0.1:8000/subscriptions/' + id + '/plans/update-card/';
         axios({
             method: "put",
             url: url,
@@ -96,22 +96,46 @@ const GetPlan = () => {
   return (
     <div className='update-card'>
         <header>
-            </header>
+            <div className="website-logo">
+                    <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
+                </div>
+                <div className="navbar">
+                    <nav>
+                        <ul className="menuItems">
+                            <li><a href='/main' data-item='Home'>Home</a></li>
+                            <li><a href='' data-item='Classes'>Classes</a></li>
+                            <li><a href='/studios' data-item='Studios'>Studios</a></li>
+                            <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div className="user-logo">
+                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
+                    {/*    
+                    {/*</Link>*/}
+                    <button className="user-btn">
+                            <i className="fa-solid fa-user"></i>
+                    </button>
+                    <button className="user-btn">
+                        <i className="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+        </header>
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
                         <form onSubmit={submitForm}>
                             <h1 style={{color:"white"}}>Update Card</h1>
                             <div className="social-container">
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <div className='active'>
                                 <label style={{color:"white", display:"block"}} id="isActiveMembership" > Membership Status </label>
                                 <input id="isActiveMembership" onChange={handleMem} for="isActiveMembership" type="checkbox" value={isActiveMembership} ></input>
                             </div>
-                                <input onChange={(e) => setCardInfo(e.target.value)} id="card_info" type="text" placeholder="Enter Your Card Info" value={card_info} checked={isActiveMembership}/>
+                                <input onChange={(e) => setCardInfo(e.target.value)} id="card_info" type="text" placeholder="Enter Your Card Info" checked={isActiveMembership}/>
                             <span className="err err-3"> {formErrors['detail']}</span>
                             <button className="add-btn" style={{margin:"2%"}} >Update Card Info</button>
                             {/* onClick={() => navigate('/main')} */}
@@ -139,4 +163,4 @@ const GetPlan = () => {
   )
 }
 
-export default GetPlan
+export default UpdateCard;

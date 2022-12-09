@@ -3,21 +3,45 @@ import './update-plan.css'
 import { useNavigate } from "react-router-dom"
 
 
-const GetPlan = () => {
+const UpdatePlan = () => {
 const navigate = useNavigate();
   return (
     <div className='update-plan'>
         <header>
+        <div className="website-logo">
+                    <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
+                </div>
+                <div className="navbar">
+                    <nav>
+                        <ul className="menuItems">
+                            <li><a href='/main' data-item='Home'>Home</a></li>
+                            <li><a href='' data-item='Classes'>Classes</a></li>
+                            <li><a href='/studios' data-item='Studios'>Studios</a></li>
+                            <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div className="user-logo">
+                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
+                    {/*    
+                    {/*</Link>*/}
+                    <button className="user-btn">
+                            <i className="fa-solid fa-user"></i>
+                    </button>
+                    <button className="user-btn">
+                        <i className="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
             </header>
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
-                        <form action="#">
+                        <form>
                             <h1 style={{color:"white"}}>Change Plan</h1>
                             <div className="social-container">
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <select id="Plans" name="Plans">
                                 <option value="15">Monthly Plan: $15/mo</option>
@@ -50,4 +74,4 @@ const navigate = useNavigate();
   )
 }
 
-export default GetPlan
+export default UpdatePlan

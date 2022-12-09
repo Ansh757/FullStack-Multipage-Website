@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react'
 import './getplan.css'
-import { useNavigate } from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import axios from "axios";
 
 
@@ -95,16 +95,40 @@ const GetPlan = () => {
   return (
     <div className='getPlan'>
         <header>
-            </header>
+            <div className="website-logo">
+                <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
+            </div>
+            <div className="navbar">
+                <nav>
+                    <ul className="menuItems">
+                        <li><a href='/main' data-item='Home'>Home</a></li>
+                        <li><a href='' data-item='Classes'>Classes</a></li>
+                        <li><a href='/studios' data-item='Studios'>Studios</a></li>
+                        <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div className="user-logo">
+                {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
+                {/*    
+                {/*</Link>*/}
+                <button className="user-btn">
+                        <i className="fa-solid fa-user"></i>
+                </button>
+                <button className="user-btn">
+                    <i className="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </header>
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
                         <form onSubmit={submitForm}>
                             <h1 style={{color:"white"}}>Add A Plan</h1>
                             <div className="social-container">
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="https://www.cs.toronto.edu/~kianoosh/courses/csc309/" className="social"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="tfc/src/components/Subscription/getPlan/getplan" className="social"><i className="fab fa-facebook-f"></i></a>
+                                <a href="tfc/src/components/Subscription/getPlan/getplan" className="social"><i className="fab fa-google-plus-g"></i></a>
+                                <a href="tfc/src/components/Subscription/getPlan/getplan" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <select id="membership" name="Plans" value={data.membership} onChange={(e) => UpdateForm(e)} required>
                                 <option value="">-------</option>
