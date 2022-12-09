@@ -83,6 +83,7 @@
     flex-direction: row;
     position: relative;
     margin-left: 2%;
+    margin-top: -8%;
     font-size: 30em;
     gap: 5%;
     width: 30%;  
@@ -121,9 +122,9 @@
     position: relative;
 }
 
-.user-main .section-1 h1 {
+.user-main .section-1 > h1 {
     margin-left: 2%;
-    margin-top: -10%;
+    margin-top: -7%;
     font-size: 12rem;
     justify-content: center;
     color: white;
