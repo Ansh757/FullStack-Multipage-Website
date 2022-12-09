@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import './style.css';
-import FileUploadButton from './FileUploadButton'
 import axios from 'axios';
 // Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
 import { useNavigate } from "react-router-dom"
