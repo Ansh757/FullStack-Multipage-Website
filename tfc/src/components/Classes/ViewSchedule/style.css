@@ -20,13 +20,15 @@
  
   .sch-div  .container {
      /* margin-top: 5%; */
+
      text-align: left;
      width: 90%;
+     height: 100%;
       display: table;
-      padding: 0 0 10% 0;
+      padding: 0 0 20% 0;
  }
  
- .sch-div > header {
+ .sch-div #bad {
      display: flex;
      flex-direction: row;
      position: relative;
@@ -77,7 +79,7 @@
      margin-top: 40%;
  } */
  
- .sch-div .fa-user, .fa-right-from-bracket {
+ .sch-div .fa-user, .sch-div .fa-right-from-bracket {
      color: rgb(255, 255, 255);
      font-size: 100%;
  }
@@ -323,4 +325,22 @@
       left: 0;
       top: 0;
       border-radius: 10px;
-  } 
+  }
+
+/*#icons {*/
+/*    color: rgb(255, 255, 255);*/
+/*    font-size: 25px;*/
+/*}*/
+/*.user-logo .buttion {*/
+/*    padding-top: 20px;*/
+/*}*/
+
+/*.user-logo > .buttion {*/
+/*    padding-top: 10px;*/
+/*}*/
+
+#boo {
+    margin-top: 2rem;
+    top: 3%;
+    font-size: 40px;
+}

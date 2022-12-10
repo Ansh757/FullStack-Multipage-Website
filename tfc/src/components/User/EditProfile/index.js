@@ -1,6 +1,6 @@
 import React, {Component, useState, useEffect, useRef, useReducer, useContext} from 'react';
 import {Link, useParams} from "react-router-dom";
-import './style.css';
+import '../EditProfile/style.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import APIContextUser from "../../../Contexts/APIContextUser";
@@ -119,7 +119,7 @@ const EditProfile = () => {
     return (
         <APIContextUser.Provider>
         <div className='register'>
-            <div className="row">
+            <div className="row-99">
                 <section className="section">
                     <header>
                         <h3>Edit Profile</h3>
@@ -127,47 +127,47 @@ const EditProfile = () => {
                     </header>
                     <main>
                         <form onSubmit={(e) => submitForm(e)}>
-                            <div  className="form-item box-item">
+                            <div  className="form-item-99 box-item-99">
                                 <input id="username" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} data-required/>
                                 <span>{formErrors['username']}</span>
                             </div>
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <input id="first_name" type="text" onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" value={first_name} data-required/>
                                 <span>{formErrors['first_name']}</span>
                             </div>
 
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <input id="last_name" type="text" name="text" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" value={last_name} data-required/>
                                 <span>{formErrors['last_name']}</span>
                             </div>
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <input id="email" type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} data-email data-required/>
                                 <span>{formErrors['email']}</span>
                             </div>
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password"
                                        data-required/>
                                 <span>{formErrors['password']}</span>
                             </div>
 
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <input id="repeat_password" type="password"  placeholder="Repeat Password" onChange={(e) => setRepeatPassword(e.target.value)} value={repeat_password} data-required/>
                                 <span>{formErrors['repeat_password']}</span>
                             </div>
 
 
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <input id="phone_number" type="number" placeholder="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} value={phone_number} data-required/>
                                 <span>{formErrors['phone_number']}</span>
                             </div>
 
-                            <div className="form-item box-item">
+                            <div className="form-item-99 box-item-99">
                                 <label>Choose Your Avatar</label><br></br><br></br>
                                 <input id="avatar" type="file" placeholder="Avatar" onChange={handleImage}/>
                                 <span>{formErrors['avatar']}</span>
 
                             </div>
-                            <div className="form-item">
+                            <div className="form-item-99">
                                 <button className='submit'>Submit</button>
                                 <span className="err-9">{formErrors['detail']}</span>
                             </div>

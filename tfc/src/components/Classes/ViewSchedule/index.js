@@ -1,9 +1,10 @@
 import React, {Component, useState, createContext, useEffect} from 'react';
-import './style.css';
+import '../ViewSchedule/style.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
+
 
 
 
@@ -43,7 +44,7 @@ export default function Schedule() {
     }, [page])
 
     function handle(res) {
-        setUser(res.results[0]["User"])
+        setUser(res.results[0]["user"])
         setEnroll(res.results[0]["Enrollment_Status"])
         setName(res.results[0]['Name'])
         setCoach(res.results[0]['Coach'])
@@ -67,7 +68,7 @@ export default function Schedule() {
     // console.log(data)
     return(
         <div className='sch-div'>
-            <header>
+            <header id='bad'>
             <div className="website-logo">
                     <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
                 </div>
@@ -75,26 +76,29 @@ export default function Schedule() {
                     <nav>
                         <ul className="menuItems">
                             <li><a href='/main' data-item='Home'>Home</a></li>
-                            <li><a href='' data-item='Classes'>Classes</a></li>
+                            <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                             <li><a href='/studios' data-item='Studios'>Studios</a></li>
                             <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div className="user-logo">
-                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                    {/*    
-                    {/*</Link>*/}
-                    <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
-                    </button>
-                    <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
+                    <Link id="boo" to={"/" + id + "/profile/"}>
+                        <button className="user-btn buttion">
+                            <i  className="fa-solid fa-user too"></i>
+                        </button>
+                    </Link>
+                    <button className="user-btn" onClick={() => {
+                        localStorage.removeItem('SavedToken')
+                        window.location.reload()
+                    }
+                    }>
+                        <i  className="fa-solid fa-right-from-bracket too"></i>
                     </button>
                 </div>
         </header>
              <div className='main-title'>
-                <span class="blue">{user}'s Subscription History</span>
+                <span class="blue">{user}'s Class Schedule</span>
             </div> 
 
                     <table class="container">

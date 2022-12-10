@@ -92,7 +92,7 @@
     width: 100%;
 }
 
-.update-plan .main-btn .btn {
+.update-plan .main-btn .btn-99 {
     font-size: 2rem;
 }
 
@@ -383,7 +383,9 @@
     margin: 2% 0;
 }
 
-.signup-container {
+.update-plan .signup-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 73.9%;
 }

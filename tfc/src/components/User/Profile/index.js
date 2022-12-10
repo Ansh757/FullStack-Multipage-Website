@@ -1,14 +1,13 @@
 import React, {Component, useState, createContext, useEffect, useReducer, useContext} from 'react';
-import './style.css';
-import axios from "axios";
-import { useNavigate } from "react-router-dom"
+import '../Profile/style.css';
+import axios from "axios"
 import {useParams, Link} from "react-router-dom";
 // Reference: https://bbbootstrap.com/snippets/bootstrap-5-myprofile-90806631
 
 import APIContextUser, {useUserAPIContext} from "../../../Contexts/APIContextUser";
 
 const Profile = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const { data } = useContext(APIContextUser);
     const { setData } = useContext(APIContextUser);
 
@@ -93,12 +92,12 @@ const Profile = () => {
                                 <p>75%</p>
                             </div>
                         </div>
-                        <div className="skill javascript">
-                            <h6><i className="fa-solid fa-lock" style={{color:'pink'}} ></i> PASSWORD: {data.password} </h6>
-                            <div className="bar bar-js">
-                                <p>75%</p>
-                            </div>
-                        </div>
+                        {/*<div className="skill javascript">*/}
+                        {/*    <h6><i className="fa-solid fa-lock" style={{color:'pink'}} ></i> PASSWORD: {data.password} </h6>*/}
+                        {/*    <div className="bar bar-js">*/}
+                        {/*        <p>75%</p>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

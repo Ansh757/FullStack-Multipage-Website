@@ -109,18 +109,18 @@ button.ghost {
     margin: 8px 0;
     width: 100%;
 }
-.login .container {
+.login #container.container {
     display: flex;
     position: relative;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
+    align-items: right;
     top: 8%;
     /* overflow: hidden; */
     width: 70%;
     height: 80%;
 }
 
-.login .container {
+.login #container {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25),
@@ -139,7 +139,8 @@ button.ghost {
 }
 
 .sign-in-container {
-    left: 0;
+    /*justify-content: center;*/
+    /*left: 20%;*/
     width: 50%;
     z-index: 2;
 }
@@ -256,7 +257,9 @@ button.ghost {
     width: 40px;
 }
 
-.signup-container {
+.login .signup-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 73.9%;
 }

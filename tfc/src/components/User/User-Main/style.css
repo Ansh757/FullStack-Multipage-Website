@@ -63,7 +63,7 @@
     left: -10%;
 }
 
-.fa-user, .fa-right-from-bracket {
+#icons {
     color: rgb(255, 255, 255);
     font-size: 25px;
 }
@@ -108,13 +108,11 @@
     color:#ff7e3d
 }
 
-.user-main .main-btn .btn {
+.user-main .main-btn .btn-11 {
     font-size: 4.3%;   
 }
 
-.user-btn:hover {
-    /*user-focus-pointer: ;*/
-}
+
 .user-main footer h3 {
     color: white;
     margin: 0;
@@ -208,8 +206,8 @@
 }
 
 .user-main .section-2 hr{
-    width: 2;
-    size: 100;
+    width: 2%;
+    /*size: 100%;*/
 }
 
 
@@ -379,5 +377,74 @@ nav .menuItems li a:hover::before {
         text-align: center;
         justify-content: center;
    }
+}
+
+.btn-11 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #000000;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 14em;
+    height: 5em;
+}
+
+.btn-11:before {
+    content: "";
+    background: linear-gradient(
+            45deg,
+            rgba(255, 0, 0, 0.25),
+            rgba(255, 115, 0, 0.25),
+            rgba(255, 251, 0, 0.25),
+            rgba(72, 255, 0, 0.25),
+            rgba(0, 255, 213, 0.25),
+            rgba(0, 43, 255, 0.25),
+            rgba(122, 0, 255, 0.25),
+            rgba(255, 0, 200, 0.25),
+            rgba(255, 0, 0, 0.25)
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.btn-11:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(10, 10, 10);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
 }
 

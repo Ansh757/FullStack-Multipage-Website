@@ -2,12 +2,13 @@ import React from 'react'
 import './Plans.css'
 import {plansTileData} from './plans-data/plan-tile-data'
 import btick from './photos/whiteTick.png'
-import { useNavigate } from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 
 
 
 
 const Plans = () => {
+    const { id } = useParams();
   const navigate = useNavigate();
   return (
     <div className='plans-overlay'>
@@ -20,7 +21,7 @@ const Plans = () => {
                     <nav>
                         <ul className="menuItems">
                             <li><a href='/main' data-item='Home'>Home</a></li>
-                            <li><a href='#' data-item='Classes'>Classes</a></li>
+                            <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                             <li><a href='/studios' data-item='Studios'>Studios</a></li>
                             <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                         </ul>
@@ -67,7 +68,7 @@ const Plans = () => {
      </div> 
 
      <div className='btn-div'>
-            <button className='join-button' onClick={() => navigate('/get-plan')}>JOIN NOW</button>
+            <button className='join-button' onClick={() => navigate('/get-plan/' + id)}>JOIN NOW</button>
         </div>
 
             <footer>

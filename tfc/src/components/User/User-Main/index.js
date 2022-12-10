@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useReducer, useState} from 'react';
 import './style.css';
 import axios from 'axios';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 
@@ -12,11 +12,9 @@ import {Link} from "react-router-dom";
 const url = "http://127.0.0.1:8000/accounts/profile/";
 
 const User_Main = () => {
-    // const {id} = useParams();
-
+    const navigate = useNavigate();
     const [id, setId] = useState("")
     const [username, setUsername] = useState("")
-    // const [reducerValue, forceUpdate ] = useReducer(x => x + 1, 0)
     const p = async() => {
         await axios.get(url, {
             headers: {
@@ -30,8 +28,12 @@ const User_Main = () => {
 
     }
     useEffect(() => {
-        p()
-    })
+        if (!localStorage.getItem('SavedToken')) {
+            navigate('/login');
+        } else {
+            p()
+        }
+    }, [localStorage.getItem('SavedToken')])
 
     console.log(username)
         return (
@@ -44,21 +46,25 @@ const User_Main = () => {
                         <nav>
                             <ul className="menuItems">
                                 <li><a href='/main' data-item='Home'>Home</a></li>
-                                <li><a href='#' data-item='Classes'>Classes</a></li>
+                                <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                                 <li><a href={'/' + id + '/studios'} data-item='Studios'>Studios</a></li>
-                                <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
+                                <li><a href={'/plans/' + id} data-item='Subscriptions'>Subscriptions</a></li>
                             </ul>
                         </nav>
                     </div>
                     <div className="user-logo">
                         <Link to={"/" + id + "/profile/"}>
                             <button className="user-btn">
-                                <i className="fa-solid fa-user"></i>
+                                <i className="fa-solid fa-user too"></i>
                             </button>
                         </Link>
-                        <button className="user-btn">
-                            <i className="fa-solid fa-right-from-bracket"></i>
-                        </button>
+                            <button id="icons" className="user-btn" onClick={() => {
+                                localStorage.removeItem('SavedToken')
+                                window.location.reload()
+                                }
+                            }>
+                                <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
+                            </button>
                     </div>
 
 
@@ -71,20 +77,20 @@ const User_Main = () => {
                         </span>
                     </div>
                     <div className='main-btn'>
-                        <Link to="/main">
-                            <button className='btn'>My Schedule</button>
+                        <Link to={"/" + id + "/classes/schedule" }>
+                            <button className='btn-11'>My Schedule</button>
                         </Link>
                         <Link to={"/" + id + "/view-plan"}>
-                            <button className='btn'>Plan History</button>
+                            <button className='btn-11'>Plan History</button>
                         </Link>
-                        <Link to={"/main"}>
-                            <button className='btn'>Classes History</button>
+                        <Link to={"/" + id + "/view-classes"}>
+                            <button className='btn-11'>Classes History</button>
                         </Link>
                         <Link to={"/" + id + "/update-plan"}>
-                            <button className='btn'>Change Plan</button>
+                            <button className='btn-11'>Change Plan</button>
                         </Link>
                         <Link to={"/" + id + "/update-card"}>
-                            <button className='btn'>Change Card</button>
+                            <button className='btn-11'>Change Card</button>
                         </Link>
 
 
@@ -99,40 +105,42 @@ const User_Main = () => {
                         </div>
 
                         <div className="col1" style={{marginBottom:"14%" ,marginRight:"-3.5%", textOverflow:"clip"}}>
-                            <span>About Us: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</span> <br/> <br/> <br/><br/>
+                            <span>About Us: TFC is an Canadian gym chain with more than 700 clubs across the United States and Canada. 
+                                The company was formed in 2022 and is based in Toronto, Canada. TFC was founded in 2022 by founder Armaan, Ansh and Giancarlo 
+                                in Toronto</span> <br/> <br/> <br/><br/>
                             <div className="opening-hours-content section">
-                                <div class="table-content">
+                                <div className="table-content">
                                     <h2>Opening Hours</h2>
-                                    <ul class="responsive-table">
-                                        <li class="table-header">
-                                            <div class="col col-1">Day</div>
-                                            <div class="col col-2">Opening</div>
-                                            <div class="col col-3">Closing</div>
-                                            <div class="col col-4">Pets Allowed</div>
+                                    <ul className="responsive-table">
+                                        <li className="table-header">
+                                            <div className="col col-1">Day</div>
+                                            <div className="col col-2">Opening</div>
+                                            <div className="col col-3">Closing</div>
+                                            <div className="col col-4">Pets Allowed</div>
                                         </li>
-                                        <li class="table-row">
-                                            <div class="col col-1" data-label="Day">Mon-Thur</div>
-                                            <div class="col col-2" data-label="Opening">9:00am</div>
-                                            <div class="col col-3" data-label="Closing">6:00pm</div>
-                                            <div class="col col-4" data-label="Pets Allowed">Yes</div>
+                                        <li className="table-row">
+                                            <div className="col col-1" data-label="Day">Mon-Thur</div>
+                                            <div className="col col-2" data-label="Opening">9:00am</div>
+                                            <div className="col col-3" data-label="Closing">6:00pm</div>
+                                            <div className="col col-4" data-label="Pets Allowed">Yes</div>
                                         </li>
-                                        <li class="table-row">
-                                            <div class="col col-1" data-label="Day">Friday</div>
-                                            <div class="col col-2" data-label="Opening">8:00am</div>
-                                            <div class="col col-3" data-label="Closing">12:00pm</div>
-                                            <div class="col col-4" data-label="Pets Allowed">Yes</div>
+                                        <li className="table-row">
+                                            <div className="col col-1" data-label="Day">Friday</div>
+                                            <div className="col col-2" data-label="Opening">8:00am</div>
+                                            <div className="col col-3" data-label="Closing">12:00pm</div>
+                                            <div className="col col-4" data-label="Pets Allowed">Yes</div>
                                         </li>
-                                        <li class="table-row">
-                                            <div class="col col-1" data-label="Day">Saturday</div>
-                                            <div class="col col-2" data-label="Opening">10:00am</div>
-                                            <div class="col col-3" data-label="Closing">4:00pm</div>
-                                            <div class="col col-4" data-label="Pets Allowed">Pending</div>
+                                        <li className="table-row">
+                                            <div className="col col-1" data-label="Day">Saturday</div>
+                                            <div className="col col-2" data-label="Opening">10:00am</div>
+                                            <div className="col col-3" data-label="Closing">4:00pm</div>
+                                            <div className="col col-4" data-label="Pets Allowed">Pending</div>
                                         </li>
-                                        <li class="table-row">
-                                            <div class="col col-1" data-label="Day">Sunday</div>
-                                            <div class="col col-2" data-label="Opening">9:00am</div>
-                                            <div class="col col-3" data-label="Closing">7:00pm</div>
-                                            <div class="col col-4" data-label="Pets Allowed">Pending</div>
+                                        <li className="table-row">
+                                            <div className="col col-1" data-label="Day">Sunday</div>
+                                            <div className="col col-2" data-label="Opening">9:00am</div>
+                                            <div className="col col-3" data-label="Closing">7:00pm</div>
+                                            <div className="col col-4" data-label="Pets Allowed">Pending</div>
                                         </li>
                                     </ul>
                                 </div>
