@@ -1,8 +1,9 @@
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import './style.css';
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import APIContextUser from "../../../Contexts/APIContextUser";
 
 const Login = () => {
 
@@ -18,7 +19,6 @@ const Login = () => {
         const fields={...data}
         fields[e.target.id] = e.target.value
         setData(fields)
-        // console.log(fields)
     }
 
     function submitForm(e) {
@@ -36,7 +36,6 @@ const Login = () => {
         console.log(e)
         let keys = Object.keys(e)
         get_errors2(keys, e)
-        // Object.keys(e).forEach(key => console.log(key))
     }
 
     function handleErrors(response){
@@ -79,16 +78,6 @@ const Login = () => {
         console.log(errors)
         return errors
     }
-
-    // function useRedirectCheck() {
-    //     console.log("noo", noErrors)
-    //     useEffect(() => {
-    //         console.log("sdsd", noErrors)
-    //         if (noErrors) {
-    //             navigate("/login");
-    //         }
-    //     }, [noErrors]);
-    // }
     const navigate = useNavigate();
 
 

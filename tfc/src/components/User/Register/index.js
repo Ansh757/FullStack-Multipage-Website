@@ -1,12 +1,12 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, {Component, useState, useEffect, useRef, useContext} from 'react';
 import { Link } from "react-router-dom";
 import './style.css';
 import axios from 'axios';
 // Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
 import { useNavigate } from "react-router-dom"
+import APIContextUser from "../../../Contexts/APIContextUser";
 
-
-const Register = () => {
+const Index = () => {
     const [avatar, setAvatar] = useState(null);
     const [username, setUsername] = useState("");
     const [first_name, setFirstName] = useState("");
@@ -15,11 +15,16 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [repeat_password, setRepeatPassword] = useState("")
     const [phone_number, setPhoneNumber] = useState("")
+    const { data } = useContext(APIContextUser);
+    const { setData } = useContext(APIContextUser);
+    const [formErrors, setFormErrors] = useState({});
+    const navigate = useNavigate();
+    const noErrors = useRef(false);
+
 
     const submitForm = async(e) => {
         e.preventDefault();
         const formData = new FormData();
-
         formData.append('avatar', avatar)
         formData.append('username', username)
         formData.append('first_name', first_name)
@@ -29,6 +34,13 @@ const Register = () => {
         formData.append('repeat_password', repeat_password)
         formData.append('phone_number', phone_number)
 
+
+        const obj = { "username": username,
+        "password": password,
+        "first_name": first_name, "last_name": last_name,
+        "email": email, "repeat_password": repeat_password,
+        "phone_number": phone_number, "avatar": avatar
+        }
         const url = "http://127.0.0.1:8000/accounts/register/";
         axios({
             method: "post",
@@ -37,15 +49,11 @@ const Register = () => {
             headers: {"Content-Type": "multipart/form-data"},
 
         })
-            .then(response => handleErrors(response))
+            .then(response => {
+                setData(obj)
+                handleErrors(response)
+            })
             .catch(err => my_function(err.response.data));
-    }
-
-    const [formErrors, setFormErrors] = useState({});
-    const noErrors = useRef(false);
-
-    const handleImage = (e) => {
-        setAvatar(e.target.files[0])
     }
 
     function my_function(e) {
@@ -54,8 +62,9 @@ const Register = () => {
     }
 
     function handleErrors(response){
-        setFormErrors({})
-
+        console.log(response)
+        setFormErrors({});
+        console.log("data is", data);
         let k = Object.keys(response.data)
         if (k.includes('response')) {
             noErrors.current = true
@@ -68,9 +77,7 @@ const Register = () => {
         } else {
             get_errors(k, response.data)
         }
-        // console.log("err", noErrors)
     }
-
 
     function get_errors2(keys, data){
         let errors = {}
@@ -92,9 +99,26 @@ const Register = () => {
         return errors
     }
 
-    const navigate = useNavigate();
+    function handleImage(e){
+        setAvatar(e.target.files[0])
+        // let val = e.target.files[0]
+        // const obj = {
+        //     "avatar": val
+        // }
+        // setData(obj)
+        // console.log("OBJ IS", data.avatar)
+    }
+
+    function handleChange(e) {
+        let _id = e.target.id
+        const obj = {
+            [_id]: e.target.value
+        }
+        // setData(obj)
+    }
 
     return (
+        <APIContextUser.Provider>
     <div className='register'>
         <div className="row">
   <section className="section">
@@ -163,8 +187,8 @@ const Register = () => {
   </section>
 </div>
     </div>
+        </APIContextUser.Provider>
     )
 }
 
-
-export default Register;
+export default Index;

@@ -80,13 +80,32 @@
 
 .user-main .main-btn {
     display: flex;
-    flex-direction: row;
+    flex-direction: r;
     position: relative;
     margin-left: 2%;
-    margin-top: -8%;
+    margin-top: -4%;
     font-size: 30em;
     gap: 5%;
     width: 30%;  
+}
+
+.user-main .title-holder {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 2%;
+    margin-top: 4%;
+    margin-bottom: -10%;
+}
+
+.user-main .title-holder .big-title {
+    font-size: 12rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.user-main .title-holder .bluey {
+    color:#ff7e3d
 }
 
 .user-main .main-btn .btn {
@@ -284,34 +303,6 @@ nav .menuItems li a:hover::before {
     width: 100%;
     background-color: black;
 }
-
-
-/* .opening-hours-table tr td:first-child {
-    font-weight:bold;
-}
-#open-status {
-    display:block;
-    /*margin-top:-1em;
-    text-align:center;
-    border:dotted lightgrey 3px;
-}
-.openorclosed:after {
-    content:" open during these hours:";
-}
-.open {
-    color:green;
-}
-.open:after {
-    content:" Open";
-    color: #6C0;
-}
-.closed:after {
-    content:" Closed";
-    color: red;
-}
-.opening-hours-table tr td {
-    padding:5px;
-} */
 
 .welcome {
     color: transparent;
