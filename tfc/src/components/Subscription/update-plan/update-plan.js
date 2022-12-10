@@ -1,10 +1,95 @@
-import React from 'react'
+import React, {useRef, useState} from 'react'
 import './update-plan.css'
-import { useNavigate } from "react-router-dom"
-
+import {useNavigate, useParams} from "react-router-dom"
+import axios from "axios";
 
 const UpdatePlan = () => {
-const navigate = useNavigate();
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [membership_type, setPlan] = useState("")
+    // const  = useRef(true)
+
+    function submitForm(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('membership_type', membership_type)
+
+        const url = 'http://127.0.0.1:8000/subscriptions/' + id + '/plans/update-plan/';
+        axios({
+            method: "put",
+            url: url,
+            data: formData,
+            headers: { Authorization:localStorage.getItem('SavedToken'), "Content-Type": "multipart/form-data"},
+        })
+            .then(res => handleErrors(res))
+            .catch(err => my_function(err.response.data))
+            // .then(response => handleErrors(response))
+            // .catch(err => my_function(err.response.data));
+    }
+
+    const [formErrors, setFormErrors] = useState({});
+
+    const noErrors = useRef(false);
+
+    const handleMem = () => {
+        // isActiveMembership.current = !!e.target.value;
+        // console.log(isActiveMembership)
+        // setIsActiveMembership(false)
+        // console.log(setIsActiveMembership)
+        // console.log(setIsActiveMembership)
+        //
+        // console.log(fields)
+    };
+
+    function my_function(e) {
+        console.log(e)
+        let keys = Object.keys(e)
+        get_errors2(keys, e)
+    }
+
+    function handleErrors(response){
+        setFormErrors({})
+        console.log(response)
+        let k = Object.keys(response.data)
+        console.log(k)
+        if (k) {
+            // console.log(response.data)
+            noErrors.current = true
+            // setNoErrors(true)
+            console.log("1")
+            if (noErrors) {
+                console.log("2")
+                navigate('/main')
+                noErrors.current = false
+            }
+
+        } else {
+            get_errors(k, response.data)
+        }
+    }
+
+
+    function get_errors2(keys, data){
+        let errors = {}
+        for (let i = 0; i < keys.length; i++){
+            let k = keys[i]
+            // console.log("key is", k)
+            errors[k] = data[k]
+        }
+        setFormErrors(errors);
+        return errors
+    }
+
+    function get_errors(keys, data){
+        let errors = {}
+        for (let i = 0; i < keys.length; i++){
+            let k = keys[i]
+            // console.log("key is", k)
+            errors[k] = data[k][0]
+        }
+        setFormErrors(errors);
+        return errors
+    }
   return (
     <div className='update-plan'>
         <header>
@@ -36,14 +121,14 @@ const navigate = useNavigate();
             <div className="signup-container">
                 <div className="container" id="container">
                     <div className="form-container sign-in-container">
-                        <form>
+                        <form onSubmit={submitForm}>
                             <h1 style={{color:"white"}}>Change Plan</h1>
                             <div className="social-container">
                                 <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-facebook-f"></i></a>
                                 <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-google-plus-g"></i></a>
                                 <a href="tfc/src/components/Subscription/update-plan/update-plan" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
-                            <select id="Plans" name="Plans">
+                            <select id="Plans" name="Plans" onChange={(e) => setPlan(e.target.value)}>
                                 <option value="15">Monthly Plan: $15/mo</option>
                                 <option value="150">Annual Plan: $150/yr</option>
                                 <option value="200">Premium Annual Plan: $200/yr</option>

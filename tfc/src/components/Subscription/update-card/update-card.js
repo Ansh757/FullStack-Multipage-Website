@@ -23,8 +23,8 @@ const UpdateCard = () => {
             data: formData,
             headers: { Authorization:localStorage.getItem('SavedToken'), "Content-Type": "multipart/form-data"},
         })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .then(res => handleErrors(res))
+            .catch(err => my_function(err.response.data))
             // .then(response => handleErrors(response))
             // .catch(err => my_function(err.response.data));
     }
@@ -54,8 +54,9 @@ const UpdateCard = () => {
         setFormErrors({})
         console.log(response)
         let k = Object.keys(response.data)
-        if (k.includes('response')) {
-            console.log(response.data)
+        console.log(k)
+        if (k) {
+            // console.log(response.data)
             noErrors.current = true
             // setNoErrors(true)
             console.log("1")
@@ -86,7 +87,7 @@ const UpdateCard = () => {
         let errors = {}
         for (let i = 0; i < keys.length; i++){
             let k = keys[i]
-            console.log("key is", k)
+            // console.log("key is", k)
             errors[k] = data[k][0]
         }
         setFormErrors(errors);
@@ -132,13 +133,13 @@ const UpdateCard = () => {
                                 <a href="tfc/src/components/Subscription/update-card/update-card" className="social"><i className="fab fa-linkedin-in"></i></a>
                             </div>
                             <div className='active'>
-                                <label style={{color:"white", display:"block"}} id="isActiveMembership" > Membership Status </label>
+                                <label style={{color:"white", display:"block"}} id="isActiveMembership" > Delete Membership </label>
                                 <input id="isActiveMembership" onChange={handleMem} for="isActiveMembership" type="checkbox" value={isActiveMembership} ></input>
                             </div>
                                 <input onChange={(e) => setCardInfo(e.target.value)} id="card_info" type="text" placeholder="Enter Your Card Info" checked={isActiveMembership}/>
-                            <span className="err err-3"> {formErrors['detail']}</span>
-                            <button className="add-btn" style={{margin:"2%"}} >Update Card Info</button>
-                            {/* onClick={() => navigate('/main')} */}
+                            <span className="err err-3"> {formErrors[0]}</span>
+                            <button className="add-btn" style={{margin:"2%"}}>Update Card Info</button>
+                            
                         </form>
                     </div>
                     <div className="overlay-container">
