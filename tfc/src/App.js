@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
 import Base from "./components/User/Main";
 import Login from "./components/User/Login";
-import Index from "./components/User/Register";
 import Plans from "./components/Subscription/Plans"
 import ListStudios from "./components/StudiosByLocation"
 import WithRoute from "./components/User/User-Main";
@@ -14,7 +13,7 @@ import UpdateCard from "./components/Subscription/update-card/update-card";
 import UpdatePlan from "./components/Subscription/update-plan/update-plan";
 import EditProfile from "./components/User/EditProfile";
 import ViewPlan from './components/Subscription/view-plan/view-plan';
-import ViewClasses from './components/classes/View-History/index'
+import ViewClasses from './components/Classes/View-History/index'
 
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
