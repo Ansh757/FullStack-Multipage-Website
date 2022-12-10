@@ -18,6 +18,7 @@ const Studios = () => {
     const { setStudios } = useContext(APIContext);
     const { studios } = useContext(APIContext);
     const [studiosFixed, setStudiosFixed] = useState([{name: "empty"}]);
+    const [ids, setIds] = useState("-");
 
     const [messageName, setMessageName] = useState('');
     const [nameFilter, setNameFilter] = useState([]);
@@ -124,22 +125,28 @@ const Studios = () => {
         if (coachFilter.length > 0) {
             coaches = coachFilter.join('-');
         }
+        console.log(nameFilter)
         //const names = nameFilter.join('-');
         //const amen = amenFilter.join('-');
         const apiUrl1 = `http://localhost:8000/studios/filter/${names}/${amen}/${classes}/${coaches}/`;
         axios.get(apiUrl1).then((res) => {
             const {data} = res;
             //setStudios(data.results);
-            var idArray = data.results.map(function (el) { return el.id; });
-            var newArray = studiosFixed.filter(function (el) {
-
-                return idArray.includes(el.id) 
-                });
+            var idArray = data.map(function (el) { return el.id; });
+            if (idArray.length == 0) {
+                setIds("1")
+            } else {
+                setIds(idArray.join('-'));
+            }
+            
+            //var newArray = studiosFixed.filter(function (el) {
+             //   return idArray.includes(el.id) 
+            //});
             //console.log(studiosFixed)
             //console.log(newArray)
-            setStudios(newArray);
+            //setStudios(newArray);
 
-            });
+        });
         
     }, [nameFilter, amenFilter, classFilter, coachFilter])
 
@@ -148,15 +155,16 @@ const Studios = () => {
         const { page, lat, long } = params;
             if (lat != '500.00') {
             //fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=${perPage}&search=${search}`)
-            const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/list?page=${page}`;
+            const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/${ids}/list?page=${page}`;
                 axios.get(apiUrl1).then((res) => {
                     const {data} = res;
                     setStudios(data.results);
                     setStudiosFixed(data.results);
                 });
                 //console.log(nameFilter);
+                //console.log(studios)
         }
-    }, [params])
+    }, [params, ids])
 
     return (
 
@@ -262,7 +270,7 @@ const Studios = () => {
                 </button>
                 <button className="page-btn" onClick={() => setParams({
                     ...params,
-                    page: params.page + 1
+                    page: Math.min(Math.ceil(ids.length / 5), params.page + 1)
                 })}>
                     next
                 </button>
