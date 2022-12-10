@@ -382,8 +382,9 @@
     font-size: 1.5rem;
 }
 
-
-.signup-container {
+.update-card .signup-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 73.9%;
 }

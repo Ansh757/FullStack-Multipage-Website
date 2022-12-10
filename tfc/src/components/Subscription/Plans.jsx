@@ -1,15 +1,21 @@
-import React from 'react'
+import React, {Component, useState, createContext, useEffect} from 'react';
 import './Plans.css'
 import {plansTileData} from './plans-data/plan-tile-data'
 import btick from './photos/whiteTick.png'
-import {useNavigate, useParams} from "react-router-dom"
+import {useNavigate, useParams, Link} from "react-router-dom"
 
 
 
 
 const Plans = () => {
-    const { id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem('SavedToken')) {
+        navigate('/login');
+    } 
+}, [localStorage.getItem('SavedToken')])
+  
   return (
     <div className='plans-overlay'>
         
@@ -28,15 +34,19 @@ const Plans = () => {
                     </nav>
                 </div>
                 <div className="user-logo">
-                    {/* <Link to={"/" + this.state.id + "/profile/"}> */}
-                        <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
-                        </button>
-                    {/* </Link> */}
+                <Link to={"/" + id + "/profile/"}>
                     <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
+                        <i className="fa-solid fa-user too"></i>
                     </button>
-                </div>
+                </Link>
+                <button className="user-btn" onClick={() => {
+                    localStorage.removeItem('SavedToken')
+                    window.location.reload()
+                }
+                }>
+                    <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
+                </button>
+            </div>
 
             </header>
     <div className='bag'>

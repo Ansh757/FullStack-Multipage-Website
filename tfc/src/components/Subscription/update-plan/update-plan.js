@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import './update-plan.css'
 import {Link, useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
@@ -8,6 +8,11 @@ const UpdatePlan = () => {
     const navigate = useNavigate();
     const [membership_type, setPlan] = useState("")
     // const  = useRef(true)
+    useEffect(() => {
+        if (!localStorage.getItem('SavedToken')) {
+            navigate('/login');
+        } 
+    }, [localStorage.getItem('SavedToken')])
 
     const submitForm = async (e) => {
         e.preventDefault();

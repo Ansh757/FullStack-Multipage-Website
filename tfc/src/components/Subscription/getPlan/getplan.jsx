@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import './getplan.css'
 import {Link, useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
@@ -6,6 +6,13 @@ import axios from "axios";
 
 
 const GetPlan = () => {
+
+    useEffect(() => {
+        if (!localStorage.getItem('SavedToken')) {
+            navigate('/login');
+        } 
+    }, [localStorage.getItem('SavedToken')])
+
     const {id} = useParams();
     const navigate = useNavigate();
 
