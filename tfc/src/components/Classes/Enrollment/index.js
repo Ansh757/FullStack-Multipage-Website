@@ -102,6 +102,11 @@ const Enrollment = () => {
                                 <option value="enroll_all">Enroll All</option>
                                 <option value="drop_all">Drop All</option>
                             </select>
+                            <select id="estatus" value={classAction} onChange={event => setOption(event)} required>
+                                <option value="">-------</option>
+                                <option value="enroll">Enroll </option>
+                                <option value="drop">Drop</option>
+                            </select>
                             {/*<button id="enroll" className="btn" value="enroll" onClick={event => setOption(event)}>*/}
                             {/*    Enroll*/}
                             {/*</button>*/}
