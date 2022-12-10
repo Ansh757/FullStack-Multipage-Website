@@ -79,7 +79,7 @@
      margin-top: 40%;
  } */
  
- .sch-div .fa-user, .fa-right-from-bracket {
+ .sch-div .fa-user, .sch-div .fa-right-from-bracket {
      color: rgb(255, 255, 255);
      font-size: 100%;
  }
@@ -103,7 +103,7 @@
      width: 100%;
  }
  
- .sch-div .main-btn .btn-99 {
+ .sch-div .main-btn .btn {
      font-size: 2rem;
  }
  
@@ -325,4 +325,22 @@
       left: 0;
       top: 0;
       border-radius: 10px;
-  } 
+  }
+
+/*#icons {*/
+/*    color: rgb(255, 255, 255);*/
+/*    font-size: 25px;*/
+/*}*/
+/*.user-logo .buttion {*/
+/*    padding-top: 20px;*/
+/*}*/
+
+/*.user-logo > .buttion {*/
+/*    padding-top: 10px;*/
+/*}*/
+
+#boo {
+    margin-top: 2rem;
+    top: 3%;
+    font-size: 40px;
+}

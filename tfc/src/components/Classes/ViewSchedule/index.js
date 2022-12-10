@@ -83,19 +83,22 @@ export default function Schedule() {
                     </nav>
                 </div>
                 <div className="user-logo">
-                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                    {/*    
-                    {/*</Link>*/}
-                    <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
-                    </button>
-                    <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
+                    <Link id="boo" to={"/" + id + "/profile/"}>
+                        <button className="user-btn buttion">
+                            <i  className="fa-solid fa-user too"></i>
+                        </button>
+                    </Link>
+                    <button className="user-btn" onClick={() => {
+                        localStorage.removeItem('SavedToken')
+                        window.location.reload()
+                    }
+                    }>
+                        <i  className="fa-solid fa-right-from-bracket too"></i>
                     </button>
                 </div>
         </header>
              <div className='main-title'>
-                <span class="blue">{user}'s Subscription History</span>
+                <span class="blue">{user}'s Class Schedule</span>
             </div> 
 
                     <table class="container">
