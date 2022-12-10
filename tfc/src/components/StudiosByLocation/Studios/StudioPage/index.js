@@ -88,6 +88,7 @@ function StudioPage(props) {
                         }
                 </div>
                 <div><b> Directions: </b> <a  target="_blank" href={studioDir}>{studioDir}</a> </div> 
+                <div><button className="enroll-button">Enroll</button></div>
             </div>
             <div className="studio-page-images">
                 {/*
