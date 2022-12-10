@@ -30,7 +30,7 @@ function MyComponent() {
 
   const positions = []
   studios.map((studios, index) => (
-    positions[index] = {lat: parseFloat(studios.latitude), lng: parseFloat(studios.longitude)}
+    positions[index] = [{lat: parseFloat(studios.latitude), lng: parseFloat(studios.longitude)}, studios.name]
   )
   );
   //console.log(studios[0].name);
@@ -48,8 +48,8 @@ function MyComponent() {
       >
         {positions.map((positions, index) => (
           <MarkerF key={index}
-            //onLoad={onLoad}
-            position={positions}
+            label={positions[1]}
+            position={positions[0]}
           />
         ))}
       </GoogleMap>

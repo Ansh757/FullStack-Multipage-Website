@@ -92,9 +92,9 @@ function StudioPage(props) {
                 </div>
                 <div><b> Directions: </b> <a  target="_blank" href={studioDir}>{studioDir}</a> </div> 
                 <div>
-                    <Link to={"/" + uid + "/studios/studio-page/" + id + "/" + "classes/all/"}>
+                    {/*<Link to={"/" + uid + "/studios/studio-page/" + id + "/" + "classes/all/"}>
                         <button className="enroll-button"> View Classes </button>
-                    </Link>
+                    </Link>*/}
                 </div>
             </div>
             <div className="studio-page-images">
