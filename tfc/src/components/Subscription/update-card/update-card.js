@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import './update-card.css'
 import {Link, useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
@@ -9,6 +9,12 @@ const UpdateCard = () => {
     const [card_info, setCardInfo] = useState("")
     const [isActiveMembership, setIsActiveMembership] = useState(true)
     // const isActiveMembership = useRef(true)
+    
+    useEffect(() => {
+        if (!localStorage.getItem('SavedToken')) {
+            navigate('/login');
+        } 
+    }, [localStorage.getItem('SavedToken')])
 
     const submitForm = async (e) => {
         e.preventDefault();

@@ -9,6 +9,7 @@ import moment from 'moment';
 
 export default function ViewPlan() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [username, setUsername3] = useState("");
     const [Membership, setMembership] = useState("");
     const [amount, setAmount] = useState("");
@@ -21,8 +22,12 @@ export default function ViewPlan() {
     
     const url = `http://127.0.0.1:8000/subscriptions/plans/view/${id}/?page=${page}`;
 
-
+  
     useEffect(() => {
+        if (!localStorage.getItem('SavedToken')) {
+            navigate('/login');
+        }
+        
         axios({
             method: "get",
             url: url,
@@ -35,7 +40,8 @@ export default function ViewPlan() {
             setPageCount(res.data.page_count)
             })
 
-    }, [page])
+    }, [localStorage.getItem('SavedToken')])
+
 
     function handle(res) {
         setUsername3(res.results[0]["username"])
