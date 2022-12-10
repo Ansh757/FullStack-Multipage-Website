@@ -34,3 +34,5 @@ const StudioTable = ({ perPage, params }) => {
 }
 
 export default StudioTable;
+
+
