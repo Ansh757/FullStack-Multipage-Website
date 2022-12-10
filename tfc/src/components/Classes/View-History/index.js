@@ -6,7 +6,7 @@ import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
 
 export default function ViewClasses() {
-    const { id } = useParams();
+    const {id} = useParams();
     const [user, setUser] = useState("");
     const [Enrollment_Status, setEnroll] = useState("");
     const [Name, setName] = useState("");
@@ -21,7 +21,7 @@ export default function ViewClasses() {
 
     const [page, setPage] = useState(1)
     const [page_count, setPageCount] = useState(1)
-    
+
     const url = `http://127.0.0.1:8000/classes/${id}/class/history/?limit=1&offset=${page}/`;
 
 
@@ -33,9 +33,10 @@ export default function ViewClasses() {
                 Authorization: localStorage.getItem('SavedToken')
             }
         })
-        // .then(res => {console.log(res.data.count)
-        .then(res => {handle(res.data)
-            setPageCount(res.data.count)
+            // .then(res => {console.log(res.data.count)
+            .then(res => {
+                handle(res.data)
+                setPageCount(res.data.count)
             })
 
     }, [page])
@@ -52,95 +53,86 @@ export default function ViewClasses() {
         setStart_Recursion(res.results[0]['Start_Recursion'])
         setEnd_Recursion(res.results[0]['End_Recursion'])
 
-        // data.results.map(x => (
-        //     console.log(data)
-        // ))
-
-    }
-    
-    // let n = moment(last_modified).format('YYYY MM DD, h:mm:ss');
-
-    
-    
-    // console.log(data)
-    return(
-        <div className='classesDiv'>
-            <header>
-            <div className="website-logo">
-                    <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
-                </div>
-                <div className="navbar">
-                    <nav>
-                        <ul className="menuItems">
-                            <li><a href='/main' data-item='Home'>Home</a></li>
-                            <li><a href='' data-item='Classes'>Classes</a></li>
-                            <li><a href='/studios' data-item='Studios'>Studios</a></li>
-                            <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div className="user-logo">
-                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                    {/*    
-                    {/*</Link>*/}
-                    <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
-                    </button>
-                    <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
-                    </button>
-                </div>
-        </header>
-             <div className='main-title'>
-                <span class="blue">{user}'s Subscription History</span>
-            </div> 
-
-                    <table class="container">
-                        <thead>
-                            <tr className='col-heads'>
-
-                                <th><span className='col'>User</span></th>
-                                {/* <th><span className='col'>Id</span></th> */}
-                                <th><span className='col'>Studio</span></th>
-                                <th><span className='col'>Enrollment</span></th>
-                                <th><span className='col'>Name</span></th>
-                                <th><span className='col'>Coach</span></th>
-                                <th><span className='col'>Keywords</span></th>
-                                <th><span className='col'>Start Time</span></th>
-                                <th><span className='col'>End Time</span></th>
-                                <th><span className='col'>Start Recursion</span></th>
-                                <th><span className='col'>End Recursion</span></th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody className='last-hope'>
-                            <tr>
-                                <td className='roww'>{user}</td>
-                                {/* <td className='roww'>{id}</td> */}
-                                <td className='roww'>{Studio}</td>
-                                <td className='roww'>{Enrollment_Status}</td>
-                                <td className='roww'>{Name}</td>
-                                <td className='roww'>{Coach}</td>
-                                <td className='roww'>{Keywords}</td>
-                                <td className='roww'>{Start_Time}</td>
-                                <td className='roww'>{End_Time}</td>
-                                <td className='roww'>{Start_Recursion}</td>
-                                <td className='roww'>{End_Recursion}</td>
-
-                            </tr>
-                        </tbody>
-                    </table> 
-
-                    <div className='next-btn'>
-                        { page > 1 ?<button className='bn' onClick={() => setPage(page - 1)}>Prev</button> : <></>}
-                        { page < page_count ? <button className='bn' onClick={() => setPage(page + 1)}> Next </button>: <></>}
+        return (
+            <div className='classesDiv'>
+                <header>
+                    <div className="website-logo">
+                        <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png"
+                             alt="logo-tfc-picture"/>
                     </div>
-                    <footer>
-                <h3>© Ansh, Armaan, Giancarlo </h3>
-            </footer>
-        </div>
-    );
+                    <div className="navbar">
+                        <nav>
+                            <ul className="menuItems">
+                                <li><a href='/main' data-item='Home'>Home</a></li>
+                                <li><a href='' data-item='Classes'>Classes</a></li>
+                                <li><a href='/studios' data-item='Studios'>Studios</a></li>
+                                <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className="user-logo">
+                        <Link to={"/" + id + "/profile/"}>
+                            <button className="user-btn">
+                                <i className="fa-solid fa-user too"></i>
+                            </button>
+                        </Link>
+                        <button id="icons" className="user-btn" onClick={() => {
+                            localStorage.removeItem('SavedToken')
+                            window.location.reload()
+                        }
+                        }>
+                            <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
+                        </button>
+                    </div>
+                </header>
+                <div className='main-title'>
+                    <span class="blue">{user}'s Subscription History</span>
+                </div>
+                <table class="container">
+                    <thead>
+                    <tr className='col-heads'>
+
+                        <th><span className='col'>User</span></th>
+                        {/* <th><span className='col'>Id</span></th> */}
+                        <th><span className='col'>Studio</span></th>
+                        <th><span className='col'>Enrollment</span></th>
+                        <th><span className='col'>Name</span></th>
+                        <th><span className='col'>Coach</span></th>
+                        <th><span className='col'>Keywords</span></th>
+                        <th><span className='col'>Start Time</span></th>
+                        <th><span className='col'>End Time</span></th>
+                        <th><span className='col'>Start Recursion</span></th>
+                        <th><span className='col'>End Recursion</span></th>
+
+                    </tr>
+                    </thead>
+                    <tbody className='last-hope'>
+                    <tr>
+                        <td className='roww'>{user}</td>
+                        <td className='roww'>{Studio}</td>
+                        <td className='roww'>{Enrollment_Status}</td>
+                        <td className='roww'>{Name}</td>
+                        <td className='roww'>{Coach}</td>
+                        <td className='roww'>{Keywords}</td>
+                        <td className='roww'>{Start_Time}</td>
+                        <td className='roww'>{End_Time}</td>
+                        <td className='roww'>{Start_Recursion}</td>
+                        <td className='roww'>{End_Recursion}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div className='next-btn'>
+                    {page > 1 ? <button className='bn' onClick={() => setPage(page - 1)}>Prev</button> : <></>}
+                    {page < page_count ?
+                        <button className='bn' onClick={() => setPage(page + 1)}> Next </button> : <></>}
+                </div>
+                <footer>
+                    <h3>© Ansh, Armaan, Giancarlo </h3>
+                </footer>
+            </div>
+        );
+    }
 }
-
-
 

@@ -131,15 +131,19 @@ export default function ViewClasses() {
                         </ul>
                     </nav>
                 </div>
+
                 <div className="user-logo">
-                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                    {/*    
-                    {/*</Link>*/}
-                    <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
-                    </button>
-                    <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
+                    <Link to={"/" + id + "/profile/"}>
+                        <button className="user-btn">
+                            <i className="fa-solid fa-user too"></i>
+                        </button>
+                    </Link>
+                    <button id="icons" className="user-btn" onClick={() => {
+                        localStorage.removeItem('SavedToken')
+                        window.location.reload()
+                    }
+                    }>
+                        <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
                     </button>
                 </div>
         </header>
