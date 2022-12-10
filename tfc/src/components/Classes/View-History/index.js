@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
+import '../../User/User-Main/style.css';
+
 
 
 

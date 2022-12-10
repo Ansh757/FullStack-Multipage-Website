@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
 import APIContext from "../../../Contexts/APIContext";
+import '../../User/User-Main/style.css';
 
 export default function ViewClasses() {
     const { id } = useParams();
@@ -189,10 +190,11 @@ export default function ViewClasses() {
                     <div className='next-btn'>
                         { page > 1 ?<button className='bn' onClick={() => setPage(page - 1)}>Prev</button> : <></>}
                         { page < page_count ? <button className='bn' onClick={() => setPage(page + 1)}> Next </button>: <></>}
-                    </div>
-
+                    </div> <br/>
+                    <span className='status-title'>Please Select a Class</span>
                     <div className='set2'>
                         <select id="status" value={classAction} onChange={e => toEnrollIn(e)}>
+                        
                          <option value="#">-----</option>
                         {classList.map((studios, index) => (
                                 <option key={index} value={studios.name} onClick={event => setClassAction(event.target.value)}>{studios.name}</option>
@@ -211,11 +213,13 @@ export default function ViewClasses() {
                             <label htmlFor={("enroll_all")}>Enroll All</label>
 
                             <input type="radio" id="drop_all" name="grp" value="drop_all" onChange={event => setOp(event)}/>
-                            <label htmlFor={("drop_all")}>Enroll</label>
-                            <button type="submit" onClick={e => enrollOrDrop(e)}></button>
-                            <span className="err-6">{formErrors["Message"]}</span>
+                            <label htmlFor={("drop_all")}>Drop All</label> <br/><br/>
+                            
                     </div>
-
+                    <div className='s-btn'>
+                        <button className='bn' type="submit" onClick={e => enrollOrDrop(e)}>Submit</button>
+                        <span className="err-6">{formErrors["Message"]}</span>
+                    </div>
                     <footer>
                 <h3>© Ansh, Armaan, Giancarlo </h3>
             </footer>
