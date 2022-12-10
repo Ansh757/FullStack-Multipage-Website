@@ -15,6 +15,7 @@ import UpdatePlan from "./components/Subscription/update-plan/update-plan";
 import EditProfile from "./components/User/EditProfile";
 import ViewPlan from './components/Subscription/view-plan/view-plan';
 import ViewClasses from './components/Classes/View-History/index'
+import AllClasses from './components/Classes/AllClasses/index'
 import Enrollment from "./components/Classes/Enrollment";
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
@@ -74,6 +75,7 @@ function App() {
           <Route path=':id/edit' element={edit}></Route>
           <Route path=':id/view-plan' element={<ViewPlan/>}></Route>
           <Route path=':id/view-classes' element={<ViewClasses/>}></Route>
+          <Route path=':id/:id/classes/all' element={<AllClasses/>}></Route>
           <Route path=':id/:studio_id/enrollment/:class_id' element={ENROLLMENT}></Route>
           </Routes>
       </BrowserRouter>
