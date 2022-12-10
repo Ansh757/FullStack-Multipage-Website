@@ -6,6 +6,7 @@ import Base from "./components/User/Main";
 import Login from "./components/User/Login";
 import Plans from "./components/Subscription/Plans"
 import ListStudios from "./components/StudiosByLocation"
+import StudioPage from "./components/StudiosByLocation/Studios/StudioPage"
 import WithRoute from "./components/User/User-Main";
 import Profile from "./components/User/Profile/index";
 import GetPlan from "./components/Subscription/getPlan/getplan";
@@ -15,7 +16,7 @@ import EditProfile from "./components/User/EditProfile";
 import ViewPlan from './components/Subscription/view-plan/view-plan';
 import ViewClasses from './components/Classes/View-History/index'
 import AllClasses from './components/Classes/AllClasses/index'
-
+import Enrollment from "./components/Classes/Enrollment";
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
 import APIContextUser, {useUserAPIContext} from "./Contexts/APIContextUser";
@@ -50,6 +51,12 @@ function App() {
         </APIContextUser.Provider>
 
     )
+
+    const ENROLLMENT = (
+        <APIContext.Provider value={useAPIContext()}>
+            <Enrollment />
+        </APIContext.Provider>
+    )
   return (
     <div>
       <BrowserRouter>
@@ -62,13 +69,14 @@ function App() {
           <Route path=':id/update-card' element={<div><UpdateCard/></div>}></Route>
           <Route path=':id/update-plan' element={<div><UpdatePlan/></div>}></Route>
           <Route path='studios' element={studios}/>
+          <Route path='studios/studio-page' element={<div><StudioPage/></div>}></Route>
           <Route path='main' element={<div><WithRoute/></div>}> </Route>
           <Route path=':id/profile' element={profile}></Route>
           <Route path=':id/edit' element={edit}></Route>
           <Route path=':id/view-plan' element={<ViewPlan/>}></Route>
           <Route path=':id/view-classes' element={<ViewClasses/>}></Route>
           <Route path=':id/:id/classes/all' element={<AllClasses/>}></Route>
-s
+          <Route path=':id/:studio_id/enrollment/:class_id' element={ENROLLMENT}></Route>
           </Routes>
       </BrowserRouter>
     </div>

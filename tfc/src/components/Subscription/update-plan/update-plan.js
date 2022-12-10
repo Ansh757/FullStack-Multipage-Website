@@ -9,7 +9,7 @@ const UpdatePlan = () => {
     const [membership_type, setPlan] = useState("")
     // const  = useRef(true)
 
-    function submitForm(e) {
+    const submitForm = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('membership_type', membership_type)
