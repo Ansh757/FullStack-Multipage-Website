@@ -64,17 +64,19 @@ export default class User_Main extends Component {
             </header>
             <div className="main-container">
                 <div className="section section-1">
-                    <h1 className=''>
-                        Welcome <br/><span> {this.state.username}</span>
-                    </h1>
+                    <div className='title-holder'>
+                        <span className='big-title'>
+                            Welcome <br/><span className='bluey'> {this.state.username}</span>
+                        </span>
+                    </div>
                     <div className='main-btn'>
                         <Link to="/main">
                             <button className='btn'>My Schedule</button>
                         </Link>
-                        <Link to="/main">
+                        <Link to={"/" + this.state.id + "/view-plan"}>
                             <button className='btn'>Plan History</button>
                         </Link>
-                        <Link to="/main">
+                        <Link to={"/main"}>
                             <button className='btn'>Classes History</button>
                         </Link>
                         <Link to={"/" + this.state.id + "/update-plan"}>
