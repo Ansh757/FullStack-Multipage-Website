@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
 
-export default function ViewClasses() {
+const ViewClasses = () =>  {
     const {id} = useParams();
     const [user, setUser] = useState("");
     const [Enrollment_Status, setEnroll] = useState("");
@@ -26,7 +26,7 @@ export default function ViewClasses() {
 
 
     useEffect(() => {
-        axios({
+        const func = async () => axios({
             method: "get",
             url: url,
             headers: {
@@ -39,10 +39,11 @@ export default function ViewClasses() {
                 setPageCount(res.data.count)
             })
 
-    }, [page])
+    }, [page]);
+
 
     function handle(res) {
-        setUser(res.results[0]["User"])
+        setUser(res.results[0]["user"])
         setEnroll(res.results[0]["Enrollment_Status"])
         setName(res.results[0]['Name'])
         setCoach(res.results[0]['Coach'])
@@ -52,7 +53,7 @@ export default function ViewClasses() {
         setEnd_Time(res.results[0]['End_Time'])
         setStart_Recursion(res.results[0]['Start_Recursion'])
         setEnd_Recursion(res.results[0]['End_Recursion'])
-
+    }
         return (
             <div className='classesDiv'>
                 <header>
@@ -134,5 +135,6 @@ export default function ViewClasses() {
             </div>
         );
     }
-}
 
+
+export default ViewClasses;

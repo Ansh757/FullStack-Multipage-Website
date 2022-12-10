@@ -44,7 +44,7 @@ export default function Schedule() {
     }, [page])
 
     function handle(res) {
-        setUser(res.results[0]["User"])
+        setUser(res.results[0]["user"])
         setEnroll(res.results[0]["Enrollment_Status"])
         setName(res.results[0]['Name'])
         setCoach(res.results[0]['Coach'])
