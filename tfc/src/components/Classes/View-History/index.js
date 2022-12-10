@@ -24,7 +24,7 @@ export default function ViewClasses() {
     const [page, setPage] = useState(1)
     const [page_count, setPageCount] = useState(1)
     
-    const url = `http://127.0.0.1:8000/classes/${id}/class/history/?page=${page}/`;
+    const url = `http://127.0.0.1:8000/classes/${id}/class/history/?limit=1&offset=${page}/`;
 
 
     useEffect(() => {
@@ -35,8 +35,9 @@ export default function ViewClasses() {
                 Authorization: localStorage.getItem('SavedToken')
             }
         })
+        // .then(res => {console.log(res.data.count)
         .then(res => {handle(res.data)
-            setPageCount(res.data.page_count)
+            setPageCount(res.data.count)
             })
 
     }, [page])

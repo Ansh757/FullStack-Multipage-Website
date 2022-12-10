@@ -7,14 +7,13 @@ import moment from 'moment';
 
 
 
-export default function ViewClasses() {
+export default function Schedule() {
     const { id } = useParams();
-    const [uid, setUid] = useState("");
-    const [description, setDescription] = useState("");
+    const [user, setUser] = useState("");
+    const [Enrollment_Status, setEnroll] = useState("");
     const [Name, setName] = useState("");
     const [Coach, setCoach] = useState("");
     const [Keywords, setKeywords] = useState("");
-    const [capacity, setCapacity] = useState("");
     const [Studio, setStudio] = useState("")
     const [Start_Time, setStart_Time] = useState("");
     const [End_Time, setEnd_Time] = useState("");
@@ -25,7 +24,7 @@ export default function ViewClasses() {
     const [page, setPage] = useState(1)
     const [page_count, setPageCount] = useState(1)
     
-    const url = `http://127.0.0.1:8000/classes/${id}/1/class/all/?limit=1&offset=${page}`;
+    const url = `http://127.0.0.1:8000/classes/${id}/class/my_schedule/?limit=1&offset=${page}/`;
 
 
     useEffect(() => {
@@ -44,17 +43,16 @@ export default function ViewClasses() {
     }, [page])
 
     function handle(res) {
-        setUid(res.results[0]['id'])
-        setDescription(res.results[0]["description"])
-        setCapacity(res.results[0]["capacity"])
-        setName(res.results[0]['name'])
-        setCoach(res.results[0]['coach'])
-        setKeywords(res.results[0]['keywords'])
-        setStudio(res.results[0]['studio'])
-        setStart_Time(res.results[0]['start_time'])
-        setEnd_Time(res.results[0]['end_time'])
-        setStart_Recursion(res.results[0]['start_recursion'])
-        setEnd_Recursion(res.results[0]['end_recursion'])
+        setUser(res.results[0]["User"])
+        setEnroll(res.results[0]["Enrollment_Status"])
+        setName(res.results[0]['Name'])
+        setCoach(res.results[0]['Coach'])
+        setKeywords(res.results[0]['Keywords'])
+        setStudio(res.results[0]['Studio'])
+        setStart_Time(res.results[0]['Start_Time'])
+        setEnd_Time(res.results[0]['End_Time'])
+        setStart_Recursion(res.results[0]['Start_Recursion'])
+        setEnd_Recursion(res.results[0]['End_Recursion'])
 
         // data.results.map(x => (
         //     console.log(data)
@@ -68,7 +66,7 @@ export default function ViewClasses() {
     
     // console.log(data)
     return(
-        <div className='all-div'>
+        <div className='sch-div'>
             <header>
             <div className="website-logo">
                     <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
@@ -96,7 +94,7 @@ export default function ViewClasses() {
                 </div>
         </header>
              <div className='main-title'>
-                <span class="blue">{Name}'s Subscription History</span>
+                <span class="blue">{user}'s Subscription History</span>
             </div> 
 
                     <table class="container">
@@ -104,12 +102,12 @@ export default function ViewClasses() {
                             <tr className='col-heads'>
 
                                 <th><span className='col'>User</span></th>
-                                <th><span className='col'>Name</span></th>
-                                <th><span className='col'>Description</span></th>
+                                {/* <th><span className='col'>Id</span></th> */}
                                 <th><span className='col'>Studio</span></th>
+                                <th><span className='col'>Enrollment</span></th>
+                                <th><span className='col'>Name</span></th>
                                 <th><span className='col'>Coach</span></th>
                                 <th><span className='col'>Keywords</span></th>
-                                <th><span className='col'>Capacity</span></th>
                                 <th><span className='col'>Start Time</span></th>
                                 <th><span className='col'>End Time</span></th>
                                 <th><span className='col'>Start Recursion</span></th>
@@ -119,20 +117,17 @@ export default function ViewClasses() {
                         </thead>
                         <tbody className='last-hope'>
                             <tr>
-                                <td className='roww'>{uid}</td>
-                                <td className='roww'>{Name}</td>
-                                <td className='roww'>{description}</td>
+                                <td className='roww'>{user}</td>
+                                {/* <td className='roww'>{id}</td> */}
                                 <td className='roww'>{Studio}</td>
+                                <td className='roww'>{Enrollment_Status}</td>
+                                <td className='roww'>{Name}</td>
                                 <td className='roww'>{Coach}</td>
                                 <td className='roww'>{Keywords}</td>
-                                <td className='roww'>{capacity}</td>
                                 <td className='roww'>{Start_Time}</td>
                                 <td className='roww'>{End_Time}</td>
                                 <td className='roww'>{Start_Recursion}</td>
                                 <td className='roww'>{End_Recursion}</td>
-
-                                {/* <td className='roww'>{id}</td> */}
-                                {/* <td className='roww'>{Enrollment_Status}</td> */}
 
                             </tr>
                         </tbody>
@@ -141,31 +136,6 @@ export default function ViewClasses() {
                     <div className='next-btn'>
                         { page > 1 ?<button className='bn' onClick={() => setPage(page - 1)}>Prev</button> : <></>}
                         { page < page_count ? <button className='bn' onClick={() => setPage(page + 1)}> Next </button>: <></>}
-                    </div>
-
-                    <div className='set2'>
-                        <input type="radio" id="e" name="fav_language" value="enroll"/>
-                        <label for={("e")}>Enroll </label>
-
-                        <input type="radio" id="d" name="fav_language" value="drop"/>
-                        <label for={("d")}>Drop</label>
-                    </div>
-
-                    <div className='f-btn'>
-                    <input type="radio" id="enroll" name="fav_language" value="enroll"/>
-                    <label for={("enroll")}>Enroll</label>
-
-                    <input type="radio" id="drop" name="fav_language" value="drop"/>
-                    <label for={("drop")}>Drop</label>
-
-                    <input type="radio" id="enroll_all" name="fav_language" value="enroll_all"/>
-                    <label for={("enroll_all")}>Enroll All</label>
-
-                    <input type="radio" id="drop_all" name="fav_language" value="drop_all"/>
-                    <label for={("drop_all")}>Enroll</label>
-                    <br/>
-
-
                     </div>
                     <footer>
                 <h3>© Ansh, Armaan, Giancarlo </h3>
