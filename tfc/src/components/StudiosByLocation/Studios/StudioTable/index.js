@@ -14,7 +14,7 @@ const StudioTable = ({ perPage, params }) => {
         setStudioID('4')
         return true;
     }; */
-    console.log(studios)
+    //console.log(studios)
     return <div>
             {studios.map((studios, index) => (
                 <h3 key={(params.page - 1) * perPage + index + 1} className="new-container">
