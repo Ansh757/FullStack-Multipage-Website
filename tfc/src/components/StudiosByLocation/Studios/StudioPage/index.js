@@ -4,6 +4,7 @@ import '../StudioPage/style.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import APIContext from "../../../../Contexts/APIContext";
+import StudioClassSchedule from "./StudioClassSchedule";
 
 function StudioPage(props) {
     const location = useLocation()
@@ -21,7 +22,7 @@ function StudioPage(props) {
     const [params2, setParams2] = useState({page2: 0});
 
     const { studios } = useContext(APIContext);
-    console.log(studios)
+    //console.log(studios)
     useEffect(() => {
         //console.log(id)
         const apiUrl1 = `http://localhost:8000/studios/${id}/`;
@@ -124,10 +125,12 @@ function StudioPage(props) {
                 </button>
             </div>
         </div>
-            <footer>
+            {/*<footer>
                 <h3 style={{color:"white"}}>© Ansh, Armaan, Giancarlo </h3>
-            </footer>      
+            </footer> */}     
         </div>
+        <StudioClassSchedule id={id}>
+        </StudioClassSchedule>
 
         </>
     )

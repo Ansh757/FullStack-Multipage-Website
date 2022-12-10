@@ -1,0 +1,59 @@
+#filters {
+    width: 100vw;
+    margin-top: 0px;
+    height: 80vh;
+    background-color: rgb(164, 167, 75);
+}
+
+
+.search-class-name {
+    display: inline-block;
+    position: absolute;
+    left: 2%;
+    height: 3.5vb;
+    width: 20%;
+    margin: 5px;
+    padding: 5px;
+    border: 5 px solid black;
+    border-radius: 10px;
+    font-size: 2vb;
+}
+.search-coach-names {
+    display: inline-block;
+    position: absolute;
+    left: 26%;
+    height: 3.5vb;
+    width: 20%;
+    margin: 5px;
+    padding: 5px;
+    border: 5 px solid black;
+    border-radius: 10px;
+    font-size: 2vb;
+}
+.search-date {
+    display: inline-block;
+    position: absolute;
+    left: 52%;
+    height: 3.5vb;
+    width: 20%;
+    margin: 5px;
+    padding: 5px;
+    border: 5 px solid black;
+    border-radius: 10px;
+    font-size: 2vb;
+}
+
+#class-schedule {
+    text-align: center;
+    background-color: rgb(15, 182, 15);
+    font-size: 5em;
+}
+
+#bruh {
+    display: inline-block;
+    position: relative;
+    top: 20%;
+    left: 40%;
+    font-size: 20px;
+    font-style: Courier;
+}
