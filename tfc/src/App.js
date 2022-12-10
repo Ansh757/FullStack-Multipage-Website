@@ -6,6 +6,7 @@ import Base from "./components/User/Main";
 import Login from "./components/User/Login";
 import Plans from "./components/Subscription/Plans"
 import ListStudios from "./components/StudiosByLocation"
+import StudioPage from "./components/StudiosByLocation/Studios/StudioPage"
 import WithRoute from "./components/User/User-Main";
 import Profile from "./components/User/Profile/index";
 import GetPlan from "./components/Subscription/getPlan/getplan";
@@ -61,6 +62,7 @@ function App() {
           <Route path=':id/update-card' element={<div><UpdateCard/></div>}></Route>
           <Route path=':id/update-plan' element={<div><UpdatePlan/></div>}></Route>
           <Route path='studios' element={studios}/>
+          <Route path='studios/studio-page' element={<div><StudioPage/></div>}></Route>
           <Route path='main' element={<div><WithRoute/></div>}> </Route>
           <Route path=':id/profile' element={profile}></Route>
           <Route path=':id/edit' element={edit}></Route>

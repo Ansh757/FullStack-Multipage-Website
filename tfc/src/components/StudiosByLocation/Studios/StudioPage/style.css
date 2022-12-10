@@ -1,0 +1,96 @@
+.studio-page {
+    display:flex;
+    font-size: 20px;
+    background-color: rgb(218, 57, 13);
+    height: 70%;
+}
+
+
+.amen-list-item {
+    display: inline-block;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-color: rgb(215, 102, 42);
+    border: 2px solid rgb(168, 124, 124);
+}
+
+.studio-page-info {
+    display: inline-block;
+    font-size: 20px;
+    width:50%;
+    background-color: rgb(218, 57, 13);
+    height: 100%;
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.studio-page-images {
+    font-size: 20px;
+    width:50%;
+    background-color: rgb(222, 74, 33);
+    height: 100%;
+}
+
+.st-page-website-logo {
+    width: 100px;
+    height: 100px;
+    margin: 15px 0 0 45px;
+    display: flex;
+    justify-content: left;
+    position: relative;
+
+}
+.st-page-user-logo .st-page-user-btn {
+    border: none;
+    border-radius: 50%;
+    height: 30%;
+    /*margin-right: 10px;*/
+    outline: none;
+    width: 45px;
+}
+.st-page-user-btn {
+    background: red;
+    cursor: pointer;
+    margin-top: 2px;
+    left: -10%;
+}
+.st-page-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: -2%;
+    /*min-height: 100vh;*/
+
+}
+
+#studio-image {
+    height: 80%;
+    width: 90%;
+}
+
+.page-btn-st {
+    position: relative;
+    font-size: 80%;
+    width: 6em;
+    height: 3em;
+    background-color: #a58f89;
+    margin: 10px;
+    padding: 5px;
+}
+
+.enroll-button{
+    position: relative;
+    font-size: 1em;
+    width: 4em;
+    height: 2em;
+    background-color: #a58f89;
+    margin-top: 10px;
+    padding: 5px;
+}
