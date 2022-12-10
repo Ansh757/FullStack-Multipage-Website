@@ -21,8 +21,8 @@ import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
 import APIContextUser, {useUserAPIContext} from "./Contexts/APIContextUser";
 import Register from "./components/User/Register";
-import SelectButton from "./components/Classes/Enrollment/SelectButton";
 import Schedule from './components/Classes/ViewSchedule/index'
+import Logout from './components/User/Logout'
 function App() {
 
   const studios = (
@@ -82,6 +82,7 @@ function App() {
                         <Route path=':id/classes/schedule' element={<Schedule/>}></Route>
                         <Route path=':id/studios/studio-page/:sid/classes/all/' element={<AllClasses/>}></Route>
                         <Route path=':id/:studio_id/enrollment/:class_id' element={ENROLLMENT}></Route>
+                        <Route path='/logout'> </Route>
                     </Routes>
             </BrowserRouter>
     </div>

@@ -53,7 +53,7 @@ const Enrollment = () => {
     return (
         <APIContext.Provider>
             <div className='update-card'>
-                <div className="row">
+                <div className="row-99">
                     <header>
                         <div className="website-logo">
                             <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>

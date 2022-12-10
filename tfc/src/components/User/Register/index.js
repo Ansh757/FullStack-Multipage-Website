@@ -1,6 +1,6 @@
-import React, {Component, useState, useEffect, useRef, useContext} from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link } from "react-router-dom";
-import './style.css';
+import '../Register/style.css';
 import axios from 'axios';
 // Reference: https://codepen.io/rickyeckhardt/pen/oNXeoZp
 import { useNavigate } from "react-router-dom"
@@ -101,92 +101,71 @@ const Index = () => {
 
     function handleImage(e){
         setAvatar(e.target.files[0])
-        // let val = e.target.files[0]
-        // const obj = {
-        //     "avatar": val
-        // }
-        // setData(obj)
-        // console.log("OBJ IS", data.avatar)
-    }
-
-    function handleChange(e) {
-        let _id = e.target.id
-        const obj = {
-            [_id]: e.target.value
-        }
-        // setData(obj)
     }
 
     return (
         <APIContextUser.Provider>
-    <div className='register'>
-        <div className="row">
-  <section className="section">
-    <header>
-      <h3>Register</h3>
-      <h4>Please fill your information below</h4>
-    </header>
-    <main>
-      <form onSubmit={(e) => submitForm(e)}>
-        <div  className="form-item box-item">
-          <input id="username" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} data-required/>
-          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
-            <span>{formErrors['username']}</span>
-        </div>
-        <div className="form-item box-item">
-          <input id="first_name" type="text" onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" value={first_name} data-required/>
-          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
-            <span>{formErrors['first_name']}</span>
-        </div>
+            <div className='register'>
+                <div className="row-99">
+          <section className="section-99">
+            <header>
+              <h3>Register</h3>
+              <h4>Please fill your information below</h4>
+            </header>
+            <main>
+              <form onSubmit={(e) => submitForm(e)}>
+                <div  className="form-item-99 box-item-99">
+                  <input id="username" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} data-required/>
+                    <span>{formErrors['username']}</span>
+                </div>
+                <div className="form-item-99 box-item-99">
+                  <input id="first_name" type="text" onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" value={first_name} data-required/>
+                    <span>{formErrors['first_name']}</span>
+                </div>
 
-        <div className="form-item box-item">
-          <input id="last_name" type="text" name="text" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" value={last_name} data-required/>
-          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
-            <span>{formErrors['last_name']}</span>
-        </div>
-        <div className="form-item box-item">
-          <input id="email" type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} data-email data-required/>
-          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
-          {/*<small className="errorEmail"><i className="fa fa-asterisk" aria-hidden="true"></i> email is not valid</small>*/}
-            <span>{formErrors['email']}</span>
-        </div>
-          <div className="form-item box-item">
-              <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password"
-                     data-required/>
-              {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
-              <span>{formErrors['password']}</span>
-          </div>
+                <div className="form-item-99 box-item-99">
+                  <input id="last_name" type="text" name="text" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" value={last_name} data-required/>
+                    <span>{formErrors['last_name']}</span>
+                </div>
+                <div className="form-item-99 box-item-99">
+                  <input id="email" type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} data-email data-required/>
+                    <span>{formErrors['email']}</span>
+                </div>
+                  <div className="form-item-99 box-item-99">
+                      <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password"
+                             data-required/>
+                      <span>{formErrors['password']}</span>
+                  </div>
 
-        <div className="form-item box-item">
-          <input id="repeat_password" type="password"  placeholder="Repeat Password" onChange={(e) => setRepeatPassword(e.target.value)} value={repeat_password} data-required/>
-            <span>{formErrors['repeat_password']}</span>
-        </div>
+                <div className="form-item-99 box-item-99">
+                  <input id="repeat_password" type="password"  placeholder="Repeat Password" onChange={(e) => setRepeatPassword(e.target.value)} value={repeat_password} data-required/>
+                    <span>{formErrors['repeat_password']}</span>
+                </div>
 
 
-        <div className="form-item box-item">
-          <input id="phone_number" type="number" placeholder="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} value={phone_number} data-required/>
-          {/*<small className="errorReq"><i className="fa fa-asterisk" aria-hidden="true"></i> required field</small>*/}
-            <span>{formErrors['phone_number']}</span>
-        </div>
+                <div className="form-item-99 box-item-99">
+                  <input id="phone_number" type="number" placeholder="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} value={phone_number} data-required/>
+                    <span>{formErrors['phone_number']}</span>
+                </div>
 
-          <div className="form-item box-item">
-              <label>Choose Your Avatar</label><br></br><br></br>
-              <input id="avatar" type="file" placeholder="Avatar" onChange={handleImage || null}/>
-              <span>{formErrors['avatar']}</span>
+                  <div className="form-item-99 box-item-99">
+                      <label>Choose Your Avatar</label><br></br><br></br>
+                      <input id="avatar" type="file" placeholder="Avatar" onChange={handleImage || null}/>
+                      <span>{formErrors['avatar']}</span>
 
-          </div>
-        <div className="form-item">
-          <button className='submit'>Submit</button>
+                  </div>
+                <div className="form-item-99">
+                  <button className='submit-99'>Submit</button>
+                </div>
+              </form>
+            </main>
+            <footer>
+              <p>Already have an account? <Link to="/login">Sign In</Link></p>
+            </footer>
+            <i class="wave-99"></i>
+          </section>
         </div>
-      </form>
-    </main>
-    <footer>
-      <p>Already have an account? <Link to="/login">Sign In</Link></p>
-    </footer>
-    <i class="wave"></i>
-  </section>
-</div>
-    </div>
+            </div>
         </APIContextUser.Provider>
     )
 }

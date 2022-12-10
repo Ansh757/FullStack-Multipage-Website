@@ -12,20 +12,20 @@ const Base = () => {
             <header>
                 <div className="buttons-div">
 
-                    <button className="btn" onClick={() => navigate('/register')}>
+                    <button className="btn-11" onClick={() => navigate('/register')}>
                         <span className="text"> SIGN UP </span>
                     </button>
-                    <button className="btn" onClick={() => navigate('/login')}>
+                    <button className="btn-11" onClick={() => navigate('/login')}>
                         <span className="text"> SIGN IN </span>
                     </button>
                 </div>
             </header>
 
             <div className="main-page">
-                    <div className="container">
+                    <div className="container-4">
                     <div className="title-div">
-                        <h1 className="title"> <span className="welcome"> Welcome to </span> </h1>
-                        <h1 className="title"> Toronto Fitness Club </h1>
+                        <h1 className="title-2"> <span className="welcome"> Welcome to </span> </h1>
+                        <h1 className="title-2"> Toronto Fitness Club </h1>
                     </div>
                 </div>
 
