@@ -147,17 +147,17 @@ const Studios = () => {
             var classes = '-'
             var coaches = '-'
             if (nameFilter.length > 0) {
-                names = nameFilter.join('-').replace(" ","_");
+                names = nameFilter.join('-').replace(/ /g,"_");
             }
             if (amenFilter.length > 0) {
 
-                amen = amenFilter.join('-').replace(" ","_");
+                amen = amenFilter.join('-').replace(/ /g,"_");
             }
             if (classFilter.length > 0) {
-                classes = classFilter.join('-').replace(" ","_");
+                classes = classFilter.join('-').replace(/ /g,"_");
             }
             if (coachFilter.length > 0) {
-                coaches = coachFilter.join('-').replace(" ","_");
+                coaches = coachFilter.join('-').replace(/ /g,"_");
             }
 
             //const names = nameFilter.join('-');
