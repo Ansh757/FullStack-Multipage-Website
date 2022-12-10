@@ -28,7 +28,7 @@ function App() {
   const studios = (
     <APIContext.Provider value={useAPIContext()}>
       <APIContextTwo.Provider value={useAPIContextTwo()}>
-        <ListStudios />
+        <ListStudios/>
       </APIContextTwo.Provider>
     </APIContext.Provider>
   )
@@ -60,34 +60,30 @@ function App() {
         </APIContext.Provider>
     )
 
-    const list_of_studios = (
-        <APIContext.Provider value={useAPIContext()}>
-            <SelectButton />
-        </APIContext.Provider>
-    )
+
   return (
     <div>
-      <BrowserRouter>
-          <Routes>
-          <Route path='/' element={<div><Base/></div>}/>
-          <Route path='register' element={register}/>
-          <Route path='login' element={<div><Login/></div>}/>
-          <Route path='plans' element={<div><Plans/></div>}/>
-          <Route path='get-plan' element={<GetPlan/>}></Route>
-          <Route path=':id/update-card' element={<div><UpdateCard/></div>}></Route>
-          <Route path=':id/update-plan' element={<div><UpdatePlan/></div>}></Route>
-          <Route path='studios' element={studios}/>
-          <Route path='studios/studio-page' element={<div><StudioPage/></div>}></Route>
-          <Route path='main' element={<div><WithRoute/></div>}> </Route>
-          <Route path=':id/profile' element={profile}></Route>
-          <Route path=':id/edit' element={edit}></Route>
-          <Route path=':id/view-plan' element={<ViewPlan/>}></Route>
-          <Route path=':id/view-classes' element={<ViewClasses/>}></Route>
-          <Route path=':id/classes/schedule' element={<Schedule/>}></Route>
-          <Route path=':id/:id/classes/all' element={<AllClasses/>}></Route>
-          <Route path=':id/:studio_id/enrollment/:class_id' element={ENROLLMENT}></Route>
-          </Routes>
-      </BrowserRouter>
+            <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<div><Base/></div>}/>
+                        <Route path='register' element={register}/>
+                        <Route path='login' element={<div><Login/></div>}/>
+                        <Route path='plans' element={<div><Plans/></div>}/>
+                        <Route path='get-plan' element={<GetPlan/>}></Route>
+                        <Route path=':id/update-card' element={<div><UpdateCard/></div>}></Route>
+                        <Route path=':id/update-plan' element={<div><UpdatePlan/></div>}></Route>
+                        <Route path=':uid/studios' element={studios}/>
+                        <Route path=':uid/studios/studio-page/:sid' element={<div><StudioPage/></div>}></Route>
+                        <Route path='main' element={<div><WithRoute/></div>}> </Route>
+                        <Route path=':id/profile' element={profile}></Route>
+                        <Route path=':id/edit' element={edit}></Route>
+                        <Route path=':id/view-plan' element={<ViewPlan/>}></Route>
+                        <Route path=':id/view-classes' element={<ViewClasses/>}></Route>
+                        <Route path=':id/classes/schedule' element={<Schedule/>}></Route>
+                        <Route path=':id/studios/studio-page/:sid/classes/all/' element={<AllClasses/>}></Route>
+                        <Route path=':id/:studio_id/enrollment/:class_id' element={ENROLLMENT}></Route>
+                    </Routes>
+            </BrowserRouter>
     </div>
   );
 }
