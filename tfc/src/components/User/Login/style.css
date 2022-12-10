@@ -109,11 +109,11 @@ button.ghost {
     margin: 8px 0;
     width: 100%;
 }
-.login #container {
+.login #container.container {
     display: flex;
     position: relative;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
+    align-items: right;
     top: 8%;
     /* overflow: hidden; */
     width: 70%;
@@ -257,7 +257,9 @@ button.ghost {
     width: 40px;
 }
 
-.signup-container {
+.login .signup-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 73.9%;
 }
