@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {useLocation, useParams, Link} from "react-router-dom";
 import '../StudioPage/style.css';
 import axios from 'axios';
