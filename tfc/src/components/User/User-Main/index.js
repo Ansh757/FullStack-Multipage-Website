@@ -45,7 +45,7 @@ const User_Main = () => {
                             <ul className="menuItems">
                                 <li><a href='/main' data-item='Home'>Home</a></li>
                                 <li><a href='#' data-item='Classes'>Classes</a></li>
-                                <li><a href='/studios' data-item='Studios'>Studios</a></li>
+                                <li><a href={'/' + id + '/studios'} data-item='Studios'>Studios</a></li>
                                 <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                             </ul>
                         </nav>

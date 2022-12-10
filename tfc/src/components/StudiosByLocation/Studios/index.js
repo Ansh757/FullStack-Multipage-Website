@@ -5,7 +5,7 @@ import StudioMap from "./StudioMap";
 import APIContext from "../../../Contexts/APIContext";
 import APIContextTwo from "../../../Contexts/APIContextTwo";
 import axios from 'axios';
-import './style.css';
+import '../Studios/style.css';
 import React from 'react';
 
 const Studios = () => {

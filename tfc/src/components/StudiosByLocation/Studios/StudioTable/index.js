@@ -1,10 +1,11 @@
 import {useContext, useState} from "react";
 import APIContext from "../../../../Contexts/APIContext";
-import './style.css';
-import {Link, useNavigate, useLocation} from "react-router-dom";
+import '../StudioTable/style.css';
+import {Link, useNavigate, useLocation, useParams} from "react-router-dom";
 
 const StudioTable = ({ perPage, params }) => {
     const { studios } = useContext(APIContext);
+    const { uid } = useParams();
     //const { setStudioID } = useContext(APIContextID);
 
     /*const setID = (e) => {
@@ -19,7 +20,7 @@ const StudioTable = ({ perPage, params }) => {
                 <h3 key={(params.page - 1) * perPage + index + 1} className="new-container">
                     <p className="studio-info-text">
                         { (params.page - 1) * perPage + index + 1 }
-                        .  <Link to="studio-page" state={{ id: studios.id }}
+                        .  <Link to={"/" + uid + "/studios/" + "studio-page/" + studios.id} state={{ id: studios.id }}
                             >
                                 { studios.name }
                             </Link>
