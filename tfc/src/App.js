@@ -21,6 +21,7 @@ import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
 import APIContextUser, {useUserAPIContext} from "./Contexts/APIContextUser";
 import Register from "./components/User/Register";
+import SelectButton from "./components/Classes/Enrollment/SelectButton";
 function App() {
 
   const studios = (
@@ -55,6 +56,12 @@ function App() {
     const ENROLLMENT = (
         <APIContext.Provider value={useAPIContext()}>
             <Enrollment />
+        </APIContext.Provider>
+    )
+
+    const list_of_studios = (
+        <APIContext.Provider value={useAPIContext()}>
+            <SelectButton />
         </APIContext.Provider>
     )
   return (
