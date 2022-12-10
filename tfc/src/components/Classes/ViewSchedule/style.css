@@ -1,4 +1,4 @@
-.all-div {
+.sch-div {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -18,7 +18,7 @@
  
   }
  
-  .all-div  .container {
+  .sch-div  .container {
      /* margin-top: 5%; */
      text-align: left;
      width: 90%;
@@ -26,7 +26,7 @@
       padding: 0 0 10% 0;
  }
  
- .all-div > header {
+ .sch-div > header {
      display: flex;
      flex-direction: row;
      position: relative;
@@ -37,7 +37,7 @@
      /* margin-top: 10%; */
  }
  
- .all-div footer {
+ .sch-div footer {
      display: flex;
      flex-direction: row;
      position: relative;
@@ -47,12 +47,12 @@
      background-color: rgb(0, 0, 0);
  }
  
- .all-div .navbar a {
+ .sch-div .navbar a {
      color: white;
      font-size: 40%;
  }
  
- .all-div .website-logo {
+ .sch-div .website-logo {
      display: flex;
      flex-direction: row;
      justify-content: left;
@@ -60,7 +60,7 @@
      width: 20%;
      margin-top: 1.5%;
  }
- .all-div header .user-btn {
+ .sch-div header .user-btn {
      border: none;
      width: 4rem;
      border-radius: 50%;
@@ -70,19 +70,19 @@
      margin-top: 15%;
  }
  
- /* .all-div .user-btn {
+ /* .sch-div .user-btn {
      width: 80%;
      background: red;
      cursor: pointer;
      margin-top: 40%;
  } */
  
- .all-div .fa-user, .fa-right-from-bracket {
+ .sch-div .fa-user, .fa-right-from-bracket {
      color: rgb(255, 255, 255);
      font-size: 100%;
  }
  
- .all-div .user-logo {
+ .sch-div .user-logo {
      display: flex;
      flex-direction: row;
      justify-content: center;
@@ -93,7 +93,7 @@
  
  }
  
- .all-div .main-btn {
+ .sch-div .main-btn {
      display: flex;
      flex-direction: row;
      margin-bottom: -4%;
@@ -101,18 +101,18 @@
      width: 100%;
  }
  
- .all-div .main-btn .btn {
+ .sch-div .main-btn .btn {
      font-size: 2rem;
  }
  
- .all-div footer h3 {
+ .sch-div footer h3 {
      color: white;
      margin: 2%;
      font-size: 40%;
  
  }
  
- .all-div .main-title{
+ .sch-div .main-title{
      display: flex;
      flex-direction: initial;
      margin-top: 4%;
@@ -122,40 +122,19 @@
  }
  
  
-  .all-div .container .last-hope{
+  .sch-div .container .last-hope{
     /* display: flex; 
      flex-direction: row;  */
      gap: 3rem;
      width: 80%;
   }
  
-  /* .all-div .blue{
+  /* .sch-div .blue{
      margin-top: 10%;
  
   } */
-
-  .all-div .f-btn{
-    display: flex;
-    font-size: 3rem;
-    color: white;
-    font-size: 100%;
-    text-transform: uppercase;
-    font-weight: bold;
-    gap: 2rem;
-    margin-bottom: 2%;
-  }
-
-  .all-div .set2{
-    display: flex;
-    font-size: 3rem;
-    color: white;
-    font-size: 100%;
-    text-transform: uppercase;
-    font-weight: bold;
-    gap: 2rem;
-  }
   
-  .all-div .col {
+  .sch-div .col {
     width: 100%; 
     font-size: 2rem; 
     font-weight: bold;
@@ -174,7 +153,7 @@
      text-transform: uppercase;
  }
   
-  .all-div  .container th h1 {
+  .sch-div  .container th h1 {
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
@@ -183,7 +162,7 @@
     
   }
  
-  .all-div .container .roww{
+  .sch-div .container .roww{
      column-gap: 3rem;
      width: 10%;
      font-size: 35%;
@@ -191,7 +170,7 @@
 
   }
   
-  .all-div .container td {
+  .sch-div .container td {
         font-weight: normal;
         font-size: 50%;
  
@@ -200,7 +179,7 @@
               box-shadow: 0 2px 2px -2px #0E1119;
   }
 
-  .all-div .container .col-heads {
+  .sch-div .container .col-heads {
     width: 100%;
     text-align: center;
 
@@ -213,7 +192,7 @@
 
 }
 
-/* .all-div .container td {
+/* .sch-div .container td {
     display: table;
     /* flex-direction: column;
     position: relative;
@@ -221,35 +200,35 @@
 
 } */
   
-  .all-div  .container td, .container th {
+  .sch-div  .container td, .container th {
         padding-bottom: 2%;
         padding-top: 2%;
         padding-left:0%;  
         text-align: center;
   }
   
-  .all-div  .container tr:nth-child(odd) {
+  .sch-div  .container tr:nth-child(odd) {
         background-color: #323C50;
   }
   
-  .all-div  .container tr:nth-child(even) {
+  .sch-div  .container tr:nth-child(even) {
         background-color: #2C3446;
   }
   
-  .all-div  .container th {
+  .sch-div  .container th {
         background-color: #1F2739;
   }
   
-  .all-div  .container td:first-child { color: #FB667A; }
+  .sch-div  .container td:first-child { color: #FB667A; }
   
-  .all-div  .container tr:hover {
+  .sch-div  .container tr:hover {
      background-color: #464A52;
   -webkit-box-shadow: 0 6px 6px -6px #0E1119;
          -moz-box-shadow: 0 6px 6px -6px #0E1119;
               box-shadow: 0 6px 6px -6px #0E1119;
   }
   
-  .all-div  .container td:hover {
+  .sch-div  .container td:hover {
     background-color: #FFF842;
     color: #403E10;
     font-weight: bold;
@@ -264,11 +243,11 @@
   }
   
   @media (max-width: 800px) {
-     .all-div  .container td:nth-child(4),
-     .all-div .container th:nth-child(4) { display: none; }
+     .sch-div  .container td:nth-child(4),
+     .sch-div .container th:nth-child(4) { display: none; }
   }
  
-.all-div .next-btn{
+.sch-div .next-btn{
      display: flex; 
      flex-direction: row ;
      gap: 3rem;  
@@ -278,7 +257,7 @@
   }
  
  
- .all-div .bn {
+ .sch-div .bn {
      padding: 0.6% 2%;
      border: none;
      outline: none;
@@ -295,7 +274,7 @@
      height: 100%;
   }
   
- .all-div .bn:before {
+ .sch-div .bn:before {
       content: "";
       background: linear-gradient(
               45deg,
@@ -334,7 +313,7 @@
           background-position: 0 0;
       }
   } 
- .all-div .bn:after {
+ .sch-div .bn:after {
       z-index: -1;
       content: "";
       position: absolute;
