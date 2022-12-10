@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+* {
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Montserrat',sans-serif;
+}
+.update-card {
+    /*align-items: center;*/
+    font-size: 14px;
+    font-weight: 400;
+    height: 100vh;
+    justify-items: center;
+    overflow-x: hidden;
+    width: 100vw;
+    /* background-color: rgb(210, 30, 30); */
+    text-align: center;
+    /*z-index: 1;*/
+    /*background-color: #ffa400;*/
+}
+
+.update-card > header {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    text-align: right;
+    background-color: rgb(0, 0, 0);
+    padding: 1.5%;
+    gap: 10%;
+}
+
+.update-card footer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    padding: 3%;
+    bottom: 0%;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+}
+
+.update-card .navbar a {
+    color: white;
+    font-size: 23px;
+}
+
+.update-card .website-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    position: relative;
+    width: 15%;
+    height: 0.3%;
+}
+.update-card header .user-btn {
+    border: none;
+    width: 4rem;
+    border-radius: 50%;
+    height: 30%;
+    /*margin-right: 10px;*/
+    outline: none;
+}
+
+/* .update-card .user-btn {
+    width: 80%;
+    background: red;
+    cursor: pointer;
+    margin-top: 40%;
+} */
+
+.update-card .fa-user, .fa-right-from-bracket {
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+}
+
+.update-card .user-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: -2%;
+    gap: 2em;
+
+}
+
+.update-card .main-btn {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    gap: 3em;
+    width: 100%;
+}
+
+.update-card .main-btn .btn {
+    font-size: 2rem;
+}
+
+.update-card .user-btn:hover {
+    /*user-focus-pointer: ;*/
+}
+
+.update-card footer h3 {
+    color: white;
+    margin: 0;
+
+}
