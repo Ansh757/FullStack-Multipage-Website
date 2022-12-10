@@ -25,7 +25,7 @@ const GetPlan = () => {
     }
 
 
-    function submitForm(e) {
+    const submitForm = async(e) => {
         let obj1 = {
             membership_type: data.membership,
         }

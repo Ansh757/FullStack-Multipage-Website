@@ -3,7 +3,7 @@
    flex-direction: column;
    width: 100vw;
    height: 100vh;
-   font-family: 'Open Sans', sans-serif;
+   /*font-family: 'Open Sans', sans-serif;*/
    line-height: 100%;
    color:#A7A1AE;
    background-image: radial-gradient(circle, #000000, #35171c, #66242a, #98352f, #c84d2b, #cf5124, #d5561a, #da5c0b, #be480d, #a1350c, #85230a, #691203);
