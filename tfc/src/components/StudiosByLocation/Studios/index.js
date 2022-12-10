@@ -1,5 +1,5 @@
 //import {useContext, useEffect} from "react";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useState, useReducer} from "react";
 import StudioTable from "./StudioTable";
 import StudioMap from "./StudioMap";
 import APIContext from "../../../Contexts/APIContext";
@@ -7,7 +7,6 @@ import APIContextTwo from "../../../Contexts/APIContextTwo";
 import axios from 'axios';
 import './style.css';
 import React from 'react';
-
 
 const Studios = () => {
     const perPage = 5;
@@ -17,9 +16,10 @@ const Studios = () => {
     const [params, setParams] = useState({page: 1, lat: "500.00", long: "0.00"});
     const { setStudios } = useContext(APIContext);
     const { studios } = useContext(APIContext);
-    const [studiosFixed, setStudiosFixed] = useState([{name: "empty"}]);
-    const [ids, setIds] = useState("-");
+    //const [studiosFixed, setStudiosFixed] = useState([{name: "empty"}]);
+    const [idLen, setIdLen] = useState("100000");
 
+    const [filterToggle, setFilterToggle] = useState(false);
     const [messageName, setMessageName] = useState('');
     const [nameFilter, setNameFilter] = useState([]);
     const handleChangeName = event => {
@@ -45,14 +45,22 @@ const Studios = () => {
     };
 
     const handleClickAmen = event => {
+        if (filterToggle == false) {
+            setFilterToggle(true);
+        } else {
+            setFilterToggle(false);
+        }
         //event.preventDefault();
         /*setParams({
             page: 1,
             lat: latitude,
             long: longitude
         })*/
+        setNameFilter([])
+        setCoachFilter([])
         if (messageAmen.length > 0) {
             setAmenFilter(amenFilter.concat([messageAmen]))
+            setMessageAmen('') 
         }
         if (messageName.length > 0) {
             //setNameFilter(nameFilter.concat([messageName]))
@@ -60,7 +68,8 @@ const Studios = () => {
         }
         if (messageClass.length > 0) {
             //setClassFilter(classFilter.concat([messageClass]))
-            setClassFilter([messageClass])
+            setClassFilter(classFilter.concat([messageClass]))
+            setMessageClass('') 
         }
         if (messageCoach.length > 0) {
             //setCoachFilter(coachFilter.concat([messageCoach]))
@@ -88,84 +97,124 @@ const Studios = () => {
           }
     }
 
-    const deleteFilter = event => {
+    const deleteFilterAmen = event => {
         var temp = JSON.parse(JSON.stringify(amenFilter));
         var index = temp.indexOf(event.target.value);
         if (index > -1) { 
             temp.splice(index, 1); 
         }
         setAmenFilter(temp);
-        //console.log(amenFilter);
         //setAmenFilter(temp);
-        //console.log(amenFilter)
+
         //if (amenFilter.length == 0) {
          //   setAmenFilter([''])
-            //console.log(amenFilter)
+
         //
-        //console.log(amenFilter);
+
     }
 
+    const deleteFilterClass = event => {
+        var temp = JSON.parse(JSON.stringify(classFilter));
+        var index = temp.indexOf(event.target.value);
+        if (index > -1) { 
+            temp.splice(index, 1); 
+        }
+        setClassFilter(temp);
+        //setAmenFilter(temp);
 
+        //if (amenFilter.length == 0) {
+         //   setAmenFilter([''])
+
+        //
+
+    }
+
+    const deleteSearchName = event => {
+        setNameFilter(['']);
+        setMessageName('')
+    }
+    const deleteSearchCoach = event => {
+        setCoachFilter(['']);
+        setMessageCoach('')
+    }
     useEffect(() => {
-        //console.log(amenFilter)
-        var names = '-'
-        var amen = '-'
-        var classes = '-'
-        var coaches = '-'
-        if (nameFilter.length > 0) {
-            names = nameFilter.join('-');
-        }
-        if (amenFilter.length > 0) {
-            //console.log(amenFilter)
-            amen = amenFilter.join('-');
-        }
-        if (classFilter.length > 0) {
-            classes = classFilter.join('-');
-        }
-        if (coachFilter.length > 0) {
-            coaches = coachFilter.join('-');
-        }
-        console.log(nameFilter)
-        //const names = nameFilter.join('-');
-        //const amen = amenFilter.join('-');
-        const apiUrl1 = `http://localhost:8000/studios/filter/${names}/${amen}/${classes}/${coaches}/`;
-        axios.get(apiUrl1).then((res) => {
-            const {data} = res;
-            //setStudios(data.results);
-            var idArray = data.map(function (el) { return el.id; });
-            if (idArray.length == 0) {
-                setIds("1")
-            } else {
-                setIds(idArray.join('-'));
+        const lat = params.lat
+        var ids = "10000"
+        if (lat != '500.00') {
+            //console.log("ds")
+            var names = '-'
+            var amen = '-'
+            var classes = '-'
+            var coaches = '-'
+            if (nameFilter.length > 0) {
+                names = nameFilter.join('-');
             }
-            
+            if (amenFilter.length > 0) {
+
+                amen = amenFilter.join('-');
+            }
+            if (classFilter.length > 0) {
+                classes = classFilter.join('-');
+            }
+            if (coachFilter.length > 0) {
+                coaches = coachFilter.join('-');
+            }
+
+            //const names = nameFilter.join('-');
+            //const amen = amenFilter.join('-');
+            const apiUrl1 = `http://localhost:8000/studios/filter/${names}/${amen}/${classes}/${coaches}/`;
+            axios.get(apiUrl1).then((res) => {
+                const {data} = res;
+                //console.log(data)
+                var idArray = data.map(function (el) { return el.id; });
+                //console.log(idArray)
+                if (idArray.length == 0) {
+                    ids = "10000"
+                    idArray[0] = 'hi'
+                } else {
+                    ids = idArray.join('-')
+                   // setIds(90)
+                    //setIds(idArray.join('-'));
+                    //console.log(ids);
+                }
+                //console.log(Math.ceil(idArray.length /  5))
+                setIdLen(Math.ceil(idArray.length /  5))
+                const { page, lat, long } = params;
+                const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/${ids}/list?page=${page}`;
+                    axios.get(apiUrl1).then((res) => {
+                        const {data} = res;
+                        setStudios(data.results);
+                        //alert(studios.id);
+                        //setStudiosFixed(data.results);
+                    });
+                
+                //setNameFilter([])
+                //setClassFilter([])
+                //setCoachFilter([])
             //var newArray = studiosFixed.filter(function (el) {
              //   return idArray.includes(el.id) 
             //});
-            //console.log(studiosFixed)
-            //console.log(newArray)
             //setStudios(newArray);
-
-        });
+            });
+        }
         
-    }, [nameFilter, amenFilter, classFilter, coachFilter])
+    }, [filterToggle, params])
 
-    useEffect(() => {
+    /*useEffect(() => {
         
         const { page, lat, long } = params;
-            if (lat != '500.00') {
+            if (lat === '500.00') {
             //fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=${perPage}&search=${search}`)
-            const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/${ids}/list?page=${page}`;
+            const apiUrl1 = `http://localhost:8000/studios/${lat}00/${long}00/10000/list?page=${page}`;
                 axios.get(apiUrl1).then((res) => {
                     const {data} = res;
                     setStudios(data.results);
-                    setStudiosFixed(data.results);
+                    //setStudiosFixed(data.results);
                 });
-                //console.log(nameFilter);
-                //console.log(studios)
+ 
         }
-    }, [params, ids])
-
+    }, [params])*/
+    //console.log(studios)
     return (
 
         <>  
@@ -182,10 +231,18 @@ const Studios = () => {
                         id="clear1"
                         className="search-studios"
                         value={params.search}
+                        maxLength="30"
                         type="text"
-                        placeholder="Filter by studio name ..."
+                        placeholder="Search for a studio ..."
                         onChange={handleChangeName}
                     />
+                    <span className="search-tag">Searching For: <b>{nameFilter}</b>
+                                    <button className="delete-filter" 
+                                            value={nameFilter}
+                                            onClick={deleteSearchName}
+                                    >Reset Search
+                                    </button>
+                    </span>
                     {/*<button onClick={handleClickName}>Click</button>*/}
                 </div>
                 <span>
@@ -193,6 +250,7 @@ const Studios = () => {
                         id="clear2"
                         key="s-amen"
                         className="search-amenities"
+                        maxLength="30"
                         value={params.search}
                         type="text"
                         placeholder="Filter by amenities ..."
@@ -200,7 +258,8 @@ const Studios = () => {
                     />
                     {/*<button onClick={handleClickName}>Click</button>*/}
                 </span>
-                <span className="filter-tags">
+                <div>
+                <span className="filter-tags-amen">
                     {
                         React.Children.toArray(
                             amenFilter.map(( amenFilter, value ) => 
@@ -209,7 +268,7 @@ const Studios = () => {
                                     { amenFilter } 
                                     <button className="delete-filter" 
                                             value={amenFilter}
-                                            onClick={deleteFilter}
+                                            onClick={deleteFilterAmen}
                                     >x
                                     </button>
                                 </span>
@@ -217,49 +276,67 @@ const Studios = () => {
                             )
                         )
                     }
-                    {/*amenFilter.map((amenFilter, index) => (
-                        <>  
-                            <span key={uuid()} className="filter-tags-element">
-                                { amenFilter } 
-                                <button className="delete-filter" 
-                                        value={amenFilter}
-                                        onClick={deleteFilter}
-                                >x
-                                </button>
-                            </span>
-                        </>
-                    ))*/}
                 </span>
+                </div>
                 <div>
+                <span>
                     <input 
                         id="clear3"
                         className="search-classes"
+                        maxLength="30"
                         value={params.search}
                         type="text"
-                        placeholder="Filter by class name ..."
+                        placeholder="Filter by class names ..."
                         onChange={handleChangeClass}
                     />
                     {/*<button onClick={handleClickName}>Click</button>*/}
+                </span>
+                <span className="filter-tags-class">
+                    {
+                        React.Children.toArray(
+                            classFilter.map(( classFilter, value ) => 
+                            <> 
+                                <span className="filter-tags-element">
+                                    { classFilter } 
+                                    <button className="delete-filter" 
+                                            value={classFilter}
+                                            onClick={deleteFilterClass}
+                                    >x
+                                    </button>
+                                </span>
+                            </>
+                            )
+                        )
+                    }
+                </span>
                 </div>
                 <div>
                     <input 
                         id="clear4"
                         className="search-coaches"
+                        maxLength="40"
                         value={params.search}
                         type="text"
-                        placeholder="Filter by the coaches ..."
+                        placeholder="Search for a coach ..."
                         onChange={handleChangeCoach}
                     />
+                    <span className="search-tag">Searching For: <b>{coachFilter}</b>
+                                    <button className="delete-filter" 
+                                            value={coachFilter}
+                                            onClick={deleteSearchCoach}
+                                    >Reset Search
+                                    </button>
+                    </span>
                     {/*<button onClick={handleClickName}>Click</button>*/}
                 </div>
-                <button id="filter-btn" onClick={handleClickAmen}>Apply Filters</button>
+                <button id="filter-btn" onClick={handleClickAmen}>Apply Changes</button>
             </div>
             <div id="parent">
                 <div id="table">
                     <StudioTable perPage={perPage} params={params} />
                 </div>
                 <div id="map">
-                    {/*<StudioMap /> */}
+                    <StudioMap /> 
                 </div>
             </div>
             <button className="page-btn" onClick={() => setParams({
@@ -270,12 +347,11 @@ const Studios = () => {
                 </button>
                 <button className="page-btn" onClick={() => setParams({
                     ...params,
-                    page: Math.min(Math.ceil(ids.length / 5), params.page + 1)
+                    page: Math.min(idLen, params.page + 1)
                 })}>
                     next
                 </button>
         </>
     )
 }
-
 export default Studios;

@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {useLocation} from "react-router-dom";
 import './style.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
-
+import APIContext from "../../../../Contexts/APIContext";
 
 function StudioPage(props) {
     const location = useLocation()
     const { id } = location.state
-    //console.log(id);
     const [studioName, setStudioName] = useState("");
     const [studioAdd, setStudioAdd] = useState("");
     const [studioLat, setStudioLat] = useState("");
@@ -20,6 +19,8 @@ function StudioPage(props) {
     const [params, setParams] = useState({page: 0});
     const [params2, setParams2] = useState({page2: 0});
 
+    const { studios } = useContext(APIContext);
+    console.log(studios)
     useEffect(() => {
         //console.log(id)
         const apiUrl1 = `http://localhost:8000/studios/${id}/`;
@@ -36,7 +37,7 @@ function StudioPage(props) {
             });
     }, [])
 
-    console.log(studioAmen);
+    //console.log(studioAmen);
     const num_pages = studioAmen / 8;
     const navigate = useNavigate();
     return (

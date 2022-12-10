@@ -93,7 +93,16 @@
     background-color: rgb(211, 205, 22);
 }
 
-.filter-tags {
+.filter-tags-amen {
+    display: inline;
+    position: absolute;
+    left: 30%; 
+    top: 12%;
+    margin-right: 5px;
+    padding: 3px;
+}
+
+.filter-tags-class {
     display: inline;
     position: absolute;
     left: 30%; 
@@ -115,4 +124,16 @@
     padding: 1px;
     font-size: 100%;
     background-color: rgb(190, 66, 66);
+}
+
+.search-tag {
+    display: inline;
+    position: absolute;
+    left: 29%; 
+    margin-right: 5px;
+    margin-top: 4px;
+    padding: 1px;
+    background-color: rgb(61, 141, 141);
+    border: 1px solid black;
+    border-radius: 4px 4px 4px 4px;
 }

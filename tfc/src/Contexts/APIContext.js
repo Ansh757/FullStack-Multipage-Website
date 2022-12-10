@@ -3,7 +3,8 @@ import {createContext, useState} from "react";
 const empty = [{name: "empty"}] ;
 
 export const useAPIContext = () => {
-    const [studios, setStudios] = useState(empty);
+    //const [studios, setStudios] = useState(empty);
+    const [studios, setStudios] = useState([]);
 
     return {
         studios,
@@ -12,7 +13,8 @@ export const useAPIContext = () => {
 }
 
 const APIContext = createContext({
-    studios: [{name: "empty"}], setStudios: () => {},
+    //studios: [{name: "empty"}], setStudios: () => {},
+    studios: [], setStudios: () => {},
 })
 
 export default APIContext;
