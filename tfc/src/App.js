@@ -14,7 +14,7 @@ import UpdateCard from "./components/Subscription/update-card/update-card";
 import UpdatePlan from "./components/Subscription/update-plan/update-plan";
 import EditProfile from "./components/User/EditProfile";
 import ViewPlan from './components/Subscription/view-plan/view-plan';
-import ViewClasses from './components/Classes/View-History/index'
+import ViewClasses from './components/Classes/View-History'
 import AllClasses from './components/Classes/AllClasses/index'
 import Enrollment from "./components/Classes/Enrollment";
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
@@ -68,8 +68,8 @@ function App() {
                         <Route path='/' element={<div><Base/></div>}/>
                         <Route path='register' element={register}/>
                         <Route path='login' element={<div><Login/></div>}/>
-                        <Route path='plans' element={<div><Plans/></div>}/>
-                        <Route path='get-plan' element={<GetPlan/>}></Route>
+                        <Route path='plans/:id' element={<div><Plans/></div>}/>
+                        <Route path='get-plan/:id' element={<GetPlan/>}></Route>
                         <Route path=':id/update-card' element={<div><UpdateCard/></div>}></Route>
                         <Route path=':id/update-plan' element={<div><UpdatePlan/></div>}></Route>
                         <Route path=':uid/studios' element={studios}/>
