@@ -46,7 +46,7 @@ const User_Main = () => {
                         <nav>
                             <ul className="menuItems">
                                 <li><a href='/main' data-item='Home'>Home</a></li>
-                                <li><a href='#' data-item='Classes'>Classes</a></li>
+                                <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                                 <li><a href={'/' + id + '/studios'} data-item='Studios'>Studios</a></li>
                                 <li><a href={'/plans/' + id} data-item='Subscriptions'>Subscriptions</a></li>
                             </ul>

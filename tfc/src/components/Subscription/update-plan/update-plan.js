@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react'
 import './update-plan.css'
-import {useNavigate, useParams} from "react-router-dom"
+import {Link, useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
 
 const UpdatePlan = () => {
@@ -100,23 +100,26 @@ const UpdatePlan = () => {
                     <nav>
                         <ul className="menuItems">
                             <li><a href='/main' data-item='Home'>Home</a></li>
-                            <li><a href='' data-item='Classes'>Classes</a></li>
+                            <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                             <li><a href='/studios' data-item='Studios'>Studios</a></li>
                             <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                         </ul>
                     </nav>
                 </div>
-                <div className="user-logo">
-                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                    {/*    
-                    {/*</Link>*/}
+            <div className="user-logo">
+                <Link to={"/" + id + "/profile/"}>
                     <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
+                        <i className="fa-solid fa-user too"></i>
                     </button>
-                    <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
-                    </button>
-                </div>
+                </Link>
+                <button id="icons" className="user-btn" onClick={() => {
+                    localStorage.removeItem('SavedToken')
+                    window.location.reload()
+                }
+                }>
+                    <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
+                </button>
+            </div>
             </header>
             <div className="signup-container">
                 <div className="container" id="container">

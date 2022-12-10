@@ -6,7 +6,8 @@ import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
 import APIContext from "../../../Contexts/APIContext";
 
-export default function ViewClasses() {
+export default function AllClasses() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const { name } = useContext(APIContext);
     const [uid, setUid] = useState("");
@@ -20,17 +21,19 @@ export default function ViewClasses() {
     const [End_Time, setEnd_Time] = useState("");
     const [Start_Recursion, setStart_Recursion] = useState("");
     const [End_Recursion, setEnd_Recursion] = useState("");
-    const { sid } = useParams();
     const [classAction, setClassAction] = useState("");
     const [option, setOption] = useState("");
     const [page, setPage] = useState(1);
     const [page_count, setPageCount] = useState(1);
     const [classList, setClassList] = useState([]);
     const [formErrors, setFormErrors] = useState("");
-    const url = `http://127.0.0.1:8000/classes/${id}/${sid}/class/all/?limit=1&offset=${page}`;
+    const url = `http://127.0.0.1:8000/classes/${id}/class/all/?limit=1&offset=${page}`;
 
 
     useEffect(() => {
+        if (!localStorage.getItem('SavedToken')) {
+            navigate('/login')
+        }
         axios({
             method: "get",
             url: url,
@@ -100,7 +103,7 @@ export default function ViewClasses() {
         e.preventDefault();
         axios({
             method: "put",
-            url: `http://localhost:8000/classes/${id}/${sid}/class/${uid}/enroll-drop/`,
+            url: `http://localhost:8000/classes/${id}/class/${uid}/enroll-drop/`,
             data: {
                 _enrolled: classAction,
                 _enroll_or_drop: option
@@ -125,7 +128,7 @@ export default function ViewClasses() {
                     <nav>
                         <ul className="menuItems">
                             <li><a href='/main' data-item='Home'>Home</a></li>
-                            <li><a href='' data-item='Classes'>Classes</a></li>
+                            <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                             <li><a href='/studios' data-item='Studios'>Studios</a></li>
                             <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                         </ul>
