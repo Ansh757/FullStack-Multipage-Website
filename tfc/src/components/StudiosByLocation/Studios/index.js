@@ -147,7 +147,7 @@ const Studios = () => {
             var classes = '-'
             var coaches = '-'
             if (nameFilter.length > 0) {
-                names = nameFilter.join('-');
+                names = nameFilter.join('-').replace(" ","_");
             }
             if (amenFilter.length > 0) {
 
