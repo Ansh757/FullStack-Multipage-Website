@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {useLocation} from "react-router-dom";
-import './style.css';
+import {useLocation, useParams, Link} from "react-router-dom";
+import '../StudioPage/style.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 
 
 function StudioPage(props) {
     const location = useLocation()
+    const { uid } = useParams();
     const { id } = location.state
     //console.log(id);
     const [studioName, setStudioName] = useState("");
@@ -88,7 +89,11 @@ function StudioPage(props) {
                         }
                 </div>
                 <div><b> Directions: </b> <a  target="_blank" href={studioDir}>{studioDir}</a> </div> 
-                <div><button className="enroll-button">Enroll</button></div>
+                <div>
+                    <Link to={"/" + uid + "/studios/studio-page/" + id + "/" + "classes/all/"}>
+                        <button className="enroll-button"> View Classes </button>
+                    </Link>
+                </div>
             </div>
             <div className="studio-page-images">
                 {/*

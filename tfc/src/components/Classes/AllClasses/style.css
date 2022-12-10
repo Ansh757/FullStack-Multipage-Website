@@ -344,4 +344,11 @@
       left: 0;
       top: 0;
       border-radius: 10px;
-  } 
+  }
+
+.err-6 span {
+     color: red;
+     font-size: 12px;
+     width: 2px;
+     height: 2px;
+ }
