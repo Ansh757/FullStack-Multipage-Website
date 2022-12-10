@@ -10,7 +10,7 @@ const UpdateCard = () => {
     const [isActiveMembership, setIsActiveMembership] = useState(true)
     // const isActiveMembership = useRef(true)
 
-    function submitForm(e) {
+    const submitForm = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('card_info', card_info)
