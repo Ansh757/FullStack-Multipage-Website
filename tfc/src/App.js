@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
 import Base from "./components/User/Main";
 import Login from "./components/User/Login";
-import Register from "./components/User/Register";
+import Index from "./components/User/Register";
 import Plans from "./components/Subscription/Plans"
 import ListStudios from "./components/StudiosByLocation"
 import WithRoute from "./components/User/User-Main";
@@ -16,7 +16,8 @@ import EditProfile from "./components/User/EditProfile";
 
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
-
+import APIContextUser, {useUserAPIContext} from "./Contexts/APIContextUser";
+import Register from "./components/User/Register";
 function App() {
 
   const studios = (
@@ -27,12 +28,32 @@ function App() {
     </APIContext.Provider>
   )
 
+    const register = (
+      <APIContextUser.Provider value={useUserAPIContext()}>
+          <Register/>
+      </APIContextUser.Provider>
+
+    )
+
+    const edit = (
+        <APIContextUser.Provider value={useUserAPIContext()}>
+            <EditProfile/>
+        </APIContextUser.Provider>
+
+    )
+
+    const profile = (
+        <APIContextUser.Provider value={useUserAPIContext()}>
+            <Profile/>
+        </APIContextUser.Provider>
+
+    )
   return (
     <div>
       <BrowserRouter>
           <Routes>
           <Route path='/' element={<div><Base/></div>}/>
-          <Route path='register' element={<div><Register/></div>}/>
+          <Route path='register' element={register}/>
           <Route path='login' element={<div><Login/></div>}/>
           <Route path='plans' element={<div><Plans/></div>}/>
           <Route path='get-plan' element={<GetPlan/>}></Route>
@@ -40,9 +61,8 @@ function App() {
           <Route path=':id/update-plan' element={<div><UpdatePlan/></div>}></Route>
           <Route path='studios' element={studios}/>
           <Route path='main' element={<div><WithRoute/></div>}> </Route>
-          <Route path=':id/profile' element={<Profile/>}></Route>
-          <Route path=':id/edit' element={<EditProfile/>}></Route>
-
+          <Route path=':id/profile' element={profile}></Route>
+          <Route path=':id/edit' element={edit}></Route>
           </Routes>
       </BrowserRouter>
     </div>
