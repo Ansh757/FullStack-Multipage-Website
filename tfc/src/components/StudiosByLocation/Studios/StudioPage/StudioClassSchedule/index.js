@@ -123,7 +123,7 @@ const StudioClassSchedule = (id) => {
 
     return <div>
             <h1 id="class-schedule">Class Schedule</h1>
-            <div id="filters">
+            <div id="filters-schedule">
                 <div>
                     <input 
                         id="clear5"

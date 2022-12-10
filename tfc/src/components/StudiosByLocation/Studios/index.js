@@ -225,7 +225,7 @@ const Studios = () => {
             })}>
                 Get Studios Near You !
             </button>
-            <div id="filters">
+            <div id="filters2">
                 <div>
                     <input 
                         id="clear1"
