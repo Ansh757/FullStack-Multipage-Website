@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 * {
     font-family: 'Montserrat', sans-serif;
 }
@@ -64,7 +65,7 @@
     object-fit: contain;
 }
 
-.container{
+.container-4{
     padding: 5% 10%;
     margin: auto;
     display: flex;
@@ -80,8 +81,8 @@
     justify-content: right;
 }
 
-.title {
-    font-size: 5em;
+.title-2 {
+    font-size: 6em;
     color: white;
     text-transform: uppercase;
 }
@@ -89,9 +90,9 @@
 h1, p, h2, h3, span {
     margin: 0;
 }
+/*Reference: https://getcssscan.com/css-buttons-examples*/
 
-    /*Reference: https://getcssscan.com/css-buttons-examples*/
-.btn {
+.btn-11 {
    padding: 0.6em 2em;
    border: none;
    outline: none;
@@ -108,7 +109,7 @@ h1, p, h2, h3, span {
     height: 5em;
 }
 
-.btn:before {
+.btn-11:before {
     content: "";
     background: linear-gradient(
             45deg,
@@ -148,7 +149,7 @@ h1, p, h2, h3, span {
     }
 }
 
-.btn:after {
+.btn-11:after {
     z-index: -1;
     content: "";
     position: absolute;
