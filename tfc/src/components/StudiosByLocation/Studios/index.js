@@ -151,13 +151,13 @@ const Studios = () => {
             }
             if (amenFilter.length > 0) {
 
-                amen = amenFilter.join('-');
+                amen = amenFilter.join('-').replace(" ","_");
             }
             if (classFilter.length > 0) {
-                classes = classFilter.join('-');
+                classes = classFilter.join('-').replace(" ","_");
             }
             if (coachFilter.length > 0) {
-                coaches = coachFilter.join('-');
+                coaches = coachFilter.join('-').replace(" ","_");
             }
 
             //const names = nameFilter.join('-');
