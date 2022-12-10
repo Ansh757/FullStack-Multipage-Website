@@ -383,7 +383,9 @@
     margin: 2% 0;
 }
 
-.signup-container {
+.update-plan .signup-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 73.9%;
 }

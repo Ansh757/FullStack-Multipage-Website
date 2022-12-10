@@ -105,7 +105,9 @@ const User_Main = () => {
                         </div>
 
                         <div className="col1" style={{marginBottom:"14%" ,marginRight:"-3.5%", textOverflow:"clip"}}>
-                            <span>About Us: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</span> <br/> <br/> <br/><br/>
+                            <span>About Us: TFC is an Canadian gym chain with more than 700 clubs across the United States and Canada. 
+                                The company was formed in 2022 and is based in Toronto, Canada. TFC was founded in 2022 by founder Armaan, Ansh and Giancarlo 
+                                in Toronto</span> <br/> <br/> <br/><br/>
                             <div className="opening-hours-content section">
                                 <div className="table-content">
                                     <h2>Opening Hours</h2>

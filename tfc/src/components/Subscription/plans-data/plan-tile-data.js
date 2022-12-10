@@ -36,7 +36,7 @@ export const plansTileData = [
         description:[
             "Access to VIP Parking",
             "Access to Bench Press 24x7",
-            "Free Session with Anshy"
+            "Includes all family members"
         ],
         },
 
