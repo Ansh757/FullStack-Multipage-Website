@@ -1,11 +1,12 @@
 import React, {useRef, useState} from 'react'
 import './getplan.css'
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
 
 
 
 const GetPlan = () => {
+    const {id} = useParams();
     const navigate = useNavigate();
 
     const [data, setData] = useState({
@@ -102,21 +103,24 @@ const GetPlan = () => {
                 <nav>
                     <ul className="menuItems">
                         <li><a href='/main' data-item='Home'>Home</a></li>
-                        <li><a href='' data-item='Classes'>Classes</a></li>
+                        <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
                         <li><a href='/studios' data-item='Studios'>Studios</a></li>
                         <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                     </ul>
                 </nav>
             </div>
             <div className="user-logo">
-                {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                {/*    
-                {/*</Link>*/}
-                <button className="user-btn">
-                        <i className="fa-solid fa-user"></i>
-                </button>
-                <button className="user-btn">
-                    <i className="fa-solid fa-right-from-bracket"></i>
+                <Link to={"/" + id + "/profile/"}>
+                    <button className="user-btn">
+                        <i className="fa-solid fa-user too"></i>
+                    </button>
+                </Link>
+                <button id="icons" className="user-btn" onClick={() => {
+                    localStorage.removeItem('SavedToken')
+                    window.location.reload(false)
+                }
+                }>
+                    <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
                 </button>
             </div>
         </header>

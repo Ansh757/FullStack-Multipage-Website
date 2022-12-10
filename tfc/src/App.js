@@ -80,9 +80,9 @@ function App() {
                         <Route path=':id/view-plan' element={<ViewPlan/>}></Route>
                         <Route path=':id/view-classes' element={<ViewClasses/>}></Route>
                         <Route path=':id/classes/schedule' element={<Schedule/>}></Route>
-                        <Route path=':id/studios/studio-page/:sid/classes/all/' element={<AllClasses/>}></Route>
+                        <Route path=':id/classes/all/' element={<AllClasses/>}></Route>
                         <Route path=':id/:studio_id/enrollment/:class_id' element={ENROLLMENT}></Route>
-                        <Route path='/logout'> </Route>
+                        <Route path='logout'> </Route>
                     </Routes>
             </BrowserRouter>
     </div>

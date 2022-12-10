@@ -7,7 +7,7 @@ import {useParams, Link} from "react-router-dom";
 import APIContextUser, {useUserAPIContext} from "../../../Contexts/APIContextUser";
 
 const Profile = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const { data } = useContext(APIContextUser);
     const { setData } = useContext(APIContextUser);
 
