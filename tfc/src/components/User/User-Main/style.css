@@ -80,13 +80,32 @@
 
 .user-main .main-btn {
     display: flex;
-    flex-direction: row;
+    flex-direction: r;
     position: relative;
     margin-left: 2%;
-    margin-top: -8%;
+    margin-top: -4%;
     font-size: 30em;
     gap: 5%;
     width: 30%;  
+}
+
+.user-main .title-holder {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 2%;
+    margin-top: 4%;
+    margin-bottom: -10%;
+}
+
+.user-main .title-holder .big-title {
+    font-size: 12rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.user-main .title-holder .bluey {
+    color:#ff7e3d
 }
 
 .user-main .main-btn .btn {

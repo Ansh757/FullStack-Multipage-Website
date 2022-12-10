@@ -59,28 +59,32 @@ const User_Main = () => {
                         </button>
                     </div>
 
-                </header>
-                <div className="main-container">
-                    <div className="section section-1">
-                        <h1 className=''>
-                            Welcome <br/><span> {username}</span>
-                        </h1>
-                        <div className='main-btn'>
-                            <Link to="/main">
-                                <button className='btn'>My Schedule</button>
-                            </Link>
-                            <Link to="/main">
-                                <button className='btn'>Plan History</button>
-                            </Link>
-                            <Link to="/main">
-                                <button className='btn'>Classes History</button>
-                            </Link>
-                            <Link to={"/" + id + "/update-plan"}>
-                                <button className='btn'>Change Plan</button>
-                            </Link>
-                            <Link to={"/" + id + "/update-card"}>
-                                <button className='btn'>Change Card</button>
-                            </Link>
+
+            </header>
+            <div className="main-container">
+                <div className="section section-1">
+                    <div className='title-holder'>
+                        <span className='big-title'>
+                            Welcome <br/><span className='bluey'> {this.state.username}</span>
+                        </span>
+                    </div>
+                    <div className='main-btn'>
+                        <Link to="/main">
+                            <button className='btn'>My Schedule</button>
+                        </Link>
+                        <Link to={"/" + this.state.id + "/view-plan"}>
+                            <button className='btn'>Plan History</button>
+                        </Link>
+                        <Link to={"/main"}>
+                            <button className='btn'>Classes History</button>
+                        </Link>
+                        <Link to={"/" + this.state.id + "/update-plan"}>
+                            <button className='btn'>Change Plan</button>
+                        </Link>
+                        <Link to={"/" + this.state.id + "/update-card"}>
+                            <button className='btn'>Change Card</button>
+                        </Link>
+
 
                         </div>
                     </div>

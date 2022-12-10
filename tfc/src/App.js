@@ -13,6 +13,7 @@ import GetPlan from "./components/Subscription/getPlan/getplan";
 import UpdateCard from "./components/Subscription/update-card/update-card";
 import UpdatePlan from "./components/Subscription/update-plan/update-plan";
 import EditProfile from "./components/User/EditProfile";
+import ViewPlan from './components/Subscription/view-plan/view-plan';
 
 import APIContext, {useAPIContext} from "./Contexts/APIContext";
 import APIContextTwo, {useAPIContextTwo} from "./Contexts/APIContextTwo";
@@ -63,6 +64,7 @@ function App() {
           <Route path='main' element={<div><WithRoute/></div>}> </Route>
           <Route path=':id/profile' element={profile}></Route>
           <Route path=':id/edit' element={edit}></Route>
+          <Route path=':id/view-plan' element={<ViewPlan/>}></Route>
           </Routes>
       </BrowserRouter>
     </div>
