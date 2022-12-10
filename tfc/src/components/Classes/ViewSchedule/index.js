@@ -1,10 +1,9 @@
 import React, {Component, useState, createContext, useEffect} from 'react';
-import './style.css';
+import '../ViewSchedule/style.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
-import '../../User/User-Main/style.css';
 
 
 
@@ -69,7 +68,7 @@ export default function Schedule() {
     // console.log(data)
     return(
         <div className='sch-div'>
-            <header>
+            <header id='bad'>
             <div className="website-logo">
                     <img src="https://www.cs.toronto.edu/~kianoosh/courses/csc309/resources/images/tfc.png" alt="logo-tfc-picture"/>
                 </div>

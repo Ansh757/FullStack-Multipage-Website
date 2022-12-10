@@ -20,13 +20,15 @@
  
   .sch-div  .container {
      /* margin-top: 5%; */
+
      text-align: left;
      width: 90%;
+     height: 100%;
       display: table;
-      padding: 0 0 10% 0;
+      padding: 0 0 20% 0;
  }
  
- .sch-div > header {
+ .sch-div #bad {
      display: flex;
      flex-direction: row;
      position: relative;

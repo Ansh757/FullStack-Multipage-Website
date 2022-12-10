@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
 import APIContext from "../../../Contexts/APIContext";
-import '../../User/User-Main/style.css';
 
 export default function ViewClasses() {
     const { id } = useParams();

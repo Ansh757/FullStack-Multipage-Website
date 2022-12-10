@@ -1,13 +1,9 @@
 import React, {Component, useState, createContext, useEffect} from 'react';
-import './style.css';
+import '../View-History/style.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
-import '../../User/User-Main/style.css';
-
-
-
 
 export default function ViewClasses() {
     const { id } = useParams();
