@@ -198,8 +198,11 @@ const Studios = () => {
             });
         }
         
-    }, [filterToggle, params])
+    }, [filterToggle, params, params.page])
 
+    useEffect(() => {
+          console.log(studios)
+     }, [studios]);
     /*useEffect(() => {
         
         const { page, lat, long } = params;
@@ -225,7 +228,7 @@ const Studios = () => {
             })}>
                 Get Studios Near You !
             </button>
-            <div id="filters2">
+            <div id="filters-topp" >
                 <div>
                     <input 
                         id="clear1"

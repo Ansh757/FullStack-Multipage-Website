@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect} from "react";
+import {useContext, useState, useEffect, useRef} from "react";
 //import APIContext from "../../../../Contexts/APIContext";
 //import '../StudioTable/style.css';
 import {Link, useNavigate, useLocation, useParams} from "react-router-dom";
@@ -8,8 +8,13 @@ import './style.css';
 const StudioClassSchedule = (id) => {
     //const { studios } = useContext(APIContext);
     const [classes, setClasses] = useState([]);
+    const [holder, setHolder] = useState("test");
+    const [field, setField] = useState("name");
+    const [count, setCount] = useState(1);
+    //const [dates, setDates] = useState([]);
     const [filterToggle, setFilterToggle] = useState(false);
-
+    const [displayMsg, setDisplayMsg] = useState("");
+    const [params, setParams] = useState({page: 0, date: false});
     function clearInput(){
         var getValue= document.getElementById("clear5");
           if (getValue.value !="") {
@@ -49,78 +54,108 @@ const StudioClassSchedule = (id) => {
     
     const [message3, setMessage3] = useState('');
     const handleDateName = (event) => {
-    setMessage3(event.target.value);
+        setMessage3(event.target.value);
     };
 
-    var info = {}
     const handleKeyDownClass = event => {
         if (event.key === "Enter") {
-
-            const val = message1
-            const apiUrl1 = `http://localhost:8000/classes/search/${id.id}/name/${val}/`;
-                axios.get(apiUrl1).then((res) => {
-                    const {data} = res;
-                    setClasses(data.results[0]);
-                });
-            clearInput()
-            setMessage1('')
-            if (filterToggle == false) {
-                setFilterToggle(true);
-            } else {
-                setFilterToggle(false);
+            setHolder([])
+            if (message1.length > 0) {
+                setHolder(message1)
+                setMessage1('') 
+                setField("name");
             }
+            clearInput()
+            setParams({page: 0, date: false})
         }
     };
-
     const handleKeyDownCoach = event => {
         if (event.key === "Enter") {
-            const val = message2
-            const apiUrl1 = `http://localhost:8000/classes/search/${id.id}/coach/${val}/`;
-                axios.get(apiUrl1).then((res) => {
-                    const {data} = res;
-                    setClasses(data.results[0]);
-           
-                });
-            
-            clearInput()
-            setMessage2('')
-            if (filterToggle == false) {
-                setFilterToggle(true);
-            } else {
-                setFilterToggle(false);
+            setHolder([])
+            if (message2.length > 0) {
+                setHolder(message2)
+                setMessage2('') 
+                setField("coach");
             }
+            clearInput()
+            setParams({page: 0, date: false})
         }
     };
-
     const handleKeyDownDate = event => {
         if (event.key === "Enter") {
-            const val = message3
+            setHolder([])
+            if (message3.length > 0) {
+                setHolder(message3)
+                setMessage3('') 
+                setField("date");
+            }
+            clearInput()
+            setParams({page: 0, date: true})
+        }
 
-            const apiUrl1 = `http://localhost:8000/classes/search/${id.id}/date/${val}/`;
-                axios.get(apiUrl1).then((res) => {
-                    const {data} = res;
-                    setClasses(data.results[0]);
-
-                });
+    };
+    const isMounted = useRef(false);
+    useEffect(() => {
+        if (isMounted.current) {
+            var date_regex =  /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+            if (!(date_regex.test(holder)) && params.date == true) {
+                setClasses({"id": '',
+                        "name": '',
+                        "description": '',
+                        "coach": '',
+                        "keywords": '',
+                        "capacity": '',
+                        "start_time": '',
+                        "end_time": '',
+                        "start_recursion": '',
+                        "end_recursion": '',
+                        "studio": ''})
+                setDisplayMsg("Invalid Date")
+                setParams({date: false})
+            } else {
+                //const { pg, date } = params; 
+                const { page, date } = params;
+                const apiUrl1 = `http://localhost:8000/classes/search/${id.id}/${field}/${holder}/?offset=${page}`;
+                    axios.get(apiUrl1).then((res) => {
+                        const {data} = res;
+                        const lis = data.results
+                        if (lis.length > 0) {
+                            setClasses(data.results[0]);
+                            setDisplayMsg("Classes:")
+                            setCount(data.count);
+                            console.log(data.count)
+                        } else {
+                            setClasses({"id": '',
+                            "name": '',
+                            "description": '',
+                            "coach": '',
+                            "keywords": '',
+                            "capacity": '',
+                            "start_time": '',
+                            "end_time": '',
+                            "start_recursion": '',
+                            "end_recursion": '',
+                            "studio": ''})
+                            setDisplayMsg("No Results Returned")
+                            setCount(0);
+                        }
+                    });
                 clearInput()
-                setMessage3('')
+                setMessage1('')
                 if (filterToggle == false) {
                     setFilterToggle(true);
                 } else {
                     setFilterToggle(false);
                 }
-        }
-    };
 
-    useEffect(() => {
-        if (filterToggle == false) {
-            setFilterToggle(true);
+            }
         } else {
-            setFilterToggle(false);
+            isMounted.current = true;
         }
-        console.log(classes.name);
-    }, [classes])
 
+   }, [holder, params]);
+    
+    //console.log(count)
     return <div>
             <h1 id="class-schedule">Class Schedule</h1>
             <div id="filters-schedule">
@@ -161,6 +196,7 @@ const StudioClassSchedule = (id) => {
                 </span>
                 </div>
                 <div id="bruh">
+                    <p id="display-msssg">{displayMsg}</p>
                     <ul>
                         <li className="list-itemm"> <b>ID:  </b> {classes.id }</li>
                         <li className="list-itemm"> <b>Name:  </b>{ classes.name }</li>
@@ -175,6 +211,18 @@ const StudioClassSchedule = (id) => {
                         <li className="list-itemm"><b>Studio:  </b>{ classes.studio }</li>
                     </ul>
                 </div>
+                <button className="finale-btn" onClick={() => setParams({
+                    ...params,
+                    page: Math.max(0, params.page - 1)
+                })}>
+                    prev
+                </button>
+                <button className="finale-btn" onClick={() => setParams({
+                    ...params,
+                    page: Math.min(count - 1, params.page + 1)
+                })}>
+                    next
+                </button>
             </div>
         </div>
 }

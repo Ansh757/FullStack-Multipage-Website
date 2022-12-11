@@ -41,7 +41,7 @@ function StudioPage(props) {
 
     //console.log(studioAmen);
     const num_pages = studioAmen / 8;
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     return (
         <>
         <div className='plans-overlay'>
