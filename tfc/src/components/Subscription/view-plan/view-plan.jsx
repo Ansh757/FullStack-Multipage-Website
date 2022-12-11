@@ -8,8 +8,8 @@ import moment from 'moment';
 
 
 export default function ViewPlan() {
-    const { id } = useParams();
     const navigate = useNavigate();
+    const { id } = useParams();
     const [username, setUsername3] = useState("");
     const [Membership, setMembership] = useState("");
     const [amount, setAmount] = useState("");
@@ -19,15 +19,16 @@ export default function ViewPlan() {
     const [Next_payment, setNext] = useState();
     const [page, setPage] = useState(1)
     const [page_count, setPageCount] = useState(1)
-    
+
     const url = `http://127.0.0.1:8000/subscriptions/plans/view/${id}/?page=${page}`;
 
-  
     useEffect(() => {
         if (!localStorage.getItem('SavedToken')) {
             navigate('/login');
-        }
-        
+        } 
+    }, [localStorage.getItem('SavedToken')])
+
+    useEffect(() => {
         axios({
             method: "get",
             url: url,
@@ -35,13 +36,12 @@ export default function ViewPlan() {
                 Authorization: localStorage.getItem('SavedToken')
             }
         })
-        
+
         .then(res => {handle(res.data)
             setPageCount(res.data.page_count)
             })
 
-    }, [localStorage.getItem('SavedToken')])
-
+    }, [page])
 
     function handle(res) {
         setUsername3(res.results[0]["username"])
@@ -51,7 +51,7 @@ export default function ViewPlan() {
 
         if (res.results[0]['IsActiveMembership'] === true){
             setActiveMembership("Active")}
-        
+
         else {setActiveMembership("Inactive")}
 
 
@@ -63,11 +63,11 @@ export default function ViewPlan() {
         // ))
 
     }
-    
+
     let n = moment(last_modified).format('YYYY MM DD, h:mm:ss');
 
-    
-    
+
+
     // console.log(data)
     return(
         <div className='tableDiv'>
@@ -86,16 +86,19 @@ export default function ViewPlan() {
                     </nav>
                 </div>
                 <div className="user-logo">
-                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
-                    {/*    
-                    {/*</Link>*/}
+                <Link to={"/" + id + "/profile/"}>
                     <button className="user-btn">
-                            <i className="fa-solid fa-user"></i>
+                        <i className="fa-solid fa-user too"></i>
                     </button>
-                    <button className="user-btn">
-                        <i className="fa-solid fa-right-from-bracket"></i>
-                    </button>
-                </div>
+                </Link>
+                <button id="icons" className="user-btn" onClick={() => {
+                    localStorage.removeItem('SavedToken')
+                    window.location.reload()
+                }
+                }>
+                    <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
+                </button>
+            </div>
         </header>
             <div className='main-title'>
                 <span class="blue">{username}'s Subscription History</span>
@@ -136,6 +139,3 @@ export default function ViewPlan() {
         </div>
     );
 }
-
-
-

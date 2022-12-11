@@ -6,9 +6,9 @@ import {useParams, Link} from "react-router-dom";
 import moment from 'moment';
 import APIContext from "../../../Contexts/APIContext";
 
-export default function AllClasses() {
-    const navigate = useNavigate();
+export default function ViewClasses() {
     const { id } = useParams();
+    const { sid } = useParams();
     const { name } = useContext(APIContext);
     const [uid, setUid] = useState("");
     const [description, setDescription] = useState("");
@@ -21,19 +21,17 @@ export default function AllClasses() {
     const [End_Time, setEnd_Time] = useState("");
     const [Start_Recursion, setStart_Recursion] = useState("");
     const [End_Recursion, setEnd_Recursion] = useState("");
+    
     const [classAction, setClassAction] = useState("");
     const [option, setOption] = useState("");
     const [page, setPage] = useState(1);
     const [page_count, setPageCount] = useState(1);
     const [classList, setClassList] = useState([]);
     const [formErrors, setFormErrors] = useState("");
-    const url = `http://127.0.0.1:8000/classes/${id}/class/all/?limit=1&offset=${page}`;
+    const url = `http://127.0.0.1:8000/classes/${id}/${id}/class/all/?offset=${page}`;
 
 
     useEffect(() => {
-        if (!localStorage.getItem('SavedToken')) {
-            navigate('/login')
-        }
         axios({
             method: "get",
             url: url,
@@ -103,7 +101,7 @@ export default function AllClasses() {
         e.preventDefault();
         axios({
             method: "put",
-            url: `http://localhost:8000/classes/${id}/class/${uid}/enroll-drop/`,
+            url: `http://localhost:8000/classes/${id}/${sid}/class/${uid}/enroll-drop/`,
             data: {
                 _enrolled: classAction,
                 _enroll_or_drop: option
@@ -128,25 +126,21 @@ export default function AllClasses() {
                     <nav>
                         <ul className="menuItems">
                             <li><a href='/main' data-item='Home'>Home</a></li>
-                            <li><a href={'/' + id + '/classes/all'} data-item='Classes'>Classes</a></li>
+                            <li><a href='' data-item='Classes'>Classes</a></li>
                             <li><a href='/studios' data-item='Studios'>Studios</a></li>
-                            <li><a href={'/plans/' + id} data-item='Subscriptions'>Subscriptions</a></li>
+                            <li><a href='/plans' data-item='Subscriptions'>Subscriptions</a></li>
                         </ul>
                     </nav>
                 </div>
-
                 <div className="user-logo">
-                    <Link to={"/" + id + "/profile/"}>
-                        <button className="user-btn">
-                            <i className="fa-solid fa-user too"></i>
-                        </button>
-                    </Link>
-                    <button id="icons" className="user-btn" onClick={() => {
-                        localStorage.removeItem('SavedToken')
-                        window.location.reload()
-                    }
-                    }>
-                        <i id="icons" className="fa-solid fa-right-from-bracket too"></i>
+                    {/*<Link to={"/" + this.state.id + "/profile/"}>*/}
+                    {/*    
+                    {/*</Link>*/}
+                    <button className="user-btn">
+                            <i className="fa-solid fa-user"></i>
+                    </button>
+                    <button className="user-btn">
+                        <i className="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </div>
         </header>
@@ -196,11 +190,10 @@ export default function AllClasses() {
                     <div className='next-btn'>
                         { page > 1 ?<button className='bn' onClick={() => setPage(page - 1)}>Prev</button> : <></>}
                         { page < page_count ? <button className='bn' onClick={() => setPage(page + 1)}> Next </button>: <></>}
-                    </div> <br/>
-                    <span className='status-title'>Please Select a Class</span>
+                    </div>
+
                     <div className='set2'>
                         <select id="status" value={classAction} onChange={e => toEnrollIn(e)}>
-                        
                          <option value="#">-----</option>
                         {classList.map((studios, index) => (
                                 <option key={index} value={studios.name} onClick={event => setClassAction(event.target.value)}>{studios.name}</option>
@@ -219,13 +212,11 @@ export default function AllClasses() {
                             <label htmlFor={("enroll_all")}>Enroll All</label>
 
                             <input type="radio" id="drop_all" name="grp" value="drop_all" onChange={event => setOp(event)}/>
-                            <label htmlFor={("drop_all")}>Drop All</label> <br/><br/>
-                            
+                            <label htmlFor={("drop_all")}>Enroll</label>
+                            <button type="submit" onClick={e => enrollOrDrop(e)}></button>
+                            <span className="err-6">{formErrors["Message"]}</span>
                     </div>
-                    <div className='s-btn'>
-                        <button className='bn' type="submit" onClick={e => enrollOrDrop(e)}>Submit</button>
-                        <span className="err-6">{formErrors["Message"]}</span>
-                    </div>
+
                     <footer>
                 <h3>© Ansh, Armaan, Giancarlo </h3>
             </footer>
@@ -233,6 +224,5 @@ export default function AllClasses() {
         </APIContext.Provider>
     );
 }
-
 
 
