@@ -162,17 +162,17 @@ const StudioClassSchedule = (id) => {
                 </div>
                 <div id="bruh">
                     <ul>
-                        <li> <b>ID:  </b> {classes.id }</li>
-                        <li> <b>Name:  </b>{ classes.name }</li>
-                        <li><b>Description:  </b>{ classes.description } </li>
-                        <li><b>Coach:  </b>{ classes.coach }</li>
-                        <li><b>Keywords:  </b>{ classes.keywords }</li>
-                        <li><b>Capacity :  </b>{ classes.capacity}</li>
-                        <li><b>Start Time:  </b>{ classes.start_time }</li>
-                        <li><b> End Time:  </b>{ classes.end_time }</li>
-                        <li><b>Start Date:  </b>{ classes.start_recursion}</li>
-                        <li><b>:End Date </b>{ classes.end_recursion }</li>
-                        <li><b>Studio:  </b>{ classes.studio }</li>
+                        <li className="list-itemm"> <b>ID:  </b> {classes.id }</li>
+                        <li className="list-itemm"> <b>Name:  </b>{ classes.name }</li>
+                        <li className="list-itemm"><b>Description:  </b>{ classes.description } </li>
+                        <li className="list-itemm"><b>Coach:  </b>{ classes.coach }</li>
+                        <li className="list-itemm"><b>Keywords:  </b>{ classes.keywords }</li>
+                        <li className="list-itemm"><b>Capacity :  </b>{ classes.capacity}</li>
+                        <li className="list-itemm"><b>Start Time:  </b>{ classes.start_time }</li>
+                        <li className="list-itemm"><b> End Time:  </b>{ classes.end_time }</li>
+                        <li className="list-itemm"><b>Start Date:  </b>{ classes.start_recursion}</li>
+                        <li className="list-itemm"><b>End Date </b>{ classes.end_recursion }</li>
+                        <li className="list-itemm"><b>Studio:  </b>{ classes.studio }</li>
                     </ul>
                 </div>
             </div>
